@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-  belongs_to :users
-  belongs_to :bars
+  belongs_to :user
+  belongs_to :bar
 end

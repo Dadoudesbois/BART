@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2019_08_19_115050) do
     t.string "name"
     t.string "address"
     t.text "description"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_bars_on_users_id"
+    t.index ["user_id"], name: "index_bars_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2019_08_19_115050) do
     t.text "description"
     t.string "photo"
     t.string "name"
-    t.bigint "users_id"
-    t.bigint "bars_id"
+    t.bigint "user_id"
+    t.bigint "bar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bars_id"], name: "index_events_on_bars_id"
-    t.index ["users_id"], name: "index_events_on_users_id"
+    t.index ["bar_id"], name: "index_events_on_bar_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 2019_08_19_115050) do
 
   create_table "pictures", force: :cascade do |t|
     t.string "url"
-    t.bigint "bars_id"
+    t.bigint "bar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bars_id"], name: "index_pictures_on_bars_id"
+    t.index ["bar_id"], name: "index_pictures_on_bar_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2019_08_19_115050) do
     t.string "address"
     t.string "photo"
     t.text "artist_description"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_profiles_on_users_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 2019_08_19_115050) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bars", "users", column: "users_id"
-  add_foreign_key "events", "bars", column: "bars_id"
-  add_foreign_key "events", "users", column: "users_id"
-  add_foreign_key "pictures", "bars", column: "bars_id"
-  add_foreign_key "profiles", "users", column: "users_id"
+  add_foreign_key "bars", "users"
+  add_foreign_key "events", "bars"
+  add_foreign_key "events", "users"
+  add_foreign_key "pictures", "bars"
+  add_foreign_key "profiles", "users"
 end
