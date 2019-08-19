@@ -5,3 +5,5 @@ class Profile < ApplicationRecord
   validates :photo, presence: true
   validates :address, presence: true
 end
+
+
