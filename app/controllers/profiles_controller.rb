@@ -2,13 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :profile_authorization [:edit, :update, :destroy]
   def index
-    @artists = []
-    @profiles = Profile.all
-    @profiles.each do |profile|
-      if profile.is_artist == true
-        @artists << profile
-      end
-    end
+    @artists = Profile.artist
   end
 
   def show
