@@ -9,3 +9,5 @@ class Profile < ApplicationRecord
     Profile.where(is_artist: true)
   end
 end
+
+
