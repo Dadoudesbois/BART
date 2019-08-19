@@ -84,10 +84,10 @@ addresses = [
   'Chaussée de Haecht 6, 1210 Saint-Josse-ten-Noode'
 ]
 
-photo_gégé = 'https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png'
-photo_gaspard = 'https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png'
-photo_balta = 'https://res.cloudinary.com/dx8gouewf/image/upload/v1565775771/qtw7khpdhemxtaax2wi6.svg'
-photo_random = 'https://res.cloudinary.com/dx8gouewf/image/upload/v1565775771/qtw7khpdhemxtaax2wi6.svg'
+photo_gégé = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
+photo_gaspard = "https://www.pexels.com/search/face/"
+photo_balta = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566252247/baltha_sgifjq.png"
+photo_random = "https://www.pexels.com/search/face/"
 
 puts "Creating profiles bar managers"
 
@@ -96,7 +96,7 @@ profile_gégé = Profile.new(
   name: 'Gégé',
   last_name: 'Gerard',
   address: 'Parvis De Saint-Gilles 40, 1060 Saint-Gilles',
-  photo: photo_gégé,
+  photo: open(photo_gégé),
   is_bar_manager: true
 )
 profile_gégé.user = bar_managers[0]
@@ -108,7 +108,7 @@ profile_gégé.save!
     name: "Profile",
     last_name: "Bar Manager #{i+2}",
     address: addresses[i],
-    photo: photo_random,
+    photo: open(photo_random),
     is_bar_manager: true
   )
   profile_bar_manager.user = bar_managers[i + 1]
@@ -122,7 +122,7 @@ profile_gaspard = Profile.new(
   name: 'FrouFrou',
   last_name: 'Gaspard',
   address: 'Rue de Savoie 42, 1060 Saint-Gilles',
-  photo: photo_gaspard,
+  photo: open(photo_gaspard),
   is_artist: true,
   artist_description: "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
 )
@@ -135,7 +135,7 @@ profile_gaspard.save!
     name: "Profile",
     last_name: "Artist #{i+2}",
     address: addresses[i+4],
-    photo: photo_random,
+    photo: open(photo_random),
     is_artist: true,
     artist_description: Faker::Lorem.paragraph(sentence_count: 7)
   )
@@ -150,7 +150,7 @@ profile_balta = Profile.new(
   name: 'Balta',
   last_name: 'Balthazard',
   address: 'Rue Jourdan 30, 1060 Saint-Gilles',
-  photo: photo_balta
+  photo: open(photo_balta)
 )
 profile_balta.user = personas[0]
 profile_balta.save!
@@ -161,7 +161,7 @@ profile_balta.save!
     name: "Profile",
     last_name: "Persona #{i+2}",
     address: addresses[i+8],
-    photo: photo_random
+    photo: open(photo_random)
   )
   profile_persona.user = personas[i + 1]
   profile_persona.save!
