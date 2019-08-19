@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :profiles do
-    ressources :events, only: [:new, :create]
+    resources :events, only: [:new, :create]
     member do
       get 'dashboard'
     end
