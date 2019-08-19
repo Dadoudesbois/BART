@@ -10,14 +10,12 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @user = current_user
     @profile = Profile.new
   end
 
   def create
-    @user = current_user
     @profile = Profile.new(profile_params)
-    @profile.user = @user
+    @profile.user = current_user
 
     if @profile.save
       redirect_to profile_path(@profile)
