@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2019_08_19_140300) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_artist"
-    t.boolean "is_bar_manager"
-    t.index ["user_id"], name: "index_profiles_on_users_id"
+    t.boolean "is_artist", default: false
+    t.boolean "is_bar_manager", default: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
