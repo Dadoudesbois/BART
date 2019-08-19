@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
 
-  validates :username, allow_blank: false
+  validates :username, presence: true, allow_blank: false
   validates :photo, presence: true
   validates :address, presence: true
 

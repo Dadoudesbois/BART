@@ -1,3 +1,3 @@
 class Picture < ApplicationRecord
-  belongs_to :bars
+  belongs_to :bar
 end
