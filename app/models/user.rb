@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :bars, dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  validates :address, presence: true
 end
