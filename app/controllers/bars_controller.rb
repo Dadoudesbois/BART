@@ -1,6 +1,6 @@
 class BarsController < ApplicationController
   before_action :set_bar, only: [:show, :edit, :update, :destroy]
-  before_action :bar_authorization [:edit, :update, :delete]
+  before_action :bar_authorization [:edit, :update, :destroy]
 
   def index
     @bars = Bar.all
