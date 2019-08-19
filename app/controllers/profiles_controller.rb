@@ -6,10 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @address = profile.address
-    @username = profile.username
-    @photo = profile.photo
-    @artist_description = profile.artist_description
+    @profile
   end
 
   def new
