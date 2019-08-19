@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   before_action :set_bar, only: [:show, :edit, :update, :destroy]
+  before_action :bar_authorization [:edit, :update, :delete]
 
   def index
     @bars = Bar.all
@@ -41,6 +42,10 @@ class BarsController < ApplicationController
   end
 
   private
+
+  def bar_authorization
+    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @bar.user != current_user
+  end
 
   def set_bar
     @bar = Bar.new(params[:id])
