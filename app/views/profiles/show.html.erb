@@ -1,2 +1,6 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
+
+<% if current_user.profile.is_bar_manager && @profile.is_artist %>
+  <%= link_to 'Create an event with this artist!', new_profile_event(@profile) %>
+<% end %>

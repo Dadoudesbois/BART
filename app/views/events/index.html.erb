@@ -1,0 +1,5 @@
+<h1>LIST OF EVENTS</h1>
+<% @events.each do |event| %>
+  <p><%= event[:description] %></p>
+  <%= link_to 'See more details', event_path(event) %>
+<% end %>

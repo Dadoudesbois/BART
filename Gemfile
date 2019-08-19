@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'geocoder'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
