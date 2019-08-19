@@ -3,4 +3,5 @@ class Profile < ApplicationRecord
 
   validates :username, allow_blank: false
   validates :photo, presence: true
+  validates :address, presence: true
 end

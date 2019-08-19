@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :bars
   has_one :profile
 
-  validates :address, presence: true
 end
