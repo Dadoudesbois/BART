@@ -3,7 +3,13 @@ class BarsController < ApplicationController
   before_action :bar_authorization [:edit, :update, :destroy]
 
   def index
-    @bars = Bar.all
+    @bars = Bar.geocoded #bars with coordinates
+
+    @markers = @bars.map do |bar|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
   end
 
   def show
