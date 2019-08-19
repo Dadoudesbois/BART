@@ -1,0 +1,4 @@
+<h1>BAR INDEX</h1>
+<% @bars.each do |bar| %>
+  <%= link_to bar[:name], bar_path(bar) %>
+<% end %>
