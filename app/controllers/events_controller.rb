@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @artist = @event.user.profile
   end
 
   def new

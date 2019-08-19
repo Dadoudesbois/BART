@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_155325) do
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_artist"
-    t.boolean "is_bar_manager"
+    t.boolean "is_artist", default: false
+    t.boolean "is_bar_manager", default: false
     t.float "latitude"
     t.float "longitude"
     t.index ["users_id"], name: "index_profiles_on_users_id"
