@@ -139,27 +139,27 @@ profile_gaspard.save!
   profile_artist.save!
 end
 
-puts "Creating profiles personas"
+# puts "Creating profiles personas"
 
-profile_balta = Profile.new(
-  username: 'Persona Balta',
-  address: 'Rue Jourdan 30, 1060 Saint-Gilles',
-  # photo: open(photo_balta)
-)
-profile_balta.user = personas[0]
-profile_balta.remote_photo_url = photo_balta
-profile_balta.save!
+# profile_balta = Profile.new(
+#   username: 'Persona Balta',
+#   address: 'Rue Jourdan 30, 1060 Saint-Gilles',
+#   # photo: open(photo_balta)
+# )
+# profile_balta.user = personas[0]
+# profile_balta.remote_photo_url = photo_balta
+# profile_balta.save!
 
-4.times do |i|
-  profile_persona = Profile.new(
-    username: "Persona #{i+2} #{Faker::Name.unique.last_name}",
-    address: addresses[i+8]
-    # photo: open(photo_random)
-  )
-  profile_persona.user = personas[i + 1]
-  profile_persona.remote_photo_url = photo_random
-  profile_persona.save!
-end
+# 4.times do |i|
+#   profile_persona = Profile.new(
+#     username: "Persona #{i+2} #{Faker::Name.unique.last_name}",
+#     address: addresses[i+8]
+#     # photo: open(photo_random)
+#   )
+#   profile_persona.user = personas[i + 1]
+#   profile_persona.remote_photo_url = photo_random
+#   profile_persona.save!
+# end
 
 puts "Creating bars"
 
