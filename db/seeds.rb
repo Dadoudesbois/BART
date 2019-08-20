@@ -92,9 +92,7 @@ photo_random = "https://source.unsplash.com/200x200/?face"
 puts "Creating profiles bar managers"
 
 profile_gégé = Profile.new(
-  username: 'gégégerard',
-  name: 'Gégé',
-  last_name: 'Gerard',
+  username: 'Bar gégégerard',
   address: 'Parvis De Saint-Gilles 40, 1060 Saint-Gilles',
   # photo: open(photo_gégé),
   is_bar_manager: true
@@ -105,9 +103,7 @@ profile_gégé.save!
 
 4.times do |i|
   profile_bar_manager = Profile.new(
-    username: "bar#{i+2}",
-    name: "Bar Manager",
-    last_name: Faker::Name.unique.last_name,
+    username: "Bar #{i+2} #{Faker::Name.unique.last_name}",
     address: addresses[i],
     # photo: open(photo_random),
     is_bar_manager: true
@@ -120,9 +116,7 @@ end
 puts "Creating profiles artists"
 
 profile_gaspard = Profile.new(
-  username: 'gaspard',
-  name: 'FrouFrou',
-  last_name: 'Gaspard',
+  username: 'Artist gaspard',
   address: 'Rue de Savoie 42, 1060 Saint-Gilles',
   # photo: open(photo_gaspard),
   is_artist: true,
@@ -134,9 +128,7 @@ profile_gaspard.save!
 
 4.times do |i|
   profile_artist = Profile.new(
-    username: "artist#{i+2}",
-    name: "Artist",
-    last_name: Faker::Music.band,
+    username: "Artist #{i+2} #{Faker::Music.band}",
     address: addresses[i+4],
     # photo: open(photo_random),
     is_artist: true,
@@ -150,9 +142,7 @@ end
 puts "Creating profiles personas"
 
 profile_balta = Profile.new(
-  username: 'balta',
-  name: 'Balta',
-  last_name: 'Balthazard',
+  username: 'Persona Balta',
   address: 'Rue Jourdan 30, 1060 Saint-Gilles',
   # photo: open(photo_balta)
 )
@@ -162,10 +152,8 @@ profile_balta.save!
 
 4.times do |i|
   profile_persona = Profile.new(
-    username: "persona#{i+2}",
-    name: "Persona",
-    last_name: Faker::Name.unique.last_name,
-    address: addresses[i+8],
+    username: "Persona #{i+2} #{Faker::Name.unique.last_name}",
+    address: addresses[i+8]
     # photo: open(photo_random)
   )
   profile_persona.user = personas[i + 1]
