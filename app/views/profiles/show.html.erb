@@ -1,35 +1,41 @@
-<div class="container">
-
     <div class="card-profile">
-    <%= cl_image_tag @profile.photo, :width => 200, :height => 200, crop: :fill, id: "profile", gravity: :face %>
-      <div class="profile-description">
+    <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+      <div class="left-description">
         <h2>
           <%= @profile.username %>
-          <% if current_user.profile.is_artist %>
-            <%= @profile.description %>
-          <% end %>
         </h2>
-          <p><%= @profile.user.email %></p>
-          <p><%= @profile.address %></p>
-          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btd-yels" %></p>
+        <h3>
+          <%= @profile.artist_description %>
+        </h3>
       </div>
-      <% if current_user.profile.is_bar_manager && @profile.is_artist %>
-        <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btd-yels" %>
-      <% end %>
-      <% if current_user.profile.is_bar_manager || current_user.profile.is_artist %>
-        <div class="profile-grid">
-          <h3>My Events</h3>
-          <ul>
-            <% @profile.user.events.each do |event| %>
-              <li><%= event.name %></li>
-            <% end %>
-          </ul>
-          <h3>My Messages</h3>
-        </div>
-      <% else %>
-        <div class="profile-grid">
+    </div>
+            <div class="find">
+              <div
+              id="map"
+              style="width: 100%;
+              height: 100%;"
+              data-markers="<%= @markers.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+            ></div>
+            </div>
 
-        </div>
-      <% end %>
+      <%if current_user == @profile.user %>
+          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
+      <%end%>
 
-</div>
+        <% if !current_user.bars.empty? && @profile.is_artist %>
+          <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btn" %>
+        <% end %>
+
+          <h2>Events</h2>
+          <% @profile.user.events.each do |event| %>
+            <div class="card-hz-bg">
+              <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+              <div class="left-description">
+                <h3><%= event.name %></h3>
+                <p> <%= event.description%></p>
+              </div>
+            </div>
+          <% end %>
+
+
