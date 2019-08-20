@@ -3,4 +3,9 @@
 <% @messages.each do |message| %>
   <h2><%= message[:user].profile.username %>:</h2> <p><%= message[:content] %> </p>
   <p>posted at: <%= message[:date] %></p>
+
+  <% if message[:user] == current_user %>
+    <%= link_to 'Edit this message', edit_chatbox_message(message) %>
+    <%= link_to 'Delete this message', chatbox_message(message), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
 <% end %>
