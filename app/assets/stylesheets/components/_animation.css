@@ -1,0 +1,26 @@
+
+
+.fixed {
+  display:block;
+  opacity:1;
+  position: fixed;
+  left: 0px;
+  bottom: 80px;
+  animation-delay: on-click ;
+  animation-duration: 5s;
+  animation-name: fadeaway;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeaway {
+  from {
+    bottom: 80px;
+    opaity: 1;
+  }
+
+  to {
+    bottom: -80px;
+    opaity: 0;
+
+  }
+}
