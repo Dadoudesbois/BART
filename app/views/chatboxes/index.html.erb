@@ -2,4 +2,5 @@
 <% @chatboxes.each_with_index do |chatbox, i| %>
   <%= chatbox[:sender] == current_user ? chatbox[:sender].profile.username : chatbox[:recipient].profile.username %>
   <%= @last_msgs[i][:content] %>
+  <%= link_to "Read previous", chatbox_path(chatbox) %>
 <% end %>

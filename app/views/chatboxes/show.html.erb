@@ -1,1 +1,6 @@
-show.html.erb
+<h1>CONVO BETWEEN: <%= @chatbox[:sender].profile.username %> AND <%= @chatbox[:recipient].profile.username %></h1>
+
+<% @messages.each do |message| %>
+  <h2><%= message[:user].profile.username %>:</h2> <p><%= message[:content] %> </p>
+  <p>posted at: <%= message[:date] %></p>
+<% end %>
