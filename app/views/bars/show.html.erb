@@ -1,9 +1,11 @@
 <h1>Bar of <%= link_to @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
 <!-- FOR CAROUSEL -->
+
 <% @pictures.each do |picture| %>
-  <%= picture[:photo] %>
+    <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+      <div class="left-description">
   <% if current_user == @bar.user %>
-    <%= link_to 'delete this picture', bar_picture(picture), method: :delete, data: { confirm: "Are you sure?" }, %>
+    <%= link_to 'delete this picture', bar_picture(picture), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
 

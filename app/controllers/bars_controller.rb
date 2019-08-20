@@ -1,15 +1,16 @@
 class BarsController < ApplicationController
   before_action :set_bar, only: [:show, :edit, :update, :destroy]
-  before_action :bar_authorization [:edit, :update, :destroy]
+  before_action :bar_authorization, only: [:edit, :update, :destroy]
 
   def index
-    @bars = Bar.geocoded #bars with coordinates
+    @bars = Bar.geocoded
 
     @markers = @bars.map do |bar|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: bar.latitude,
+        lng: bar.longitude
       }
+    end
   end
 
   def show
@@ -55,7 +56,7 @@ class BarsController < ApplicationController
   end
 
   def set_bar
-    @bar = Bar.new(params[:id])
+    @bar = Bar.find(params[:id])
   end
 
   def bar_params
