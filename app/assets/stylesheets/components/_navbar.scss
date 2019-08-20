@@ -1,6 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  align-items: center;
+  color: $bv-hangar;
+  h2 {
+    font-family: $bebas;
+    font-size: 40px;
+    margin-bottom: 0px;
+    color: $bv-hangar;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +18,29 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+  height: 70px;
+  margin-bottom: 0px !important;
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 200;
+}
+
+.dropdown-item , li a.nav-link {
+  color: $bv-hangar !important ;
+}
+
+li a.nav-link:hover , .dropdown-item:hover {
+  color: $yel-hangar !important ;
+  background-color: white !important;
+}
+
+.dropdown-item:active {
+  color: $yel-hangar !important ;
+  background-color: $bv-hangar;
+}
+
