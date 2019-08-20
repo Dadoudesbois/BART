@@ -96,22 +96,24 @@ profile_gégé = Profile.new(
   name: 'Gégé',
   last_name: 'Gerard',
   address: 'Parvis De Saint-Gilles 40, 1060 Saint-Gilles',
-  photo: open(photo_gégé),
+  # photo: open(photo_gégé),
   is_bar_manager: true
 )
 profile_gégé.user = bar_managers[0]
+profile_gégé.remote_photo_url = photo_gégé
 profile_gégé.save!
 
 4.times do |i|
   profile_bar_manager = Profile.new(
     username: "bar#{i+2}",
-    name: "Profile",
-    last_name: "Bar Manager #{i+2}",
+    name: "Bar Manager",
+    last_name: Faker::Name.unique.last_name,
     address: addresses[i],
-    photo: open(photo_random),
+    # photo: open(photo_random),
     is_bar_manager: true
   )
   profile_bar_manager.user = bar_managers[i + 1]
+  profile_bar_manager.remote_photo_url = photo_random
   profile_bar_manager.save!
 end
 
@@ -122,24 +124,26 @@ profile_gaspard = Profile.new(
   name: 'FrouFrou',
   last_name: 'Gaspard',
   address: 'Rue de Savoie 42, 1060 Saint-Gilles',
-  photo: open(photo_gaspard),
+  # photo: open(photo_gaspard),
   is_artist: true,
   artist_description: "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
 )
 profile_gaspard.user = artists[0]
+profile_gaspard.remote_photo_url = photo_gaspard
 profile_gaspard.save!
 
 4.times do |i|
   profile_artist = Profile.new(
     username: "artist#{i+2}",
-    name: "Profile",
-    last_name: "Artist #{i+2}",
+    name: "Artist",
+    last_name: Faker::Music.band,
     address: addresses[i+4],
-    photo: open(photo_random),
+    # photo: open(photo_random),
     is_artist: true,
     artist_description: Faker::Lorem.paragraph(sentence_count: 7)
   )
   profile_artist.user = artists[i + 1]
+  profile_artist.remote_photo_url = photo_random
   profile_artist.save!
 end
 
@@ -150,20 +154,22 @@ profile_balta = Profile.new(
   name: 'Balta',
   last_name: 'Balthazard',
   address: 'Rue Jourdan 30, 1060 Saint-Gilles',
-  photo: open(photo_balta)
+  # photo: open(photo_balta)
 )
 profile_balta.user = personas[0]
+profile_balta.remote_photo_url = photo_balta
 profile_balta.save!
 
 4.times do |i|
   profile_persona = Profile.new(
     username: "persona#{i+2}",
-    name: "Profile",
-    last_name: "Persona #{i+2}",
+    name: "Persona",
+    last_name: Faker::Name.unique.last_name,
     address: addresses[i+8],
-    photo: open(photo_random)
+    # photo: open(photo_random)
   )
   profile_persona.user = personas[i + 1]
+  profile_persona.remote_photo_url = photo_random
   profile_persona.save!
 end
 
