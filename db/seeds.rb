@@ -85,9 +85,9 @@ addresses = [
 ]
 
 photo_gégé = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
-photo_gaspard = "https://www.pexels.com/search/face/"
+photo_gaspard = "https://source.unsplash.com/200x200/?face"
 photo_balta = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566252247/baltha_sgifjq.png"
-photo_random = "https://www.pexels.com/search/face/"
+photo_random = "https://source.unsplash.com/200x200/?face"
 
 puts "Creating profiles bar managers"
 
