@@ -22,8 +22,27 @@
 
 .card-hz-bg{
   background-color:white;
-  height: 350px;
-  box-shadow: 5px 5px 10px $gray;
+  height: 300px;
+  display: flex;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  align-items: center;
+  margin: 10px auto;
+  img {
+    height: 100%;
+    width: auto;
+  }
+  .left-description {
+    line-height: 90%;
+    h2 , i {
+      color: $gray;
+    }
+  }
+}
+
+.card-profile{
+  background-color:white;
+  height: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin: 10px auto;
@@ -39,12 +58,26 @@
   }
 }
 
-
 .left-description {
   text-align: left;
   margin: 10px;
   line-height: 0.7;
-  font-size: 0.8em;
   padding: 10px;
   overflow: scroll;
+}
+
+.card-login {
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+  width: 60%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: $gray;
+  margin: 10px auto;
+  padding: 20px;
+  overflow:scroll;
+  h2, .form-inputs {
+    color: $bv-hangar;
+  }
 }

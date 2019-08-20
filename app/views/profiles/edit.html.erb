@@ -1,3 +1,42 @@
 <h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
-<% render 'form' %>
+<% if current_user == @profile.user %>
+
+  <h1>Edit my profile</h1>
+  <%= simple_form_for(@profile) do |f| %>
+    <div class="card-profile">
+    <%= cl_image_tag @profile.photo, :width => 200, :height => 200, crop: :fill, id: "profile", gravity: :face %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+      <div class="profile-description">
+        <h2>
+          <%= @profile.username %>
+          <%= f.input :username %>
+          <% if current_user.profile.is_artist %>
+            <%= @profile.description %>
+          <% end %>
+        </h2>
+          <p><%= @profile.user.email %></p>
+          <p><%= @profile.address %></p>
+          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btd-yels" %></p>
+      </div>
+      <% if current_user.profile.is_bar_manager %>
+        <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btd-yels" %>
+      <% end %>
+      <% if current_user.profile.is_bar_manager || current_user.profile.is_artist %>
+        <div class="profile-grid">
+          <h3>My Events</h3>
+          <ul>
+            <% @profile.user.events.each do |event| %>
+              <li><%= event.name %></li>
+            <% end %>
+          </ul>
+          <h3>My Messages</h3>
+        </div>
+      <% else %>
+        <div class="profile-grid">
+
+        </div>
+      <% end %>
+  <% end %>
+
+<% end %>

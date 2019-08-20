@@ -4,22 +4,22 @@ class ProfilesController < ApplicationController
   def index
     @artists = Profile.artist.geocoded
 
-    # @markers = @artists.map do |artist|
-    #   {
-    #     lat: artist.latitude,
-    #     lng: artist.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { artist: artist }),
-    #   }
-    # end
+    @markers = @artists.map do |profile|
+      {
+        lat: profile.latitude,
+        lng: profile.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { profile: profile }),
+      }
+    end
   end
 
   def show
+      @markers = [{
+        lat: @profile.latitude,
+        lng: @profile.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile })
+      }]
 
-    # @markers = [{
-    #     lat: @profile.latitude,
-    #     lng: @profile.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile }),
-    #   }]
   end
 
   def new
