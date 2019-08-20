@@ -6,20 +6,20 @@
   position: fixed;
   left: 0px;
   bottom: 80px;
-  animation-delay: on-click ;
-  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-duration: 8s;
   animation-name: fadeaway;
   animation-fill-mode: forwards;
 }
 
 @keyframes fadeaway {
   from {
-    bottom: 80px;
+    left: 0px;
     opaity: 1;
   }
 
   to {
-    bottom: -80px;
+    left: -300px;
     opaity: 0;
 
   }
