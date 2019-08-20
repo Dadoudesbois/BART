@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chatboxes, only: [:index, :show]
+  resources :chatboxes, only: [:index, :show] do
+    resources :messages, only: [:new, :create, :edit, :update, :delete]
+  end
 
   resources :bars do
     resources :pictures, only: [:new, :create, :destroy]
