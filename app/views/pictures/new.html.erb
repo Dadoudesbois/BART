@@ -1,0 +1,7 @@
+<h1>select a picture to upload</h1>
+<%= simple_form_for(@picture) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, "Upload" %>
+<% end %>
