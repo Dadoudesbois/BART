@@ -13,12 +13,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @profile = Profile.find(params[:profile_id])
   end
 
   def create
     @event = Event.new(event_params)
-    @event.bar = current_user.bar
-    @event.user = User.find(params[:user_id])
+    @event.bar = Bar.find_by(user_id: params[:user_id])
 
     if @event.save
       redirect_to event_path(@event)
@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   end
 
   def bar_authorization
-    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if current_user.is_bar_manager == false
+    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if current_user.profile.is_bar_manager == false
   end
 
   def owner_authorization

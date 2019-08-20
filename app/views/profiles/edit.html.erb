@@ -4,13 +4,12 @@
 
     <%= simple_form_for(@profile) do |f| %>
     <div class="card-profile">
-    <%= cl_image_tag @profile.photo, :width => 200, :height => 200, crop: :fill, id: "profile", gravity: :face %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :username %>
       <div class="profile-description">
         <% if @profile.is_artist %>
-          <%= f.input :description %>
+          <%= f.input :artist_description %>
         <% end %>
         <%= f.input :address %>
       </div>

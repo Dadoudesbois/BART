@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_bar, only: [:create, :destroy]
-  before_action :bar_authorization [:new, :create, :destroy]
+  before_action :set_bar, only: [:new, :create, :destroy]
+  before_action :bar_authorization, only: [:new, :create, :destroy]
 
   def new
     @picture = Picture.new
@@ -35,6 +35,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:url)
+    params.require(:picture).permit(:photo)
   end
 end
