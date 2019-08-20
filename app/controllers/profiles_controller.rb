@@ -1,26 +1,25 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :profile_authorization [:edit, :update, :destroy]
+  before_action :profile_authorization, only: [:edit, :update, :destroy]
   def index
     @artists = Profile.artist.geocoded
 
-    @markers = @artists.map do |artist|
-      {
-        lat: artist.latitude,
-        lng: artist.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { artist: artist }),
-      }
-    end
+    # @markers = @artists.map do |artist|
+    #   {
+    #     lat: artist.latitude,
+    #     lng: artist.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { artist: artist }),
+    #   }
+    # end
   end
 
   def show
-    @profile
 
-    @markers = [{
-        lat: @profile.latitude,
-        lng: @profile.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile }),
-      }]
+    # @markers = [{
+    #     lat: @profile.latitude,
+    #     lng: @profile.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile }),
+    #   }]
   end
 
   def new
@@ -58,7 +57,7 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile
-    @profile = profile.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def profile_params

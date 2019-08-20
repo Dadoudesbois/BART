@@ -2,7 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   validates :username, presence: true, allow_blank: false
-  validates :photo, presence: true
+  # validates :photo, presence: true
   validates :address, presence: true
 
   mount_uploader :photo, PhotoUploader
@@ -14,7 +14,7 @@ class Profile < ApplicationRecord
     Profile.where(is_artist: true)
   end
 
-  def self.user
-    Profile.find(params[:id]).user
+  def self.user(id)
+    Profile.find(id).user
   end
 end

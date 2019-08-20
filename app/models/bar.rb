@@ -1,6 +1,7 @@
 class Bar < ApplicationRecord
   belongs_to :user
   has_many :events
+  has_many :pictures
 
   validates :name, presence: true
   validates :address, presence: true

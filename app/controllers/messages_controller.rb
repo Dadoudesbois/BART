@@ -9,7 +9,14 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message[:date] = Time.now
+    @message.user = current_user
     @message.chatbox = @chatbox
+
+    if @message.save
+      redirect_to chatbox_path(@chatbox)
+    # else
+    #   render_error
+    end
   end
 
   def edit

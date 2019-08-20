@@ -1,16 +1,16 @@
-<h1>CONVO BETWEEN: <%= @chatbox[:sender].profile.username %> AND <%= @chatbox[:recipient].profile.username %></h1>
+<h1>CONVO BETWEEN: <%= @chatbox.sender.profile.username %> AND <%= @chatbox.recipient.profile.username %></h1>
 
 <% @messages.each do |message| %>
-  <h2><%= message[:user].profile.username %>:</h2> <p><%= message[:content] %> </p>
+  <h2><%= message.user.profile.username %>:</h2> <p><%= message[:content] %> </p>
   <p>posted at: <%= message[:date] %></p>
 
-  <% if message[:user] == current_user %>
-    <%= link_to 'Edit this message', edit_chatbox_message(message) %>
-    <%= link_to 'Delete this message', chatbox_message(message), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% if message.user == current_user %>
+    <%= link_to 'Edit this message', edit_chatbox_message_path(message) %>
+    <%= link_to 'Delete this message', chatbox_message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
 
-<%= simple_form_for(@bar) do |b| %>
+<%= simple_form_for [@chatbox, @message] do |b| %>
   <%= b.error_notification %>
   <%= b.input :content %>
   <%= b.button :submit, "Send" %>
