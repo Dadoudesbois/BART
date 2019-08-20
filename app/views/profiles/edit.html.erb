@@ -10,6 +10,7 @@
       <div class="profile-description">
         <h2>
           <%= @profile.username %>
+          <%= f.input :username %>
           <% if current_user.profile.is_artist %>
             <%= @profile.description %>
           <% end %>
