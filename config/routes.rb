@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :chatboxes, only: [:index, :show] do
-    resources :messages, only: [:new, :create, :edit, :update, :delete]
+    resources :messages, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :bars do
