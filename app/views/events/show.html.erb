@@ -1,17 +1,12 @@
 <p><%= @event[:description] %></p>
 
- %= cl_image_tag @event.photo, width: 200, height: 150, crop: :fill %>
+ <%= cl_image_tag @event.photo, width: 200, height: 150, crop: :fill %>
  <h1>Event with <%= link_to @artist[:username].capitalize, profile_path(@artist) %> at bar <%= link_to @event.bar.name, bar_path(@event.bar) %></h1>
  <h3>What</h3>
  <p><%= @event[:description] %></p>
   <h3>When</h3>
   <p><%= @event[:start_date].strftime("From %d/%M/%Y at %H:%M") %></p>
   <p><%= @event[:end_date].strftime("To %d/%M/%Y at %H:%M") %></p>
-  <% if(@event[:status] == 'confirmed') %>
-    <h3>Event confirmed</h3>
-  <% else %>
-      <h3>Event to be confirmed</h3>
-  <% end %>
-  <p><%= link_to "Back to #{@artist[:username]}'s profile", profile_path(@artist) %></p>
+  <p><%= link_to "Back to #{@artist[:username]}'s profile", profile_path(@artist.profile) %></p>
 
 <%= link_to 'See the bar profile', bar_path(@event.bar) %>
