@@ -13,4 +13,8 @@ class Profile < ApplicationRecord
   def self.artist
     Profile.where(is_artist: true)
   end
+
+  def self.user
+    Profile.find(params[:id]).user
+  end
 end
