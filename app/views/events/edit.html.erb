@@ -1,4 +1,4 @@
-<% if current_user == @event.user %>
+<% if current_user == @event.bar.user %>
   <h1>EDIT EVENT</h1>
   <%= render 'form' %>
 <% end %>

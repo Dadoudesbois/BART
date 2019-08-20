@@ -18,7 +18,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.bar = Bar.find_by(user_id: params[:user_id])
+    @profile = Profile.find(params[:profile_id])
+    @event.user = @profile.user
+    # Should be a select if a user has multiple bars
+    @event.bar = current_user.bars.first
 
     if @event.save
       redirect_to event_path(@event)
