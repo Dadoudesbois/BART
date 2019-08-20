@@ -1,1 +1,11 @@
 <h1><%= @bar[:name] %></h1>
+
+<!-- FOR CAROUSEL -->
+<% @pictures.each do |picture| %>
+  <%= picture[:photo] %>
+  <% if current_user == @bar.user %>
+    <%= link_to 'delete this picture', bar_picture(picture), method: :delete, data: { confirm: "Are you sure?" }, %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Add a picture', new_bar_picture(@bar) if current_user == @bar.user %>

@@ -13,6 +13,7 @@ class BarsController < ApplicationController
   end
 
   def show
+    @pictures = @bar.pictures
   end
 
   def new
