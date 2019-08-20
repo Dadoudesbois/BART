@@ -7,8 +7,10 @@ Rails.application.routes.draw do
       get 'dashboard'
     end
   end
-  resources :bars
+  resources :bars do
+    resources :pictures, only: [:new, :create, :destroy]
+  end
   resources :messages, except: [:show]
-  resources :events, only: [:show, :index, :edit, :update, :delete]
+  resources :events, only: [:show, :index, :edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
