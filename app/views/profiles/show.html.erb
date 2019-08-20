@@ -1,6 +1,35 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="container">
 
-<% if current_user.profile.is_bar_manager && @profile.is_artist %>
-  <%= link_to 'Create an event with this artist!', new_profile_event(@profile) %>
-<% end %>
+    <div class="card-profile">
+    <%= cl_image_tag @profile.photo, :width => 200, :height => 200, crop: :fill, id: "profile", gravity: :face %>
+      <div class="profile-description">
+        <h2>
+          <%= @profile.username %>
+          <% if current_user.profile.is_artist %>
+            <%= @profile.description %>
+          <% end %>
+        </h2>
+          <p><%= @profile.user.email %></p>
+          <p><%= @profile.address %></p>
+          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btd-yels" %></p>
+      </div>
+      <% if current_user.profile.is_bar_manager %>
+        <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btd-yels" %>
+      <% end %>
+      <% if current_user.profile.is_bar_manager || current_user.profile.is_artist %>
+        <div class="profile-grid">
+          <h3>My Events</h3>
+          <ul>
+            <% @profile.user.events.each do |event| %>
+              <li><%= event.name %></li>
+            <% end %>
+          </ul>
+          <h3>My Messages</h3>
+        </div>
+      <% else %>
+        <div class="profile-grid">
+
+        </div>
+      <% end %>
+
+</div>
