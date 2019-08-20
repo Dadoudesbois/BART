@@ -1,7 +1,7 @@
 class ChatboxesController < ApplicationController
   def index
     @chatboxes = Chatbox.all
-    @last_msg = @chatboxes.map { |chatbox| chatbox.messages.last }
+    @last_msgs = @chatboxes.map { |chatbox| chatbox.messages.last }
   end
 
   def show
