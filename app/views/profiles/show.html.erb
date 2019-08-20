@@ -19,28 +19,13 @@
             ></div>
             </div>
 
-      <%if current_user.id == @profile.user_id %>
+      <%if current_user == @profile.user %>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
       <%end%>
 
-      <% if current_user.profile %>
-
-        <% if current_user.profile.is_bar_manager && @profile.is_artist %>
+        <% if !current_user.bars.empty? && @profile.is_artist %>
           <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btn" %>
         <% end %>
-
-          <h2>My Events</h2>
-          <% @profile.user.events.each do |event| %>
-            <div class="card-hz-bg">
-              <%= cl_image_tag event.photo, width: 200, height: 150, crop: :fill %>
-              <div class="left-description">
-                <h3><%= event.name %></h3>
-                <p> <%= event.description%></p>
-              </div>
-            </div>
-          <% end %>
-
-      <% else %>
 
           <h2>Events</h2>
           <% @profile.user.events.each do |event| %>
@@ -53,4 +38,4 @@
             </div>
           <% end %>
 
-      <% end %>
+
