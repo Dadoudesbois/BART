@@ -1,5 +1,16 @@
 <h1>Profiles#index</h1>
 <h1>ALL ARTISTS</h1>
 <% @artists.each do |artist| %>
-  <%= link_to artist[:name], profile_path(artist) %>
+  <%= link_to artist[:username], profile_path(artist) %>
 <% end %>
+
+    <div class="find">
+      <div
+      id="map"
+      style="width: 100%;
+      height: 100%;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+
+    </div>

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :profile_authorization [:edit, :update, :destroy]
+  before_action :profile_authorization, only: [:edit, :update, :destroy]
   def index
     @artists = Profile.artist.geocoded
 
