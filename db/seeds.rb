@@ -103,7 +103,7 @@ profile_gégé.save!
 
 4.times do |i|
   profile_bar_manager = Profile.new(
-    username: "Bar #{i+2} #{Faker::Name.unique.last_name}",
+    username: "Bar Manager #{i+2} #{Faker::Name.unique.last_name}",
     address: addresses[i],
     # photo: open(photo_random),
     is_bar_manager: true
@@ -128,11 +128,11 @@ profile_gaspard.save!
 
 4.times do |i|
   profile_artist = Profile.new(
-    username: "Artist #{i+2} #{Faker::Music.band}",
+    username: "Artist #{i+2} #{Faker::Name.unique.last_name}",
     address: addresses[i+4],
     # photo: open(photo_random),
     is_artist: true,
-    artist_description: Faker::Lorem.paragraph(sentence_count: 7)
+    artist_description: Faker::GreekPhilosophers.quote
   )
   profile_artist.user = artists[i + 1]
   profile_artist.remote_photo_url = photo_random
