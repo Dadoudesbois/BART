@@ -1,2 +1,4 @@
-<h1>EDIT EVENT</h1>
-<%= render 'form' %>
+<% if current_user == @event.user %>
+  <h1>EDIT EVENT</h1>
+  <%= render 'form' %>
+<% end %>
