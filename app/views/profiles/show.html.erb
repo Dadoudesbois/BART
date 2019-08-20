@@ -4,3 +4,11 @@
 <% if current_user.profile.is_bar_manager && @profile.is_artist %>
   <%= link_to 'Create an event with this artist!', new_profile_event(@profile) %>
 <% end %>
+
+<% if current_user.bar && @profile.is_artist %>
+  <%= link_to "Contact this artist !", chatboxes_path(@profile) %>
+<% end %>
+
+<% if current_user.profile.is_artist && @profile.is_bar_manager %>
+  <%= link_to "Contact this bar !", chatboxes_path(@profile) %>
+<% end %>
