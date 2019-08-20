@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'dashboard'
     end
   end
+
   resources :bars do
     resources :pictures, only: [:new, :create, :destroy]
   end
