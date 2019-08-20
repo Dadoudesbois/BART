@@ -9,3 +9,9 @@
     <%= link_to 'Delete this message', chatbox_message(message), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
+
+<%= simple_form_for(@bar) do |b| %>
+  <%= b.error_notification %>
+  <%= b.input :content %>
+  <%= b.button :submit, "Send" %>
+<% end %>
