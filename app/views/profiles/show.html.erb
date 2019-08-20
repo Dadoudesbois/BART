@@ -13,7 +13,7 @@
           <p><%= @profile.address %></p>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btd-yels" %></p>
       </div>
-      <% if current_user.profile.is_bar_manager %>
+      <% if current_user.profile.is_bar_manager && @profile.is_artist %>
         <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btd-yels" %>
       <% end %>
       <% if current_user.profile.is_bar_manager || current_user.profile.is_artist %>
