@@ -13,6 +13,14 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container">
+
+      <div class="fixed transform">
+      <% if (current_user && current_user.profile == nil) && !( params[:controller] == 'profiles' && params[:action]== 'new' ) %>
+        <p><%= link_to "Register as an artist ✨", new_profile_path, class: "b-border-tbg" %> </p>
+        <p><%= link_to "Register your bar 🥂", new_profile_path, class: "b-border-tbg" %></p>
+      <% end %>
+      </div>
+
       <%= yield %>
     </div><br><br><br>
     <%= render 'shared/footer' %>
