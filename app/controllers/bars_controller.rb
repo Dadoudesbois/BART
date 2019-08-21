@@ -17,12 +17,12 @@ class BarsController < ApplicationController
 
   def show
 
-    @markers = {
+    @markers = [{
         lat: @bar.latitude,
         lng: @bar.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { bar: @bar }),
         image_url: helpers.asset_url('Sea-breeze.png')
-      }
+      }]
 
     @pictures = @bar.pictures
   end
