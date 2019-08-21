@@ -42,7 +42,7 @@
   <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
 <% end %>
 
-<% if @profile.is_bar_manager && current_user.profile.is_artist %>
-  <%= link_to "Contact this bar !", profile_chatboxes_path(@profile), method: :post %>
-<% end %>
+<%# if @profile.is_bar_manager && current_user.profile.is_artist %>
+  <%#= link_to "Contact this bar !", profile_chatboxes_path(@profile), method: :post %>
+<%# end %>
 

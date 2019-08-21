@@ -11,7 +11,12 @@
 
 <%= link_to 'Add a picture', new_bar_picture_path(@bar) if current_user == @bar.user %>
 
-
+<p>Bar manager: <%= @bar.user.profile.username %></p>
 <p><%= @bar[:description] %></p>
 <p><%= @bar[:address] %></p>
+
+<% if current_user.profile.is_artist %>
+  <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post %>
+<% end %>
+
 <br><%= link_to "Back to list of bars", bars_path %>
