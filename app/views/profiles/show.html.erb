@@ -1,3 +1,5 @@
+  <div class="cards-grid-3quarter">
+
     <div class="card-profile">
     <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
       <div class="left-description">
@@ -9,15 +11,16 @@
         </h3>
       </div>
     </div>
-            <div class="find">
-              <div
-              id="map"
-              style="width: 100%;
-              height: 100%;"
-              data-markers="<%= @markers.to_json %>"
-              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-            ></div>
-            </div>
+
+      <div
+        id="map"
+        style="width: 100%;
+        height: auto; margin: 10px auto;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+
+  </div>
 
       <%if current_user == @profile.user %>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
