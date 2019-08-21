@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   end
   resources :pictures, only: [:destroy]
 
-  resources :events, only: [:show, :index, :edit, :update, :destroy]
+  resources :events, only: [:show, :index, :edit, :update, :destroy] do
+    member do
+      get 'preview'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

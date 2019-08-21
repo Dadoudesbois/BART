@@ -6,6 +6,3 @@
   <h3>When</h3>
   <p><%= @event[:start_date].strftime("From: %d %B %Y at %Hh%M") %></p>
   <p><%= @event[:end_date].strftime("To: %d %B %Y at %Hh%M") %></p>
-  <p><%= link_to "Back to #{@artist[:username]}'s profile", profile_path(@artist) %></p>
-
-<%= link_to 'See the bar profile', bar_path(@event.bar) %>
