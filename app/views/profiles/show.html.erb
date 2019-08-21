@@ -1,53 +1,104 @@
 <div class="container">
-  <div class="cards-grid-3quarter">
 
-    <div class="card-profile">
-    <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
-      <div class="left-description">
-        <h2>
-          <%= @profile.username %>
-        </h2>
-        <h3>
-          <%= @profile.artist_description %>
-        </h3>
+  <% if @profile.is_artist %>
+
+    <div class="cards-grid-3quarter">
+
+      <div class="card-profile">
+      <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+        <div class="left-description">
+          <h2>
+            <%= @profile.username %>
+          </h2>
+          <h3>
+            <%= @profile.artist_description %>
+          </h3>
+        </div>
       </div>
+
+        <div
+          id="map"
+          style="width: 100%;
+          height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+
     </div>
 
-      <div
-        id="map"
-        style="width: 100%;
-        height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
+        <%if current_user == @profile.user %>
+            <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
+        <%end%>
 
-  </div>
-
-      <%if current_user == @profile.user %>
-          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
-      <%end%>
-
-        <% if !current_user.bars.empty? && @profile.is_artist %>
-          <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btn" %>
-        <% end %>
-
-          <h2>Events</h2>
-          <% @profile.user.events.each do |event| %>
-            <div class="card-hz-bg">
-              <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
-              <div class="left-description">
-                <h3><%= event.name %></h3>
-                <p> <%= event.description%></p>
-              </div>
-            </div>
+          <% if !current_user.bars.empty? && @profile.is_artist %>
+            <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "btn" %>
           <% end %>
 
-  <% if !current_user.bars.empty? && @profile.is_artist %>
-    <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
-  <% end %>
+            <h2>Events</h2>
+            <% @profile.user.events.each do |event| %>
+              <div class="card-hz-bg">
+                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+                <div class="left-description">
+                  <h3><%= event.name %></h3>
+                  <p> <%= event.description%></p>
+                </div>
+              </div>
+            <% end %>
 
-<br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
+    <% if !current_user.bars.empty? && @profile.is_artist %>
+      <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
+    <% end %>
 
+    <br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
+
+  <% elsif @profile.is_bar_manager %>
+
+      <div class="card-profile-s">
+      <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+        <div class="left-description">
+          <h2>
+            <%= @profile.username %>
+          </h2>
+        </div>
+      </div>
+
+        <%if current_user == @profile.user %>
+            <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
+        <%end%>
+
+        <% if !@profile.user.events.empty? %>
+            <h2>Events</h2>
+            <% @profile.user.events.each do |event| %>
+              <div class="card-hz-s">
+                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+                <div class="left-description">
+                  <h3><%= event.name %></h3>
+                  <p> <%= event.description%></p>
+                </div>
+              </div>
+            <% end %>
+         <% end %>
+
+            <h2>Bars</h2>
+              <% @profile.user.bars.each do |bar| %>
+              <div class=".cards-grid-4">
+
+                <div class="card-img-v">
+                <% if !bar.pictures.empty? %>
+                  <%= cl_image_tag bar.pictures[0].photo, width: 200, height: 200, crop: :fill %>
+                <%end%>
+                  <div class="left-description">
+                    <h3><%= bar.name %></h3>
+                    <p> <%= bar.description%></p>
+                  </div>
+                </div>
+
+              <% end %>
+              </div>
+
+    <br><div class="fullspace"><%= link_to "Back to bar page", bar_path, class:"b-allwidth-lg" %></div>
+
+  <%end%>
 </div>
 
 <%# if @profile.is_bar_manager && current_user.profile.is_artist %>
