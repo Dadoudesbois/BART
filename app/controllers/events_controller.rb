@@ -1,10 +1,16 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:preview, :show, :edit, :update, :destroy]
   before_action :bar_authorization, only: [:new, :create]
   before_action :owner_authorization, only: [:edit, :update, :delete]
 
+  skip_before_action :authenticate_user!, only: [:preview]
+
   def index
     @events = Event.all
+  end
+
+  def preview
+    @artist = @event.user.profile
   end
 
   def show
