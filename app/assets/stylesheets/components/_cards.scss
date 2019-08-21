@@ -5,6 +5,13 @@
   margin: 10px auto;
 }
 
+.cards-grid-3quarter {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 2%;
+  margin: 10px auto;
+}
+
 .card-img-v {
   width: 100%;
   height: auto;

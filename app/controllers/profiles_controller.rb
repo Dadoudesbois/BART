@@ -8,7 +8,10 @@ class ProfilesController < ApplicationController
       {
         lat: profile.latitude,
         lng: profile.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { profile: profile })
+
+        infoWindow: render_to_string(partial: "info_window", locals: { profile: profile }),
+        image_url: helpers.asset_url('star.png')
+
       }
     end
   end
@@ -27,10 +30,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-       @markers = [{
+
+    @markers = [{
         lat: @profile.latitude,
         lng: @profile.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile })
+        infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile }),
+        image_url: helpers.asset_url('star.png')
       }]
   end
 
