@@ -1,7 +1,8 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:destroy]
   before_action :set_bar, only: [:new, :create]
-  before_action :bar_authorization, only: [:new, :create, :destroy]
+  before_action :bar_authorization, only: [:new, :create]
+  before_action :picture_authorization, only: [:destroy]
 
   def new
     @picture = Picture.new
@@ -28,6 +29,10 @@ class PicturesController < ApplicationController
   private
 
   def bar_authorization
+    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @bar.user != current_user
+  end
+
+  def picture_authorization
     redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @picture.bar.user != current_user
   end
 
