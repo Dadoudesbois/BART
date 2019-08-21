@@ -2,7 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   validates :username, presence: true, allow_blank: false
-  validates :photo, presence: true
+  # validates :photo, presence: true
   validates :address, presence: true
 
   mount_uploader :photo, PhotoUploader
