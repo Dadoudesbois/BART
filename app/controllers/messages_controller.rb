@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_chatbox, only: [:create, :destroy]
+  before_action :set_chatbox, only: [:create]
   before_action :set_message, only: [:edit, :update, :destroy]
 
   def new
@@ -31,6 +31,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @chatbox = @message.chatbox
     @message.destroy
 
     redirect_to chatbox_path(@chatbox)
