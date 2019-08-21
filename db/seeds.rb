@@ -103,7 +103,7 @@ profile_gégé.save!
 
 4.times do |i|
   profile_bar_manager = Profile.new(
-    username: "Bar #{i+2} #{Faker::Name.unique.last_name}",
+    username: "Bar Manager #{i+2} #{Faker::Name.unique.last_name}",
     address: addresses[i],
     # photo: open(photo_random),
     is_bar_manager: true
@@ -128,38 +128,38 @@ profile_gaspard.save!
 
 4.times do |i|
   profile_artist = Profile.new(
-    username: "Artist #{i+2} #{Faker::Music.band}",
+    username: "Artist #{i+2} #{Faker::Name.unique.last_name}",
     address: addresses[i+4],
     # photo: open(photo_random),
     is_artist: true,
-    artist_description: Faker::Lorem.paragraph(sentence_count: 7)
+    artist_description: Faker::GreekPhilosophers.quote
   )
   profile_artist.user = artists[i + 1]
   profile_artist.remote_photo_url = photo_random
   profile_artist.save!
 end
 
-puts "Creating profiles personas"
+# puts "Creating profiles personas"
 
-profile_balta = Profile.new(
-  username: 'Persona Balta',
-  address: 'Rue Jourdan 30, 1060 Saint-Gilles',
-  # photo: open(photo_balta)
-)
-profile_balta.user = personas[0]
-profile_balta.remote_photo_url = photo_balta
-profile_balta.save!
+# profile_balta = Profile.new(
+#   username: 'Persona Balta',
+#   address: 'Rue Jourdan 30, 1060 Saint-Gilles',
+#   # photo: open(photo_balta)
+# )
+# profile_balta.user = personas[0]
+# profile_balta.remote_photo_url = photo_balta
+# profile_balta.save!
 
-4.times do |i|
-  profile_persona = Profile.new(
-    username: "Persona #{i+2} #{Faker::Name.unique.last_name}",
-    address: addresses[i+8]
-    # photo: open(photo_random)
-  )
-  profile_persona.user = personas[i + 1]
-  profile_persona.remote_photo_url = photo_random
-  profile_persona.save!
-end
+# 4.times do |i|
+#   profile_persona = Profile.new(
+#     username: "Persona #{i+2} #{Faker::Name.unique.last_name}",
+#     address: addresses[i+8]
+#     # photo: open(photo_random)
+#   )
+#   profile_persona.user = personas[i + 1]
+#   profile_persona.remote_photo_url = photo_random
+#   profile_persona.save!
+# end
 
 puts "Creating bars"
 
