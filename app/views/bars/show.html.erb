@@ -1,23 +1,59 @@
-<h1><%= @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
-<h1><%= link_to @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
-<!-- FOR CAROUSEL -->
+<div class="banner-bar">
+  <div class="container">
+    <h1><%= @bar[:name].capitalize %> </h1>
+    <h3><%= link_to @bar.user.profile.username.capitalize, profile_path(@bar.user.profile), class:"blue-link" %> </h3>
+    <h3><%= @bar[:description] %></h3>
+    <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+      <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+      <% end %></h3>
+  </div>
+</div>
 
-<% @pictures.each do |picture| %>
-    <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
-      <div class="left-description">
-  <% if current_user == @bar.user %>
-    <%= link_to 'delete this picture', picture_path(picture), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-<% end %>
+<div class="container">
 
-<%= link_to 'Add a picture', new_bar_picture_path(@bar) if current_user == @bar.user %>
+  <div class="photos">
+  <!-- FOR CAROUSEL -->
+    <% @pictures.each do |picture| %>
+      <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
-<p>Bar manager: <%= @bar.user.profile.username %></p>
-<p><%= @bar[:description] %></p>
-<p><%= @bar[:address] %></p>
+      <% if current_user == @bar.user %>
+        <%= link_to 'delete this picture', picture_path(picture), method: :delete, data: { confirm: "Are you sure?" }, class:"b-border-tbg" %>
+      <% end %>
 
-<% if current_user.profile.is_artist %>
-  <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post %>
-<% end %>
+    <% end %>
+  </div>
 
-<br><%= link_to "Back to list of bars", bars_path %>
+
+  <%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %>
+
+
+
+
+  <div class="cards-grid-3quarter">
+
+      <div class="events">
+          <h2>Events</h2>
+          <% @bar.events.each do |event| %>
+            <div class="card-hz-bg">
+              <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+              <div class="left-description">
+                <h3><%= event.name %></h3>
+                <p> <%= event.description%></p>
+              </div>
+            </div>
+          <% end %>
+      </div>
+
+      <div
+        id="map"
+        style="width: 300px;
+        height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+
+  </div>
+
+<br><div class="fullspace"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
+
+</div>
