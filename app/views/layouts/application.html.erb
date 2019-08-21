@@ -12,12 +12,11 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="container">
-
       <%= render 'shared/register' %>
 
       <%= yield %>
-    </div><br><br><br>
+    
+    <br><br><br>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

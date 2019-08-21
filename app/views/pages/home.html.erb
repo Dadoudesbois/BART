@@ -1,25 +1,27 @@
-<h1>Pages#home</h1>
+<div class="container">
+  <h1>Pages#home</h1>
 
-<%= link_to "Discover our Artists", profiles_path, class: "b-border-tbg" %>
-<%= link_to "Discover our bars", bars_path, class: "b-border-tbg" %>
+  <%= link_to "Discover our Artists", profiles_path, class: "b-border-tbg" %>
+  <%= link_to "Discover our bars", bars_path, class: "b-border-tbg" %>
 
-<% @events.each do |event| %>
+  <% @events.each do |event| %>
 
-<div class="card-product">
-  <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
-  <div class="card-product-infos">
-    <h2><%= event.name %></h2>
-    <p><%= event[:description] %></p>
-    <% if current_user %>
-      <p><%= link_to 'See more details', event_path(event) %></p>
-    <% else %>
-      <p><%= link_to 'See more details', preview_event_path(event) %></p>
-    <%end%>
+  <div class="card-product">
+    <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+    <div class="card-product-infos">
+      <h2><%= event.name %></h2>
+      <p><%= event[:description] %></p>
+      <% if current_user %>
+        <p><%= link_to 'See more details', event_path(event) %></p>
+      <% else %>
+        <p><%= link_to 'See more details', preview_event_path(event) %></p>
+      <%end%>
 
+    </div>
   </div>
-</div>
 
-<% end %>
+  <% end %>
+</div>
 
 
 

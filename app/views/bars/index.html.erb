@@ -1,4 +1,16 @@
-<h1>BAR INDEX</h1>
-<% @bars.each do |bar| %>
-  <%= link_to bar[:name], bar_path(bar) %>
-<% end %>
+<div class="container">
+  <h1>BAR INDEX</h1>
+  <% @bars.each do |bar| %>
+    <%= link_to bar[:name], bar_path(bar) %>
+  <% end %>
+
+      <div
+      id="map"
+      style="width: 100%;
+      height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+</div>
+
+

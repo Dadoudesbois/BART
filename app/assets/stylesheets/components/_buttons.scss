@@ -8,13 +8,13 @@
   text-align: center;
   letter-spacing: 2px;
 }
-
 .b-border-whitebg:hover {
   opacity: 1;
   text-decoration: none;
   background: $indigo;
   color: white;
 }
+
 
 .b-border-tbg {
   color: $bv-hangar ;
@@ -25,8 +25,6 @@
   text-align: center;
   letter-spacing: 2px;
 }
-
-
 .b-border-tbg:hover {
   opacity: 0.8;
   text-decoration: none;
@@ -34,21 +32,24 @@
   color: white;
 }
 
+
 .b-allwidth-lg {
   padding: 4% 6%;
   width: 100%;
-  margin: 20px auto;
+  margin: 20px 0px;
   color: $bv-hangar ;
   border-radius: 5px;
   border: 1px solid $bv-hangar;
   box-shadow: 0 0 3px $bv-hangar;
-  background:$white ;
   text-align: center;
   letter-spacing: 2px;
 }
-
 .b-allwidth-lg:hover {
   text-decoration: none;
   background: $bv-hangar;
   color: $white;
+}
+.fullspace {
+  display: grid;
+  grid-template-columns: 1fr;
 }
