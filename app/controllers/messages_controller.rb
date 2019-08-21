@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_chatbox, only: [:create, :edit, :update, :destroy]
+  before_action :set_chatbox, only: [:create, :destroy]
   before_action :set_message, only: [:edit, :update, :destroy]
 
   def new
@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
 
   def update
     if @message.update(message_params)
-      redirect_to chatbox_path(@chatbox)
+      redirect_to chatbox_path(@message.chatbox)
     else
       render :edit
     end
