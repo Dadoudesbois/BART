@@ -5,7 +5,7 @@
   <p>posted at: <%= message[:date] %></p>
 
   <% if message.user == current_user %>
-    <%= link_to 'Edit this message', edit_chatbox_message_path(message) %>
+    <%= link_to 'Edit this message', edit_chatbox_message_path(message.chatbox, message) %>
     <%= link_to 'Delete this message', chatbox_message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
