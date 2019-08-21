@@ -1,7 +1,7 @@
 class Bar < ApplicationRecord
   belongs_to :user
   has_many :events
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true

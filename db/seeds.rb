@@ -163,6 +163,8 @@ end
 
 puts "Creating bars"
 
+photo_bar_random = "https://source.unsplash.com/200x200/?cafe"
+
 bar_names = [
   'Moonlit Table Bar',
   'Singing Lion Ale House',
@@ -178,12 +180,35 @@ bar_gégé = Bar.new(
 bar_gégé.user = bar_managers[0]
 bar_gégé.save!
 
+3.times do
+  pictures_bar_gégé = Picture.new(bar: bar_gégé)
+  pictures_bar_gégé.remote_photo_url = photo_bar_random
+  pictures_bar_gégé.save!
+end
+
 4.times do |i|
   bar = Bar.new(
     name: bar_names[i],
     description: Faker::Lorem.paragraph(sentence_count: 7),
     address: addresses[i+2]
 )
-bar.user_id = bar_managers[i+1].id
+  bar.user_id = bar_managers[i+1].id
+  3.times do
+    pictures_bar = Picture.new(bar: bar)
+    pictures_bar.remote_photo_url = photo_bar_random
+    pictures_bar.save!
+  end
 bar.save!
 end
+
+
+
+
+
+
+
+
+
+
+
+
