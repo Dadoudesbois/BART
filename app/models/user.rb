@@ -18,9 +18,9 @@ class User < ApplicationRecord
 
   def create_profile
     if self.profile.nil?
-      blank_profile = Profile.new(username: self[:email], address: "", photo: "")
+      blank_profile = Profile.new(username: self[:email], address: "blank")
       blank_profile.user = self
-      blank_profile.save
+      blank_profile.save!
     end
   end
 end
