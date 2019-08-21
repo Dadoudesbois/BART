@@ -1,4 +1,5 @@
-<h1>Bar of <%= link_to @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
+<h1><%= @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
+<h1><%= link_to @bar[:name].capitalize, profile_path(@bar.user.profile) %> </h1>
 <!-- FOR CAROUSEL -->
 
 <% @pictures.each do |picture| %>
