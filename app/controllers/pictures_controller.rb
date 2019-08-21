@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_bar, only: [:create, :destroy]
+  before_action :set_picture, only: [:destroy]
+  before_action :set_bar, only: [:new, :create]
   before_action :bar_authorization, only: [:new, :create, :destroy]
 
   def new
@@ -18,7 +19,7 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    @bar = @picture.bar
     @picture.destroy
 
     redirect_to bar_path(@bar)
@@ -27,7 +28,11 @@ class PicturesController < ApplicationController
   private
 
   def bar_authorization
-    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @bar.user != current_user
+    redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @picture.bar.user != current_user
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:id])
   end
 
   def set_bar
@@ -35,6 +40,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:url)
+    params.require(:picture).permit(:photo)
   end
 end

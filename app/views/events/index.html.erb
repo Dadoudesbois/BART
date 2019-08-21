@@ -1,5 +1,10 @@
 <h1>LIST OF EVENTS</h1>
 <% @events.each do |event| %>
+  <div>
+  <p><%= link_to 'See more details', event_path(event) %></p>
+  <%= cl_image_tag event.photo, height: 200, width: 250, crop: :fill %>
+  <p><%= event.name %>
   <p><%= event[:description] %></p>
-  <%= link_to 'See more details', event_path(event) %>
+  </div>
+
 <% end %>

@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
         lng: @profile.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile })
       }]
+
   end
 
   def new
