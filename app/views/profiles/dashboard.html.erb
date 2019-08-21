@@ -1,0 +1,36 @@
+ <h1>Current Events</h1>
+
+<% @current_events.each do |event| %>
+
+<div class="card-product">
+  <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+  <div class="card-product-infos">
+    <h2><%= event.name %></h2>
+    <p><%= event[:description] %></p>
+    <p><%= link_to 'See more details', event_path(event) %></p>
+    <% if current_user.profile.is_bar_manager %>
+      <p><%= link_to 'Edit event', edit_event_path(event) %></p>
+      <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <%end%>
+
+  </div>
+</div>
+<% end %>
+
+<h1>Past Events</h1>
+
+<% @past_events.each do |event| %>
+
+<div class="card-product">
+  <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+  <div class="card-product-infos">
+    <h2><%= event.name %></h2>
+    <p><%= event[:description] %></p>
+    <% if current_user.profile.is_bar_manager %>
+      <p><%= link_to 'Edit event', edit_event_path(event) %></p>
+      <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <%end%>
+
+  </div>
+</div>
+<% end %>
