@@ -1,3 +1,4 @@
+<div class="container">
   <div class="cards-grid-3quarter">
 
     <div class="card-profile">
@@ -41,9 +42,13 @@
             </div>
           <% end %>
 
-<% if !current_user.bars.empty? && @profile.is_artist %>
-  <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
-<% end %>
+  <% if !current_user.bars.empty? && @profile.is_artist %>
+    <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
+  <% end %>
+
+<br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
+
+</div>
 
 <%# if @profile.is_bar_manager && current_user.profile.is_artist %>
   <%#= link_to "Contact this bar !", profile_chatboxes_path(@profile), method: :post %>
