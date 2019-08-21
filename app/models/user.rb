@@ -11,4 +11,16 @@ class User < ApplicationRecord
   has_many :sent_chatboxes, :class_name => 'Chatbox', :foreign_key => 'sender_id', dependent: :destroy
   has_many :received_chatboxes, :class_name => 'Chatbox', :foreign_key => 'recipient_id', dependent: :destroy
   has_many :messages, dependent: :destroy
+
+  after_save :create_profile
+
+  private
+
+  def create_profile
+    if self.profile.nil?
+      blank_profile = Profile.new(username: self[:email], address: "blank")
+      blank_profile.user = self
+      blank_profile.save!
+    end
+  end
 end
