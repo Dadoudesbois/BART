@@ -8,7 +8,7 @@
 
 require 'open-uri'
 
-puts "Destroying existing users/events/bars"
+puts "Destroying existing users/profiles/events/bars/pictures"
 User.destroy_all
 
 # Users:
