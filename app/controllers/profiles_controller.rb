@@ -28,10 +28,12 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params)
-    @profile.user = current_user
+    # @profile = Profile.new(profile_params)
+    # @profile.user = current_user
+    # @profile = Profile.find(params[:id])
+    @profile = current_user.profile
 
-    if @profile.save
+    if @profile.update(profile_params)
       redirect_to profile_path(@profile)
     else
       render :new
