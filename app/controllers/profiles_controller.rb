@@ -17,10 +17,12 @@ class ProfilesController < ApplicationController
     if current_user.profile.is_artist
       @current_events = current_user.events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
       @past_events = current_user.events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
-    else
+    elsif current_user.profile.is_bar_manager
       @events = Event.where(bar: current_user.bars)
       @current_events = @events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
       @past_events = @events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+    else
+      # Regular users don't have a (favourites) dashboard yet
     end
   end
 
