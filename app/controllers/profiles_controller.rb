@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:dashboard, :show, :edit, :update, :destroy]
   before_action :profile_authorization, only: [:edit, :update, :destroy]
   def index
     @artists = Profile.artist.geocoded
@@ -8,18 +8,28 @@ class ProfilesController < ApplicationController
       {
         lat: profile.latitude,
         lng: profile.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { profile: profile }),
+        infoWindow: render_to_string(partial: "info_window", locals: { profile: profile })
       }
     end
   end
 
+  def dashboard
+    if current_user.profile.is_artist
+      @current_events = current_user.events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
+      @past_events = current_user.events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+    else
+      @events = Event.where(bar: current_user.bars)
+      @current_events = @events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
+      @past_events = @events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+    end
+  end
+
   def show
-      @markers = [{
+       @markers = [{
         lat: @profile.latitude,
         lng: @profile.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile })
       }]
-
   end
 
   def new
