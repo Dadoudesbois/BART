@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :chatboxes, only: [ :index, :show ] do
-    resources :messages, only: [:new, :create, :edit, :update, :destroy]
+    resources :messages, only: [:new, :create]
   end
   resources :profiles do
     resources :chatboxes, only: [:create]
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create]
   end
 
+  resources :messages, only: [:edit, :update, :destroy]
 
   resources :bars do
     resources :pictures, only: [:new, :create]
