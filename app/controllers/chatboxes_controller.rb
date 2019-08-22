@@ -15,7 +15,15 @@ class ChatboxesController < ApplicationController
 
   def new
     @profile = Profile.find params[:profile_id]
-    @message = Message.new
+    chatbox1 = Chatbox.where(sender_id: current_user.id).where(recipient_id: @profile.user.id)
+    chatbox2 = Chatbox.where(sender_id: @profile.user.id).where(recipient_id: current_user.id)
+    if chatbox1[0]
+      redirect_to chatbox_path(chatbox1[0].id)
+    elsif chatbox2[0]
+      redirect_to chatbox_path(chatbox2[0].id)
+    else
+      @message = Message.new
+    end
   end
 
   def create
