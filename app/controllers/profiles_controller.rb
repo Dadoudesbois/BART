@@ -17,13 +17,27 @@ class ProfilesController < ApplicationController
   end
 
   def dashboard
-    if current_user.profile.is_artist
-      @current_events = current_user.events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
-      @past_events = current_user.events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+    if current_user.profile.is_artist && current_user.profile.is_bar_manager
+      #Create methods to get unconfirmed events, current_events and past_events of a user
+
+    elsif current_user.profile.is_artist
+      @unconfirmed_events = current_user.events.where('confirmed = ?', false)
+      # This does not seem to work:
+      # @current_events = current_user.events.where("confirmed = ? AND start_date >= ?", [true, DateTime.now.beginning_of_day])
+      #                               .order('start_date DESC')
+      @current_events = current_user.events.select { |e| e.confirmed && e.start_date >= DateTime.now.beginning_of_day }
+                                    .sort_by(&:start_date).reverse!
+      @past_events = current_user.events.select { |e| e.confirmed && e.start_date < DateTime.now.beginning_of_day }
+                                 .sort_by(&:end_date).reverse!
     elsif current_user.profile.is_bar_manager
       @events = Event.where(bar: current_user.bars)
-      @current_events = @events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
-      @past_events = @events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+
+      @unconfirmed_events = @events.where.not('confirmed = ?', true)
+
+      @current_events = @events.select { |e| e.confirmed && e.start_date >= DateTime.now.beginning_of_day }
+                               .sort_by(&:start_date).reverse!
+      @past_events = @events.select { |e| e.confirmed && e.start_date < DateTime.now.beginning_of_day }
+                            .sort_by(&:end_date).reverse!
     else
       # Regular users don't have a (favourites) dashboard yet
     end
