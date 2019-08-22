@@ -21,7 +21,7 @@ class ChatboxesController < ApplicationController
   def create
     if params[:message][:content].blank?
       flash[:notice] = "message cannot be blank"
-      render :new
+      redirect_to new_profile_chatbox_path(params[:profile_id])
     else
       @chatbox = Chatbox.new
       @chatbox.sender = current_user
