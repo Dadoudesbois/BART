@@ -15,7 +15,7 @@
       <%end%>
 
       <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+        <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
         <% end %></h3>
     </div>
   </div>
