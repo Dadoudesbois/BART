@@ -59,15 +59,14 @@
           <h2>
             <%= @profile.username %>
           </h2>
+            <%if current_user == @profile.user %>
+                <br><p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
+            <%end%>
         </div>
       </div>
 
-        <%if current_user == @profile.user %>
-            <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "btn" %></p>
-        <%end%>
-
         <% if !@profile.user.events.empty? %>
-            <h2>Events</h2>
+            <br><h2>Events</h2>
             <% @profile.user.events.each do |event| %>
               <div class="card-hz-s">
                 <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
@@ -77,9 +76,11 @@
                 </div>
               </div>
             <% end %>
-         <% end %>
+        <% end %>
 
-            <h2>Bars</h2>
+        <% if !@profile.user.bars.empty? %>
+
+            <br><h2>Bars</h2>
               <% @profile.user.bars.each do |bar| %>
               <div class=".cards-grid-4">
 
@@ -95,8 +96,11 @@
 
               <% end %>
               </div>
+        <% end %>
 
-    <br><div class="fullspace"><%= link_to "Back to bar page", bar_path, class:"b-allwidth-lg" %></div>
+        <% if current_user != @profile.user %>
+          <br><div class="fullspace"><%= link_to "Back to bar page", bar_path, class:"b-allwidth-lg" %></div>
+        <%end%>
 
   <%end%>
 </div>
