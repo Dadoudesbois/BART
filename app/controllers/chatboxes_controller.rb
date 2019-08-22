@@ -1,7 +1,10 @@
 class ChatboxesController < ApplicationController
   def index
     @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id))
-    @last_msgs = @chatboxes.map { |chatbox| chatbox.messages.last }
+    # array with name of your convo partner
+    @partners_name = @chatboxes.map { |chatbox| chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username }
+    @last_msgs_content = @chatboxes.map { |chatbox| chatbox.messages.last[:content] }
+    @last_msgs_username = @chatboxes.map { |chatbox| chatbox.messages.last.user.profile.username }
   end
 
   def show
