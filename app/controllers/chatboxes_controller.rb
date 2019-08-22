@@ -1,6 +1,6 @@
 class ChatboxesController < ApplicationController
   def index
-    @chatboxes = Chatbox.all
+    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id))
     @last_msgs = @chatboxes.map { |chatbox| chatbox.messages.last }
   end
 
