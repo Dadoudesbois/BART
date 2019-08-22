@@ -1,11 +1,16 @@
 class ChatboxesController < ApplicationController
   def index
-    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id))
+    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).eager_load(recipient: [:profile], sender: [:profile], messages: :user)
     # array with name of your convo partner
-    @partners_name = @chatboxes.map { |chatbox| chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username }
-    @last_msgs_content = @chatboxes.map { |chatbo| chatbo&.messages&.last&.content }
-    @last_msgs_username = @chatboxes.map { |chatbox| chatbox&.messages&.last&.user&.profile&.username }
-  end
+
+    @chatboxes = @chatboxes.map do |chatbox|
+      hash = { id: chatbox.id }
+      hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
+      hash[:last_msgs_content] = chatbox&.messages&.last&.content
+      hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
+      hash
+      end
+    end
 
   def show
     @chatbox = Chatbox.find(params[:id])

@@ -1,11 +1,12 @@
 <div class="container">
   <h1>YOUR MESSAGES</h1>
-  <% @chatboxes.each_with_index do |chatbox, i| %>
+  <% @chatboxes.each do |hash| %>
+
     <%# if !@last_msgs_content[i].nil? %>
-      <p>CONVO WITH: <%= @partners_name[i] %></p>
-      <p>LAST MSG: <%= @last_msgs_content[i] %></p>
-      <p>from: <%= @last_msgs_username[i] %></p>
-      <%= link_to "Read previous", chatbox_path(chatbox) %>
+      <p>CONVO WITH: <%= hash[:partners_name ] %></p>
+      <p>LAST MSG: <%= hash[:last_msgs_content] %></p>
+      <p>from: <%= hash[:last_msgs_username] %></p>
+      <%= link_to "Read previous", chatbox_path(hash[:id]) %>
     <%# end %>
   <% end %>
 </div>
