@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:preview, :show, :edit, :update, :destroy]
+  before_action :set_event, only: [:preview, :show, :edit, :update, :confirm, :destroy]
   before_action :bar_authorization, only: [:new, :create]
   before_action :owner_authorization, only: [:edit, :update, :delete]
 
   skip_before_action :authenticate_user!, only: [:preview]
 
   def index
-    @events = Event.all
+    # I don't think index is used anywhere (Pages#home instead), but just to be safe:
+    # @events = Event.all
+    @events = Event.where('confirmed = true AND end_date <= ?', DateTime.now.end_of_day).order('end_date ASC')
   end
 
   def preview
@@ -45,6 +47,12 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def confirm
+    @event.confirmed = true
+    @event.save
+    redirect_to dashboard_profile_path(@event.user.profile)
   end
 
   def destroy

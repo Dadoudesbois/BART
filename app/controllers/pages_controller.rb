@@ -2,6 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @events = Event.where('start_date >= ?', DateTime.now.beginning_of_day).order('created_at ASC')
+    @events = Event.where('confirmed = true AND end_date <= ?', DateTime.now.end_of_day).order('end_date ASC')
   end
 end

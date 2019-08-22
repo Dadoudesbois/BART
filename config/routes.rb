@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :index, :edit, :update, :destroy] do
     member do
       get 'preview'
+      get 'confirm'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
