@@ -1,0 +1,21 @@
+.hero {
+  text-align: center;
+  position: absolute;
+  top: -200px;
+  color: white;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+  h3 {
+    font-family: $bebas;
+    font-size: 5em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+}
+

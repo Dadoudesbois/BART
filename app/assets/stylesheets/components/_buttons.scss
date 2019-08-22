@@ -15,7 +15,6 @@
   color: white;
 }
 
-
 .b-border-tbg {
   color: $bv-hangar ;
   padding: 5px 15px;
@@ -30,6 +29,24 @@
   text-decoration: none;
   background: $bv-hangar;
   color: white;
+}
+
+.bw-border-tbg {
+  color: white ;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 3px white;
+  text-align: center;
+  background: transparent;
+  letter-spacing: 2px;
+}
+.bw-border-tbg:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  box-shadow: 4 4 10px white;
+  background: white;
+  color: transparent;
 }
 
 
