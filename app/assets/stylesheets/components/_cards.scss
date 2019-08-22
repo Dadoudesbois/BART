@@ -13,17 +13,14 @@
 }
 
 .card-img-v {
-  width: 100%;
   background-color: white;
-  height: auto;
   text-align: left;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: $gray;
-  margin: 20px auto;
+  width: 23%;
   img {
-  width: 100%;
-  height: auto;
+    width: 100%;
   }
 }
 
@@ -110,6 +107,7 @@
   line-height: 0.7;
   padding: 10px;
   overflow: scroll;
+  line-height: 97%;
 }
 
 .card-login {

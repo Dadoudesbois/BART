@@ -1,9 +1,24 @@
 .banner-bar {
-  height: 40vh;
+  height: 500px;
   padding: 150px 0;
   display: flex;
   align-items: center;
   margin-top: 0px !important;
+  h1  {
+  font-family: $bebas;
+  font-size: 13em;
+  text-align: left;
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  color: white;
+  }
+  h3, a {
+  color: white;
+  text-align: left;
+  position: absolute;
+  left: 40px;
+  }
 }
 
 .h3-responsive {
@@ -11,7 +26,13 @@
   font-size: 13em;
   text-align: left;
   position: absolute;
-  top: -380px;
+  top: -340px;
   left: -150px;
   color: white;
+}
+
+
+.bt-ban {
+  position: absolute;
+  top: 500px;
 }
