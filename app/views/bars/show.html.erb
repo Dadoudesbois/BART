@@ -4,13 +4,6 @@
 
 <div class="container">
 
-  <br><h3><%= @bar[:description] %></h3>
-  <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
-  <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
-      <% end %></h3>
-
-
   <br><div class="photos">
   <!-- Displaying in small every other pics -->
     <% @pictures.each do |picture| %>
@@ -22,10 +15,6 @@
 
     <% end %>
   </div>
-
-
-  <p><%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %></p>
-
 
   <% if !@bar.events.empty? %>
 
