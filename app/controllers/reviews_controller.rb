@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :update, :delete]
+  before_action :set_review, only: [:edit, :update, :destroy]
   before_action :set_event, only: [:new, :create, :edit, :update]
 
   def new
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @review.destroy
 
     redirect_to dashboard_profile(current_user.profile)
