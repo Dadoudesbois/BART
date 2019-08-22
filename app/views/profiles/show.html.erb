@@ -102,7 +102,7 @@
         <% end %>
 
         <% if current_user != @profile.user %>
-          <br><div class="fullspace"><%= link_to "Back to bar page", bar_path, class:"b-allwidth-lg" %></div>
+          <br><div class="fullspace"><%= link_to "Back to bar page", :back, class:"b-allwidth-lg" %></div>
         <%end%>
 
   <%end%>
