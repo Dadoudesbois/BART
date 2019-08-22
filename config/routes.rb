@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:new, :create]
   end
   resources :profiles do
-    resources :chatboxes, only: [:create]
+    resources :chatboxes, only: [:new, :create]
     member do
       get 'dashboard'
     end
