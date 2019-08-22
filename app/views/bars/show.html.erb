@@ -1,19 +1,134 @@
+  <!--Default banners when 0 or 1 pic only -->
 
-<div class="banner-bar">
-  <div class="container">
-    <h1><%= @bar[:name].capitalize %> </h1>
-    <h3><%= link_to @bar.user.profile.username.capitalize, profile_path(@bar.user.profile), class:"blue-link" %> </h3>
-    <h3><%= @bar[:description] %></h3>
-    <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-      <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
-      <% end %></h3>
+<% if !@pictures[0]%>
+
+  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/../../assets/images/bar-banner-pl.jpg);">
+    <div class="container">
+      <h1><%= @bar[:name].capitalize %></h1>
+      <h3><%= @bar[:description] %></h3>
+      <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+      <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+        <% end %></h3>
+    </div>
   </div>
-</div>
+
+<%end%>
+
+<% if @pictures[0] && !@pictures[1]%>
+
+  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @pictures[0].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>');">
+    <div class="container">
+      <h1><%= @bar[:name].capitalize %> </h1>
+      <h3><%= @bar[:description] %></h3>
+      <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+      <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+        <% end %></h3>
+    </div>
+  </div>
+
+<%end%>
+<!--//Default banners when 0 or 1 pic only -->
+
+
+<!--Carousel Wrapper-->
+<% if @pictures[0] && @pictures[1]%>
+
+  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+          <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-2" data-slide-to="1"></li>
+          <li data-target="#carousel-example-2" data-slide-to="2"></li>
+          <li data-target="#carousel-example-2" data-slide-to="3"></li>
+          <li data-target="#carousel-example-2" data-slide-to="4"></li>
+
+      </ol>
+      <!--/.Indicators-->
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+              <div class="view">
+              <%= cl_image_tag @pictures[0].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>
+                  <div class="mask rgba-black-light"></div>
+              </div>
+              <div class="carousel-caption">
+                  <h3 class="h3-responsive"><%= @bar[:name].capitalize %></h3>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!--Mask color-->
+              <div class="view">
+                <%= cl_image_tag @pictures[1].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>
+                  <div class="mask rgba-black-strong"></div>
+              </div>
+              <div class="carousel-caption">
+                  <h3 class="h3-responsive"><%= @bar[:name].capitalize %></h3>
+              </div>
+          </div>
+          <% if @pictures[2]%>
+            <div class="carousel-item">
+                <!--Mask color-->
+                <div class="view">
+                  <%= cl_image_tag @pictures[2].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+                <div class="carousel-caption">
+                  <h3 class="h3-responsive"><%= @bar[:name].capitalize %></h3>
+                </div>
+            </div>
+          <%end%>
+          <% if @pictures[3]%>
+            <div class="carousel-item">
+                <!--Mask color-->
+                <div class="view">
+                  <%= cl_image_tag @pictures[3].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive"><%= @bar[:name].capitalize %></h3>
+                </div>
+            </div>
+          <%end%>
+          <% if @pictures[4]%>
+            <div class="carousel-item">
+                <!--Mask color-->
+                <div class="view">
+                  <%= cl_image_tag @pictures[4].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive"><%= @bar[:name].capitalize %></h3>
+                </div>
+            </div>
+          <%end%>
+      </div>
+      <!--/.Slides-->
+      <!--Control next-->
+      <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+  </div>
+<%end%>
+<!--/.Carousel Wrapper-->
+
+
+<!-- Main page, under banner or carroussel-->
 
 <div class="container">
 
-  <div class="photos">
-  <!-- FOR CAROUSEL -->
+  <br><h3><%= @bar[:description] %></h3>
+  <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+  <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+      <% end %></h3>
+
+
+  <br><div class="photos">
+  <!-- Displaying in small every other pics -->
     <% @pictures.each do |picture| %>
       <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
@@ -25,35 +140,47 @@
   </div>
 
 
-  <%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %>
+  <p><%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %></p>
 
 
+  <% if !@bar.events.empty? %>
 
+    <br><div class="cards-grid-3quarter">
 
-  <div class="cards-grid-3quarter">
-
-      <div class="events">
-          <h2>Events</h2>
-          <% @bar.events.each do |event| %>
-            <div class="card-hz-bg">
-              <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
-              <div class="left-description">
-                <h3><%= event.name %></h3>
-                <p> <%= event.description%></p>
+        <div class="events">
+            <h2>Events</h2>
+            <% @bar.events.each do |event| %>
+              <div class="card-hz-bg">
+                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+                <div class="left-description">
+                  <h3><%= event.name %></h3>
+                  <p> <%= event.description%></p>
+                </div>
               </div>
-            </div>
-          <% end %>
-      </div>
+            <% end %>
+        </div>
 
-      <div
-        id="map"
-        style="width: 300px;
-        height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
+        <div
+          id="map"
+          style="width: 300px;
+          height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
 
-  </div>
+    </div>
+
+  <% else %>
+
+          <br><div
+          id="map"
+          style="width: 100%;
+          height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+
+  <%end%>
 
 <br><div class="fullspace"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
 
