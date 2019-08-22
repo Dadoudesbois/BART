@@ -16,7 +16,6 @@ class BarsController < ApplicationController
   end
 
   def show
-
     @markers = [{
         lat: @bar.latitude,
         lng: @bar.longitude,
