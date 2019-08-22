@@ -85,9 +85,9 @@ addresses = [
 ]
 
 photo_gege = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
-photo_gaspard = "https://source.unsplash.com/200x200/?face"
+photo_gaspard = "https://i.pravatar.cc/"
 photo_balta = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566252247/baltha_sgifjq.png"
-photo_random = "https://source.unsplash.com/200x200/?face"
+photo_random = "https://i.pravatar.cc/"
 
 puts "Creating profiles bar managers"
 
@@ -125,7 +125,7 @@ gege.save!
   bar_manager.username = Faker::Name.unique.last_name
   bar_manager.address = addresses[i]
   bar_manager.is_bar_manager = true
-  bar_manager.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  bar_manager.remote_photo_url = photo_random
   bar_manager.save!
 end
 
@@ -169,7 +169,7 @@ gaspard.save!
   artist.address = addresses[i+4]
   artist.is_artist = true
   artist.artist_description = Faker::Quote.most_interesting_man_in_the_world
-  artist.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  artist.remote_photo_url = photo_random
   artist.save!
 end
 
@@ -205,13 +205,13 @@ balta.save!
   persona = personas[i + 1].profile
   persona.username = Faker::Name.unique.last_name
   persona.address = addresses[i+8]
-  persona.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  persona.remote_photo_url = photo_random
   persona.save!
 end
 
 puts "Creating bars"
 
-photo_bar_random = "https://source.unsplash.com/200x200/?cafe"
+photo_bar_random = "https://source.unsplash.com/1600x1080/?cafe"
 bar_pictures = [
   "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2815149_qmb18d.jpg",
   "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2551794_afr9mh.jpg",
@@ -245,7 +245,7 @@ bar_gege.save!
 3.times do |i|
   pictures_bar_gege = Picture.new(bar: bar_gege)
   # pictures_bar_gege.remote_photo_url = bar_pictures[i]
-  pictures_bar_gege.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?cafe"
+  pictures_bar_gege.remote_photo_url = "https://source.unsplash.com/160#{i}x1080/?cafe"
   pictures_bar_gege.save!
 end
 
@@ -259,7 +259,7 @@ end
   bar.user_id = bar_managers[i+1].id
   5.times do |j|
     pictures_bar = Picture.new(bar: bar)
-    pictures_bar.remote_photo_url = "https://source.unsplash.com/20#{j}x200/?cafe"
+    pictures_bar.remote_photo_url = "https://source.unsplash.com/160#{i}x1080/?cafe"
     pictures_bar.save!
   end
 bar.save!
