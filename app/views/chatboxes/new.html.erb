@@ -1,6 +1,10 @@
-<h1>SEND your msg</h1>
-<%= simple_form_for [@profile, Chatbox.new] do |b| %>
-  <%= b.error_notification %>
-  <%= text_field_tag "message[content]" %>
-  <%= b.button :submit, "Send" %>
-<% end %>
+<div class="container">
+  <div class="card-login">
+    <h1>SEND your msg</h1>
+    <%= simple_form_for [@profile, Chatbox.new] do |b| %>
+      <%= b.error_notification %>
+      <%= text_field_tag "message[content]" %>
+      <%= b.button :submit, "Send", class: "b-border-tbg" %>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 .banner-bar {
+  background: no-repeat;
+  background-size:cover;
   height: 500px;
   padding: 150px 0;
   display: flex;
@@ -34,5 +36,5 @@
 
 .bt-ban {
   position: absolute;
-  top: 500px;
+  top: 400px;
 }

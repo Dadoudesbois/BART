@@ -1,0 +1,38 @@
+
+.message-sent {
+  margin: 10px;
+  margin-left: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 20px;
+  border: 1px solid $bv-hangar;
+  border-radius: 30px;
+  h2 {
+  color: $bv-hangar;
+}
+}
+
+.message-received {
+  margin: 10px;
+  margin-right: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 20px;
+  border: 1px solid $bv-hangar;
+  border-radius: 30px;
+  h2 {
+  color: $bv-hangar;
+}
+}
+
+.card-login h1 {
+  text-align:center;
+}
+
+
+.input-des {
+  border: 1px solid $bv-hangar !important;
+  border-radius: 30px !important;
+}
