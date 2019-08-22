@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'open-uri'
+require 'time'
 
 puts "Destroying existing users/profiles/events/bars/pictures"
 User.destroy_all
@@ -234,6 +235,8 @@ bar_names = [
   'Spirited Pint Hideout'
 ]
 
+bars = []
+
 bar_gege = Bar.new(
   name: "Chez gege",
   description: "Cosy bar promoting neighbourhood life. Organizing concerts for local artists. Discover new upcoming talent every week!",
@@ -241,6 +244,7 @@ bar_gege = Bar.new(
 )
 bar_gege.user = bar_managers[0]
 bar_gege.save!
+bars.push(bar_gege)
 
 3.times do |i|
   pictures_bar_gege = Picture.new(bar: bar_gege)
@@ -255,14 +259,40 @@ end
     # description: Faker::Lorem.paragraph(sentence_count: 7),
     description: Faker::GreekPhilosophers.quote,
     address: addresses[i+2]
-)
+  )
   bar.user_id = bar_managers[i+1].id
+  bar.save!
+  bars.push(bar)
   5.times do |j|
     pictures_bar = Picture.new(bar: bar)
-    pictures_bar.remote_photo_url = "https://source.unsplash.com/160#{i}x1080/?cafe"
+    pictures_bar.remote_photo_url = "https://source.unsplash.com/160#{j}x1080/?cafe"
     pictures_bar.save!
   end
-bar.save!
+
+end
+
+puts "Creating events"
+
+now = Time.now
+
+bars.each do |bar|
+  artists.each_with_index do |artist_user, i|
+    random_start_date = now + 60 * 60 * Random.rand(1..42)
+    random_end_date = random_start_date + 60 * 60 * Random.rand(1..8)
+    event = Event.new(
+      user: artist_user,
+      bar: bar,
+      name: Faker::Book.title,
+      start_date: random_start_date,
+      end_date: random_end_date,
+      description: Faker::Quote.matz
+    )
+    event.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?performance"
+    if i % 2 == 0
+      event.confirmed = true
+    end
+    event.save!
+  end
 end
 
 
