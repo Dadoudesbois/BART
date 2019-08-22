@@ -1,9 +1,12 @@
 <div class="container">
   <h1>YOUR MESSAGES</h1>
-  <% @chatboxes.each_with_index do |chatbox, i| %>
-    <p>CONVO WITH: <%= chatbox.sender != current_user ? chatbox.sender.profile.username : chatbox.recipient.profile.username %></p>
-    <p>LAST MSG: <%= @last_msgs[i][:content] if !@last_msgs[i].nil? %></p>
-     <p>from: <%= @last_msgs[i].user.profile.username if !@last_msgs[i].nil? %></p>
-    <%= link_to "Read previous", chatbox_path(chatbox) %>
+  <% @chatboxes.each do |hash| %>
+
+    <%# if !@last_msgs_content[i].nil? %>
+      <p>CONVO WITH: <%= hash[:partners_name ] %></p>
+      <p>LAST MSG: <%= hash[:last_msgs_content] %></p>
+      <p>from: <%= hash[:last_msgs_username] %></p>
+      <%= link_to "Read previous", chatbox_path(hash[:id]) %>
+    <%# end %>
   <% end %>
 </div>

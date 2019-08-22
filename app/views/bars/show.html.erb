@@ -1,13 +1,11 @@
 <%= render 'bar-banner'%>
 
-<!-- Main page, under banner or carroussel-->
-
 <div class="container">
 
   <br><h3><%= @bar[:description] %></h3>
   <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
   <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-        <%= link_to "Contact this bar !", profile_chatboxes_path(@bar.user.profile), method: :post, class:"b-border-tbg" %>
+      <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
       <% end %></h3>
 
 

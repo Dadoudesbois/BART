@@ -46,7 +46,7 @@
             <% end %>
 
     <% if !current_user.bars.empty? && @profile.is_artist %>
-      <%= link_to "Contact this artist !", profile_chatboxes_path(@profile), method: :post %>
+      <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile) %>
     <% end %>
 
     <br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
@@ -104,8 +104,4 @@
 
   <%end%>
 </div>
-
-<%# if @profile.is_bar_manager && current_user.profile.is_artist %>
-  <%#= link_to "Contact this bar !", profile_chatboxes_path(@profile), method: :post %>
-<%# end %>
 
