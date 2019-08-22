@@ -8,7 +8,7 @@
 
 require 'open-uri'
 
-puts "Destroying existing users/events/bars"
+puts "Destroying existing users/profiles/events/bars/pictures"
 User.destroy_all
 
 # Users:
@@ -17,11 +17,11 @@ puts "Creating bar managers"
 
 bar_managers = []
 
-bar_manager_gégé = User.create(
-  email: 'gégé.gerard@bar.be',
-  password: 'bargégébxl'
+bar_manager_gege = User.create(
+  email: 'gege@bar.be',
+  password: 'gegebxl'
 )
-bar_managers.push(bar_manager_gégé)
+bar_managers.push(bar_manager_gege)
 
 4.times do |i|
   bar_manager = User.create(
@@ -37,7 +37,7 @@ artists = []
 
 artist_gaspard = User.create(
   email: 'gaspard@artist.be',
-  password: 'artistgaspardbxl'
+  password: 'gaspardbxl'
 )
 artists.push(artist_gaspard)
 
@@ -55,7 +55,7 @@ personas = []
 
 persona_balta = User.create(
   email: 'balta@persona.be',
-  password: 'personabaltabxl'
+  password: 'baltabxl'
 )
 personas.push(persona_balta)
 
@@ -84,62 +84,96 @@ addresses = [
   'Chaussée de Haecht 6, 1210 Saint-Josse-ten-Noode'
 ]
 
-photo_gégé = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
+photo_gege = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
 photo_gaspard = "https://source.unsplash.com/200x200/?face"
 photo_balta = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566252247/baltha_sgifjq.png"
 photo_random = "https://source.unsplash.com/200x200/?face"
 
 puts "Creating profiles bar managers"
 
-profile_gégé = Profile.new(
-  username: 'Bar gégégerard',
-  address: 'Parvis De Saint-Gilles 40, 1060 Saint-Gilles',
-  # photo: open(photo_gégé),
-  is_bar_manager: true
-)
-profile_gégé.user = bar_managers[0]
-profile_gégé.remote_photo_url = photo_gégé
-profile_gégé.save!
+# profile_gege = Profile.new(
+#   username: 'Bar gegegerard',
+#   address: 'Parvis De Saint-Gilles 40, 1060 Saint-Gilles',
+#   # photo: open(photo_gege),
+#   is_bar_manager: true
+# )
+# profile_gege.user = bar_managers[0]
+# profile_gege.remote_photo_url = photo_gege
+# profile_gege.save!
+
+gege = bar_managers[0].profile
+gege.username = "Gege"
+gege.address = "Parvis De Saint-Gilles 40, 1060 Saint-Gilles"
+gege.is_bar_manager = true
+gege.remote_photo_url = photo_gege
+gege.save!
+
+# 4.times do |i|
+#   profile_bar_manager = Profile.new(
+#     username: "Bar Manager #{i+2} #{Faker::Name.unique.last_name}",
+#     address: addresses[i],
+#     # photo: open(photo_random),
+#     is_bar_manager: true
+#   )
+#   profile_bar_manager.user = bar_managers[i + 1]
+#   profile_bar_manager.remote_photo_url = photo_random
+#   profile_bar_manager.save!
+# end
 
 4.times do |i|
-  profile_bar_manager = Profile.new(
-    username: "Bar Manager #{i+2} #{Faker::Name.unique.last_name}",
-    address: addresses[i],
-    # photo: open(photo_random),
-    is_bar_manager: true
-  )
-  profile_bar_manager.user = bar_managers[i + 1]
-  profile_bar_manager.remote_photo_url = photo_random
-  profile_bar_manager.save!
+  bar_manager = bar_managers[i + 1].profile
+  bar_manager.username = Faker::Name.unique.last_name
+  bar_manager.address = addresses[i]
+  bar_manager.is_bar_manager = true
+  bar_manager.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  bar_manager.save!
 end
 
 puts "Creating profiles artists"
 
-profile_gaspard = Profile.new(
-  username: 'Artist gaspard',
-  address: 'Rue de Savoie 42, 1060 Saint-Gilles',
-  # photo: open(photo_gaspard),
-  is_artist: true,
-  artist_description: "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
-)
-profile_gaspard.user = artists[0]
-profile_gaspard.remote_photo_url = photo_gaspard
-profile_gaspard.save!
+# profile_gaspard = Profile.new(
+#   username: 'Artist gaspard',
+#   address: 'Rue de Savoie 42, 1060 Saint-Gilles',
+#   # photo: open(photo_gaspard),
+#   is_artist: true,
+#   artist_description: "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
+# )
+# profile_gaspard.user = artists[0]
+# profile_gaspard.remote_photo_url = photo_gaspard
+# profile_gaspard.save!
+
+gaspard = artists[0].profile
+gaspard.username = 'Gaspard'
+gaspard.address = "Rue de Savoie 42, 1060 Saint-Gilles"
+gaspard.is_artist = true
+gaspard.artist_description = "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
+gaspard.remote_photo_url = photo_gaspard
+gaspard.save!
+
+# 4.times do |i|
+#   profile_artist = Profile.new(
+#     username: "Artist #{i+2} #{Faker::Name.unique.last_name}",
+#     address: addresses[i+4],
+#     # photo: open(photo_random),
+#     is_artist: true,
+#     artist_description: Faker::GreekPhilosophers.quote
+#   )
+#   profile_artist.user = artists[i + 1]
+#   profile_artist.remote_photo_url = photo_random
+#   profile_artist.save!
+# end
 
 4.times do |i|
-  profile_artist = Profile.new(
-    username: "Artist #{i+2} #{Faker::Name.unique.last_name}",
-    address: addresses[i+4],
-    # photo: open(photo_random),
-    is_artist: true,
-    artist_description: Faker::GreekPhilosophers.quote
-  )
-  profile_artist.user = artists[i + 1]
-  profile_artist.remote_photo_url = photo_random
-  profile_artist.save!
+  artist = artists[i + 1].profile
+  artist.username = Faker::Name.unique.last_name
+  artist.address = addresses[i+4]
+  artist.is_artist = true
+  artist.artist_description = Faker::Quote.most_interesting_man_in_the_world
+  artist.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  artist.save!
 end
 
-# puts "Creating profiles personas"
+puts "Creating profiles personas"
 
 # profile_balta = Profile.new(
 #   username: 'Persona Balta',
@@ -149,6 +183,12 @@ end
 # profile_balta.user = personas[0]
 # profile_balta.remote_photo_url = photo_balta
 # profile_balta.save!
+
+balta = personas[0].profile
+balta.username = 'Balta'
+balta.address = 'Rue Jourdan 30, 1060 Saint-Gilles'
+balta.remote_photo_url = photo_balta
+balta.save!
 
 # 4.times do |i|
 #   profile_persona = Profile.new(
@@ -161,7 +201,31 @@ end
 #   profile_persona.save!
 # end
 
+4.times do |i|
+  persona = personas[i + 1].profile
+  persona.username = Faker::Name.unique.last_name
+  persona.address = addresses[i+8]
+  persona.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?face"
+  persona.save!
+end
+
 puts "Creating bars"
+
+photo_bar_random = "https://source.unsplash.com/200x200/?cafe"
+bar_pictures = [
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2815149_qmb18d.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2551794_afr9mh.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2813134_egi40g.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2813132_td4kmh.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2700533_mcgjdr.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2792902_l5abfe.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397710/pexels-photo-2788792_a9rbp7.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397709/pexels-photo-2642842_bri1wn.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397709/pexels-photo-2687131_kje9wh.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397709/pexels-photo-2277653_upxfaq.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397709/pexels-photo-2574474_dijhha.jpg",
+  "https://res.cloudinary.com/dx8gouewf/image/upload/v1566397709/pexels-photo-2612342_vwirxb.jpg"
+]
 
 bar_names = [
   'Moonlit Table Bar',
@@ -170,20 +234,45 @@ bar_names = [
   'Spirited Pint Hideout'
 ]
 
-bar_gégé = Bar.new(
-  name: "Chez Gégé",
+bar_gege = Bar.new(
+  name: "Chez gege",
   description: "Cosy bar promoting neighbourhood life. Organizing concerts for local artists. Discover new upcoming talent every week!",
   address: "16 Rue Berckmans, 1060 Saint-Gilles"
 )
-bar_gégé.user = bar_managers[0]
-bar_gégé.save!
+bar_gege.user = bar_managers[0]
+bar_gege.save!
+
+3.times do |i|
+  pictures_bar_gege = Picture.new(bar: bar_gege)
+  # pictures_bar_gege.remote_photo_url = bar_pictures[i]
+  pictures_bar_gege.remote_photo_url = "https://source.unsplash.com/20#{i}x200/?cafe"
+  pictures_bar_gege.save!
+end
 
 4.times do |i|
   bar = Bar.new(
-    name: bar_names[i],
-    description: Faker::Lorem.paragraph(sentence_count: 7),
+    name: Faker::Company.name,
+    # description: Faker::Lorem.paragraph(sentence_count: 7),
+    description: Faker::GreekPhilosophers.quote,
     address: addresses[i+2]
 )
-bar.user_id = bar_managers[i+1].id
+  bar.user_id = bar_managers[i+1].id
+  5.times do |j|
+    pictures_bar = Picture.new(bar: bar)
+    pictures_bar.remote_photo_url = "https://source.unsplash.com/20#{j}x200/?cafe"
+    pictures_bar.save!
+  end
 bar.save!
 end
+
+
+
+
+
+
+
+
+
+
+
+
