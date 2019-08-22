@@ -17,20 +17,27 @@ class ProfilesController < ApplicationController
   end
 
   def dashboard
-    if current_user.profile.is_artist
-      @current_events = current_user.events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
-      @past_events = current_user.events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+    if current_user.profile.is_artist && current_user.profile.is_bar_manager
+      @events = (get_events_artist_current_user + get_events_bar_owner_current_user).uniq
+      @unconfirmed_events = get_unconfirmed_events(@events)
+      @current_events = get_current_confirmed_events(@events)
+      @past_events = get_past_confirmed_events(@events)
+    elsif current_user.profile.is_artist
+      @events = get_events_artist_current_user
+      @unconfirmed_events = get_unconfirmed_events(@events)
+      @current_events = get_current_confirmed_events(@events)
+      @past_events = get_past_confirmed_events(@events)
     elsif current_user.profile.is_bar_manager
-      @events = Event.where(bar: current_user.bars)
-      @current_events = @events.where('start_date >= ?', DateTime.now.beginning_of_day).order('start_date DESC')
-      @past_events = @events.where('end_date < ?', DateTime.now.beginning_of_day).order('end_date DESC')
+      @events = get_events_bar_owner_current_user
+      @unconfirmed_events = get_unconfirmed_events(@events)
+      @current_events = get_current_confirmed_events(@events)
+      @past_events = get_past_confirmed_events(@events)
     else
       # Regular users don't have a (favourites) dashboard yet
     end
   end
 
   def show
-
     @markers = [{
         lat: @profile.latitude,
         lng: @profile.longitude,
@@ -87,5 +94,27 @@ class ProfilesController < ApplicationController
     if @profile.user != current_user
       redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action')
     end
+  end
+
+  def get_events_bar_owner_current_user
+    Event.where(bar: current_user.bars)
+  end
+
+  def get_events_artist_current_user
+    current_user.events
+  end
+
+  def get_unconfirmed_events(events)
+    events.reject(&:confirmed)
+  end
+
+  def get_current_confirmed_events(events)
+    events.select { |e| e.confirmed && e.start_date >= DateTime.now.beginning_of_day }
+          .sort_by(&:start_date).reverse!
+  end
+
+  def get_past_confirmed_events(events)
+    events.select { |e| e.confirmed && e.start_date < DateTime.now.beginning_of_day }
+          .sort_by(&:end_date).reverse!
   end
 end
