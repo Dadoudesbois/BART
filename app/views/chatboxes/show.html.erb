@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>CONVO BETWEEN: <%= @chatbox.sender.profile.username %> AND <%= @chatbox.recipient.profile.username %></h1>
+  <h1>CONVO BETWEEN: <%= @sender %> AND <%= @recipient %></h1>
   <h2>PREVIOUS MESSAGES:</h2>
-  <% @messages.each do |message| %>
-    <h2><%= message.user.profile.username %>:</h2> <p><%= message[:content] %> </p>
+  <% @messages.each_with_index do |message, i| %>
+    <h2><%= @usernames[i] %>:</h2> <p><%= message[:content] %> </p>
     <p>posted at: <%= message[:date] %></p>
 
-    <% if message.user == current_user %>
+    <% if message[:user_id] == current_user[:id] %>
       <%= link_to 'Edit this message', edit_message_path(message) %>
       <%= link_to 'Delete this message', message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>

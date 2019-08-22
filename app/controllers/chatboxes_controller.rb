@@ -9,7 +9,10 @@ class ChatboxesController < ApplicationController
 
   def show
     @chatbox = Chatbox.find(params[:id])
+    @sender = @chatbox.sender.profile.username
+    @recipient = @chatbox.recipient.profile.username
     @messages = @chatbox.messages
+    @usernames = @messages.map { |message| message.user.profile.username }
     @message = Message.new
   end
 
