@@ -1,19 +1,16 @@
-
-<div class="banner-bar">
-  <div class="container">
-    <h1><%= @bar[:name].capitalize %> </h1>
-    <h3><%= link_to @bar.user.profile.username.capitalize, profile_path(@bar.user.profile), class:"blue-link" %> </h3>
-    <h3><%= @bar[:description] %></h3>
-    <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-      <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
-      <% end %></h3>
-  </div>
-</div>
+<%= render 'bar-banner'%>
 
 <div class="container">
 
-  <div class="photos">
-  <!-- FOR CAROUSEL -->
+  <br><h3><%= @bar[:description] %></h3>
+  <p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+  <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+      <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+      <% end %></h3>
+
+
+  <br><div class="photos">
+  <!-- Displaying in small every other pics -->
     <% @pictures.each do |picture| %>
       <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
@@ -25,35 +22,47 @@
   </div>
 
 
-  <%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %>
+  <p><%= link_to 'Add a picture', new_bar_picture_path(@bar), class:"b-allwidth-lg" if current_user == @bar.user %></p>
 
 
+  <% if !@bar.events.empty? %>
 
+    <br><div class="cards-grid-3quarter">
 
-  <div class="cards-grid-3quarter">
-
-      <div class="events">
-          <h2>Events</h2>
-          <% @bar.events.each do |event| %>
-            <div class="card-hz-bg">
-              <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
-              <div class="left-description">
-                <h3><%= event.name %></h3>
-                <p> <%= event.description%></p>
+        <div class="events">
+            <h2>Events</h2>
+            <% @bar.events.each do |event| %>
+              <div class="card-hz-bg">
+                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+                <div class="left-description">
+                  <h3><%= event.name %></h3>
+                  <p> <%= event.description%></p>
+                </div>
               </div>
-            </div>
-          <% end %>
-      </div>
+            <% end %>
+        </div>
 
-      <div
-        id="map"
-        style="width: 300px;
-        height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
+        <div
+          id="map"
+          style="width: 300px;
+          height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
 
-  </div>
+    </div>
+
+  <% else %>
+
+          <br><div
+          id="map"
+          style="width: 100%;
+          height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+
+  <%end%>
 
 <br><div class="fullspace"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
 
