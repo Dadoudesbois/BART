@@ -19,18 +19,23 @@ class ChatboxesController < ApplicationController
   end
 
   def create
-    @chatbox = Chatbox.new
-    @chatbox.sender = current_user
-    @chatbox.recipient = Profile.user(params[:profile_id])
-    @chatbox.save
+    if params[:message][:content].blank?
+      flash[:notice] = "message cannot be blank"
+      render :new
+    else
+      @chatbox = Chatbox.new
+      @chatbox.sender = current_user
+      @chatbox.recipient = Profile.user(params[:profile_id])
+      @chatbox.save
 
-    @message = Message.new(message_params)
-    @message[:date] = Time.now
-    @message.user = current_user
-    @message.chatbox = @chatbox
-    @message.save
+      @message = Message.new(message_params)
+      @message[:date] = Time.now
+      @message.user = current_user
+      @message.chatbox = @chatbox
+      @message.save
 
-    redirect_to chatbox_path(@chatbox)
+      redirect_to chatbox_path(@chatbox)
+    end
   end
 
   private
