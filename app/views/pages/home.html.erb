@@ -2,11 +2,6 @@
 
 <div class="container">
 
-  <h1>Pages#home</h1>
-
-  <%= link_to "Discover our Artists", profiles_path, class: "b-border-tbg" %>
-  <%= link_to "Discover our bars", bars_path, class: "b-border-tbg" %>
-
   <br><h1>Search for an event nearby !</h1>
         <div
       id="map"
@@ -14,28 +9,30 @@
       height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+    ></div><br>
 
-  <% @events.each do |event| %>
+  <% if !@events.empty? %>
 
-  <div class="card-product">
-    <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
-    <div class="card-product-infos">
-      <h2><%= event.name %></h2>
-      <p><%= event[:description] %></p>
-      <% if current_user %>
-        <p><%= link_to 'See more details', event_path(event) %></p>
-      <% else %>
-        <p><%= link_to 'See more details', preview_event_path(event) %></p>
+    <% @events.each do |event| %>
+
+    <div class="card-img-vxs">
+      <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+      <div class="card-product-infos">
+        <h2><%= event.name %></h2>
+        <p><%= event[:start_date] %></p>
+        <p><%= event[:end_date] %></p>
+        <% if current_user %>
+          <p><%= link_to 'See more details', event_path(event) %></p>
+        <% else %>
+          <p><%= link_to 'See more details', preview_event_path(event) %></p>
+        <%end%>
+
+      </div>
       <%end%>
-
     </div>
-    <%end%>
-  </div>
+  <%end%>
+
+  <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+  <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
 
 </div>
-
-
-
-
-

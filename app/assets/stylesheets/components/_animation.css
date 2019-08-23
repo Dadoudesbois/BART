@@ -6,7 +6,7 @@
   position: fixed;
   left: 0px;
   bottom: 80px;
-  animation-delay: 5s;
+  animation-delay: 10s;
   animation-duration: 8s;
   animation-name: fadeaway;
   animation-fill-mode: forwards;
@@ -19,6 +19,6 @@
   }
 
   to {
-    left: -300px;
+    left: -150px;
   }
 }
