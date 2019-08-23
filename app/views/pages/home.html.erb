@@ -1,6 +1,11 @@
 <%= render 'home-banner'%>
 
 <div class="container">
+  <div class="links_artist_bar">
+    <%= link_to "Discover our Artists", profiles_path, class: "b-border-tbg text-center" %>
+    <h3>Events</h3>
+    <%= link_to "Discover our bars", bars_path, class: "b-border-tbg" %>
+  </div>
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-sm-4">
@@ -8,9 +13,9 @@
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
           <p class="title"><%= event.name %></p>
           <% if current_user %>
-            <%= link_to "Show event", event_path(event), class: "button" %>
+            <%= link_to "Show", event_path(event), class: "button" %>
           <% else %>
-            <%= link_to "Preview event", preview_event_path(event), class: "button" %>
+            <%= link_to "Preview", preview_event_path(event), class: "button" %>
           <% end %>
         </div>
       </div>
