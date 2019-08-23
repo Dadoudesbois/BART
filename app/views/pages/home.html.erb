@@ -1,18 +1,19 @@
 <%= render 'home-banner'%>
 
 <div class="container">
-    <h1>Pages#home</h1>
 
-  <%= link_to "Discover our Artists", profiles_path, class: "b-border-tbg" %>
-  <%= link_to "Discover our bars", bars_path, class: "b-border-tbg" %>
-    <br><h1>Search for an event nearby !</h1>
+
+  <br><h1>Search for an event nearby !</h1>
+
         <div
       id="map"
       style="width: 100%;
       height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+    ></div><br>
+
+  <% if !@events.empty? %>
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-sm-4">
@@ -27,10 +28,10 @@
       </div>
     <% end %>
   </div>
+<% end %>
+ 
+
+  <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+  <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
 
 </div>
-
-
-
-
-
