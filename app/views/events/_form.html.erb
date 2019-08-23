@@ -2,13 +2,13 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <%= f.input :start_date, order: [:day, :month, :year] %>
+  <%= f.input :end_date, order: [:day, :month, :year] %>
   <%= f.input :description %>
 
 
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
 
-  <%= f.button :submit, "Submit" %>
+  <%= f.button :submit, "Submit", class: "b-border-tbg" %>
 <% end %>

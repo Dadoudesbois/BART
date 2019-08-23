@@ -1,47 +1,52 @@
-<h1>Unconfirmed Events</h1>
+<div class="container">
 
-<% @unconfirmed_events.each do |event| %>
+
+  <h1>Unconfirmed Events</h1>
+
+
+  <% @unconfirmed_events.each do |event| %>
 
   <div class="card-product">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
       <p><%= event[:description] %></p>
-      <p><%= link_to 'See more details', event_path(event) %></p>
+      <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
       <% if current_user.profile.is_artist %>
          <%= link_to "Confirm event", confirm_event_path(event), class: "b-border-tbg" %>
       <% end %>
       <% if current_user.profile.is_bar_manager %>
-        <p><%= link_to 'Edit event', edit_event_path(event) %></p>
-        <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
+        <p><%= link_to 'Delete event', event_path(event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
     </div>
   </div>
-<% end %>
+  <% end %>
 
- <h1>Current Events</h1>
+   <h1>Current Events</h1>
 
-<% @current_events.each do |event| %>
+  <% @current_events.each do |event| %>
 
-<div class="card-product">
-  <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
-  <div class="card-product-infos">
-    <h2><%= event.name %></h2>
-    <p><%= event[:description] %></p>
-    <p><%= link_to 'See more details', event_path(event) %></p>
-    <% if current_user.profile.is_bar_manager %>
-      <p><%= link_to 'Edit event', edit_event_path(event) %></p>
-      <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
-    <%end%>
+  <div class="card-product">
+    <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+    <div class="card-product-infos">
+      <h2><%= event.name %></h2>
+      <p><%= event[:description] %></p>
+      <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
+      <% if current_user.profile.is_bar_manager %>
+        <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
+        <p><%= link_to 'Delete event', event_path(event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
+      <%end%>
 
+    </div>
   </div>
-</div>
-<% end %>
+  <% end %>
 
-<h1>Past Events</h1>
+  <h1>Past Events</h1>
 
 <% @past_events.each_with_index do |event, i| %>
+
 
   <div class="card-product">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
@@ -50,8 +55,8 @@
       <p><%= event[:description] %></p>
 
       <% if current_user.profile.is_bar_manager %>
-        <p><%= link_to 'Edit event', edit_event_path(event) %></p>
-        <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
+        <p><%= link_to 'Delete event', event_path(event), class: "b-border-tbg", method: :delete, data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
       <% if @reviews[i] %>
@@ -67,3 +72,6 @@
   </div>
 
 <% end %>
+
+</div>
+

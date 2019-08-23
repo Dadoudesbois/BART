@@ -5,6 +5,17 @@
   margin: 10px auto;
 }
 
+.cards-grid-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1%;
+}
+.no {
+  position:relative;
+  top: -20px;
+  left: 5px;
+}
+
 .cards-grid-3quarter {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -18,9 +29,9 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: $gray;
-  width: 23%;
   img {
     width: 100%;
+    height: auto;
   }
 }
 
@@ -65,7 +76,7 @@
 
 .card-profile{
   background-color:white;
-  height: 400px;
+  height: 250px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -125,3 +136,89 @@
     color: $bv-hangar;
   }
 }
+
+.card {
+  height: 275px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.layer {
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.5s ease;
+  text-align: center;
+}
+
+.card:hover .layer {
+  display: block;
+  background: rgba(255, 255, 255, .3);
+}
+
+.card:hover .button {
+  opacity: 1;
+}
+
+.card-remove-link {
+  color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transform: rotate(45deg);
+  opacity: 0.8;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.card-tags {
+  position: absolute;
+  padding: 8px;
+  top: 10px;
+  opacity: 1;
+}
+
+.button {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 3px white;
+  text-align: center;
+  background: transparent;
+  letter-spacing: 2px;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+
+.button:hover {
+  color: black;
+  background: white;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: white;
+  transition: top .5s ease;
+}
+
+
+
+
+
