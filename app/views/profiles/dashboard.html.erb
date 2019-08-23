@@ -41,7 +41,7 @@
 
 <h1>Past Events</h1>
 
-<% @past_events.each do |event| %>
+<% @past_events.each_with_index do |event, i| %>
 
   <div class="card-product">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
@@ -54,11 +54,11 @@
         <p><%= link_to 'Delete event', event_path(event), method: :delete, data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
-      <% if @review %>
-        <p><%= @review[:content] %></p>
-        <p><%= @review[:rating] %></p>
-        <p><%= link_to 'Edit this review', edit_event_review_path(event, @review) %></p>
-        <p><%= link_to 'Delete this review', event_review_path(event, @review), method: :delete, data: { confirm: "Are you sure?" } %></p>
+      <% if @reviews[i] %>
+        <p><%= @reviews[i][:content] %></p>
+        <p><%= @reviews[i][:rating] %></p>
+        <p><%= link_to 'Edit this review', edit_event_review_path(event, @reviews[i]) %></p>
+        <p><%= link_to 'Delete this review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" } %></p>
       <% else %>
         <%= link_to 'Add a review', new_event_review_path(event) %>
       <% end %>

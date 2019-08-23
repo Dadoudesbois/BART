@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.user = @event.user
 
     if @review.save
-      redirect_to dashboard_profile(current_user.profile)
+      redirect_to dashboard_profile_path(current_user.profile)
     else
       render :new
     end
@@ -23,8 +23,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update
-      redirect_to dashboard_profile(current_user.profile)
+    if @review.update(review_params)
+      redirect_to dashboard_profile_path(current_user.profile)
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
 
-    redirect_to dashboard_profile(current_user.profile)
+    redirect_to dashboard_profile_path(current_user.profile)
   end
 
   private

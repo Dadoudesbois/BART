@@ -35,6 +35,11 @@ class ProfilesController < ApplicationController
     else
       # Regular users don't have a (favourites) dashboard yet
     end
+    if current_user.profile.is_artist
+      @reviews = @past_events.map { |event| Review.where(event_id: event.id).where(user_id: current_user.id)[0] }
+    else
+      @reviews = @past_events.map { |event| Review.where(event_id: event.id).where(bar_id: event.bar.id)[0] }
+    end
   end
 
   def show
