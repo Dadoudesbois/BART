@@ -4,9 +4,6 @@
   <% if !@unconfirmed_events.empty? %>
 
 
-  <h1>Unconfirmed Events</h1>
-
-
     <br><h1>Unconfirmed Events</h1>
 
     <div class="cards-grid-4">
@@ -86,12 +83,9 @@
     <% end %>
   </div>
 
-<% end %>
+  <% elsif (@unconfirmed_events.empty? && @past_events.empty?) && @current_events.empty? %>
 
-              
-  <% else %>
-
-  <h1> No events.. yet !</h1>
+    <h1> No events.. yet !</h1>
   <% end %>
 </div>
 
