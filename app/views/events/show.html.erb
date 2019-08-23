@@ -2,30 +2,27 @@
 
 <div class="container">
 
-  <p><%= @event[:start_date].strftime("From: %d %B %Y at %Hh%M") %></p>
-  <p><%= @event[:end_date].strftime("To: %d %B %Y at %Hh%M") %></p>
-
     <div class="cards-grid-3quarter">
 
       <div class="left">
-        <h1><%= link_to @artist[:username].capitalize, profile_path(@artist),class:"blue-link" %></h1>
+        <h2><%= link_to @artist[:username].capitalize, profile_path(@artist),class:"blue-link" %></h2>
         <div class="card-profile">
         <%= cl_image_tag @artist.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
           <div class="left-description">
-            <h3>
+            <h4>
               <%= @artist.artist_description %>
-            </h3>
-            <h3><%= link_to "See more", profile_path(@artist),class:"b-border-tbg" %></h3>
-          </div>
+            </h4>
+            <br><p><%= link_to "See more", profile_path(@artist),class:"b-border-tbg" %></p>
+          <br></div>
         </div>
       </div>
 
       <div class="right">
-        <h1><%= link_to @event.bar.name, bar_path(@event.bar), class:"blue-link"%></h1>
+        <h2><%= link_to @event.bar.name, bar_path(@event.bar), class:"blue-link"%></h2>
         <div
           id="map"
           style="width: 100%;
-          height: 400px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+          height: 250px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         ></div>
