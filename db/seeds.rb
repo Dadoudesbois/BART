@@ -294,7 +294,6 @@ bars.each do |bar|
     events.push(event)
   end
 end
-
 12.times do
   event = events.sample
   event.confirmed = true
