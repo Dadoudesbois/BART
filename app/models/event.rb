@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  include PgSearch
+
   belongs_to :user
   belongs_to :bar
   has_many :reviews, dependent: :destroy
