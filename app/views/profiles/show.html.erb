@@ -107,5 +107,13 @@
         <%end%>
 
   <%end%>
+
+  <% if current_user.profile.is_bar_manager && @profile.is_artist %>
+    <h3>RATINGS:</h3>
+    <% @reviews.each do |review| %>
+      <p><%= review[:content] %></p>
+      <p>Rating:<%= review[:rating] %></p>
+    <% end %>
+  <% end %>
 </div>
 
