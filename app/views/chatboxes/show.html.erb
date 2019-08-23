@@ -23,8 +23,7 @@
   <%= simple_form_for [@chatbox, @message] do |b| %>
     <%= b.error_notification %>
     <%= b.input :content, wrapper_html: { class: "input-des" }%>
+    </div>
     <%= b.button :submit, "", class: "send" %>
   <% end %>
-
-  </div>
 </div>
