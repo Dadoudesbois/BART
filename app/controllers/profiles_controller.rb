@@ -46,7 +46,8 @@ class ProfilesController < ApplicationController
         image_url: helpers.asset_url('star.png')
       }]
 
-    @reviews = Review.art_reviews(@profile)
+    # @reviews = Review.art_reviews(@profile)
+    @reviews = @profile.user.artist_reviews
   end
 
   def new

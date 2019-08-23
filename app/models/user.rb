@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   after_create :create_profile
 
+  def artist_reviews
+    self.events.map(&:reviews).flatten.select{ |rev|  rev.user_id != self.id  }
+  end
+
   private
 
   def create_profile
@@ -24,8 +28,4 @@ class User < ApplicationRecord
       blank_profile.save
     end
   end
-
-  # def artist_reviews
-  #     self.events.map(&:reviews).flatten.select!{ |rev|  rev.user_id != self.id  }
-  # end
 end
