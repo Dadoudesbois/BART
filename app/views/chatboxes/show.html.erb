@@ -10,7 +10,7 @@
       <div class="m-content">
         <h2><%= @usernames[i].upcase %></h2>
           <h3><%= message[:content] %> </h3>
-        <p>posted at: <%= message[:date] %></p>
+        <p><%= message[:date] %></p>
       </div>
       <div class="m-del">
         <% if message[:user_id] == current_user[:id] %>
@@ -20,12 +20,11 @@
     </div>
   <% end %>
 
-  <h2>SEND NEW MESSAGE:</h2>
-
   <%= simple_form_for [@chatbox, @message] do |b| %>
     <%= b.error_notification %>
-    <%= b.input :content, label_html: { class: "input-des" }%>
-    <%= b.button :submit, "Send", class: "b-border-tbg" %>
+    <%= b.input :content, wrapper_html: { class: "input-des" }%>
+    <%= b.button :submit, "", class: "send" %>
   <% end %>
 
+  </div>
 </div>
