@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def show
     @artist = @event.user.profile
 
-    @bar = Bar.find(params[:id])
+    @bar = @event.bar
 
     @markers = [{
         lat: @bar.latitude,
