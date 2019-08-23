@@ -1,21 +1,31 @@
 <div class="container">
-  <h1>CONVO BETWEEN: <%= @sender %> AND <%= @recipient %></h1>
-  <h2>PREVIOUS MESSAGES:</h2>
+  <div class="card-login">
+  <h1> <%= @sender %> AND <%= @recipient %></h1>
   <% @messages.each_with_index do |message, i| %>
-    <h2><%= @usernames[i] %>:</h2> <p><%= message[:content] %> </p>
-    <p>posted at: <%= message[:date] %></p>
-
-    <% if message[:user_id] == current_user[:id] %>
-      <%= link_to 'Edit this message', edit_message_path(message) %>
-      <%= link_to 'Delete this message', message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
+  <% if message.user == current_user %>
+    <div class="message-sent">
+  <% else %>
+    <div class="message-received">
+  <% end %>
+      <div class="m-content">
+        <h2><%= @usernames[i].upcase %></h2>
+          <h3><%= message[:content] %> </h3>
+        <p>posted at: <%= message[:date] %></p>
+      </div>
+      <div class="m-del">
+        <% if message[:user_id] == current_user[:id] %>
+          <%= link_to '🗑️', message_path(message), method: :delete, data: { confirm: "Are you sure?" }%>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 
   <h2>SEND NEW MESSAGE:</h2>
 
   <%= simple_form_for [@chatbox, @message] do |b| %>
     <%= b.error_notification %>
-    <%= b.input :content %>
-    <%= b.button :submit, "Send" %>
+    <%= b.input :content, label_html: { class: "input-des" }%>
+    <%= b.button :submit, "Send", class: "b-border-tbg" %>
   <% end %>
+
 </div>

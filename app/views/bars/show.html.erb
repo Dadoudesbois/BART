@@ -2,16 +2,16 @@
 
 <div class="container">
 
-
-  <br><div class="photos">
   <!-- Displaying in small every other pics -->
+  <br><div class="cards-grid-photos">
     <% @pictures.each do |picture| %>
+      <div class="photocard">
       <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
       <% if current_user == @bar.user %>
-        <%= link_to 'delete this picture', picture_path(picture), method: :delete, data: { confirm: "Are you sure?" }, class:"b-border-tbg" %>
+        <%= link_to "✖️" , picture_path(picture), method: :delete, data: { confirm: "Are you sure?" }, class:"no" %>
       <% end %>
-
+      </div>
     <% end %>
   </div>
 
