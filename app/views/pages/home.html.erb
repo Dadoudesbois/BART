@@ -16,7 +16,6 @@
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-sm-4">
-
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
           <p class="title"><%= event.name %></p>
           <% if current_user %>
