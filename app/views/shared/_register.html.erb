@@ -1,9 +1,8 @@
 <div class="fixed transform">
   <% if user_signed_in? %>
-    <% if (!current_user.profile.is_artist && current_user.bars.empty?) %>
-    <!-- && !( params[:controller] == 'profiles' && params[:action]== 'edit' )  -->
-      <p><%= link_to "Register as an artist ✨", new_profile_path, class: "b-border-whitebg" %> </p>
-      <p><%= link_to "Register your bar 🥂", new_profile_path, class: "b-border-whitebg" %></p>
+    <% if (!current_user.profile.is_artist && current_user.bars.empty?) && !( params[:controller] == 'profiles' && params[:action]== 'new' ) %>
+      <h3><%= link_to "Register as an artist ✨", new_profile_path, class: "b-border-whitebg" %> </h3>
+      <h3><%= link_to "Register your bar 🥂", new_profile_path, class: "b-border-whitebg" %></h3>
     <% end %>
    <% end %>
 </div>
