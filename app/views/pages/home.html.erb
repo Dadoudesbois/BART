@@ -4,18 +4,19 @@
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
-          <div class="background-transparant">
 
-                <p><%= link_to "Preview event", preview_event_path(event), class: "button" %></p>
-          </div>
-          <%= link_to "+", event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class: "card-remove-link" %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+          <p class="title"><%= event.name %></p>
+          <% if current_user %>
+            <%= link_to "Show event", event_path(event), class: "button" %>
+          <% else %>
+            <%= link_to "Preview event", preview_event_path(event), class: "button" %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
 
 
 
