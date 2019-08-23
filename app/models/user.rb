@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :bars, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
-
+  has_many :artist_reviews, through: :events, source: :reviews, dependent: :destroy
   has_many :sent_chatboxes, :class_name => 'Chatbox', :foreign_key => 'sender_id', dependent: :destroy
   has_many :received_chatboxes, :class_name => 'Chatbox', :foreign_key => 'recipient_id', dependent: :destroy
   has_many :messages, dependent: :destroy
