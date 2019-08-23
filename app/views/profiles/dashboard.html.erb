@@ -1,34 +1,43 @@
 <div class="container">
 
 
-  <h1>Unconfirmed Events</h1>
+  <% if !@unconfirmed_events.empty? %>
 
 
-  <% @unconfirmed_events.each do |event| %>
+    <br><h1>Unconfirmed Events</h1>
 
-  <div class="card-product">
-    <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
-    <div class="card-product-infos">
-      <h2><%= event.name %></h2>
-      <p><%= event[:description] %></p>
-      <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
-      <% if current_user.profile.is_artist %>
-         <%= link_to "Confirm event", confirm_event_path(event), class: "b-border-tbg" %>
+    <div class="cards-grid-4">
+
+      <% @unconfirmed_events.each do |event| %>
+
+      <div class="card-img-v">
+        <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
+        <div class="card-product-infos">
+          <h2><%= event.name %></h2>
+          <p><%= event[:description] %></p>
+          <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
+          <% if current_user.profile.is_artist %>
+             <%= link_to "Confirm event", confirm_event_path(event), class: "b-border-tbg" %>
+          <% end %>
+          <% if current_user.profile.is_bar_manager %>
+            <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
+            <p><%= link_to 'Delete event', event_path(event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
+          <%end%>
+
+        </div>
+      </div>
       <% end %>
-      <% if current_user.profile.is_bar_manager %>
-        <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
-        <p><%= link_to 'Delete event', event_path(event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
-      <%end%>
-
     </div>
-  </div>
-  <% end %>
 
-   <h1>Current Events</h1>
+  <% elsif !@current_events.empty? %>
+
+  <br><h1>Current Events</h1>
+
+  <div class="cards-grid-4">
 
   <% @current_events.each do |event| %>
 
-  <div class="card-product">
+  <div class="card-img-v">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
@@ -39,16 +48,18 @@
         <p><%= link_to 'Delete event', event_path(event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 
-  <h1>Past Events</h1>
+  <% elsif !@past_events.empty? %>
 
-<% @past_events.each_with_index do |event, i| %>
+  <br><h1>Past Events</h1>
+  <div class="cards-grid-4">
+  <% @past_events.each_with_index do |event, i| %>
 
-
-  <div class="card-product">
+  <div class="card-img-v">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
@@ -69,9 +80,12 @@
       <% end %>
 
     </div>
+    <% end %>
   </div>
 
-<% end %>
+  <% elsif (@unconfirmed_events.empty? && @past_events.empty?) && @current_events.empty? %>
 
+    <h1> No events.. yet !</h1>
+  <% end %>
 </div>
 

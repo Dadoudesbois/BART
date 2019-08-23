@@ -38,3 +38,30 @@
   position: absolute;
   top: 400px;
 }
+
+
+.banner-event {
+  background: no-repeat;
+  background-size:cover;
+  height: 500px;
+  padding: 150px 0;
+  display: flex;
+  align-items: center;
+  margin-top: 0px !important;
+  h1  {
+  font-family: $bebas;
+  font-size: 10em;
+  text-align: left;
+  position: absolute;
+  top: 220px;
+  left: 40px;
+  color: white;
+  }
+  .e-date {
+  color: white;
+  text-align: left;
+  position: absolute;
+  left: 100px;
+  top: 380px;
+  }
+}

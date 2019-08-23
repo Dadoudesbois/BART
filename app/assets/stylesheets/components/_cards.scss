@@ -16,6 +16,14 @@
   left: 5px;
 }
 
+.card-product-infos {
+  padding: 10px;
+  text-align: left;
+  h2 {
+    color:$bv-hangar;
+  }
+}
+
 .cards-grid-3quarter {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -119,6 +127,8 @@
   padding: 10px;
   overflow: scroll;
   line-height: 97%;
+overflow-wrap: break-word;
+height: 100%;
 }
 
 .card-login {

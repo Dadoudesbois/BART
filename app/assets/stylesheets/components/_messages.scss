@@ -95,6 +95,16 @@
   width: 80%;
   padding: 10px;
   }
+}
 
-
+.prevchat {
+  h3, p {
+    color:$bv-hangar;
+  }
+  h3 {
+    font-family: $bebas;
+  }
+  p {
+    margin-bottom: 0px;
+  }
 }
