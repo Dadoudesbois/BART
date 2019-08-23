@@ -2,7 +2,9 @@
 
 <div class="container">
 
+
   <br><h1>Search for an event nearby !</h1>
+
         <div
       id="map"
       style="width: 100%;
@@ -12,25 +14,22 @@
     ></div><br>
 
   <% if !@events.empty? %>
-
+  <div class="row">
     <% @events.each do |event| %>
-
-    <div class="card-img-vxs">
-      <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
-      <div class="card-product-infos">
-        <h2><%= event.name %></h2>
-        <p><%= event[:start_date] %></p>
-        <p><%= event[:end_date] %></p>
-        <% if current_user %>
-          <p><%= link_to 'See more details', event_path(event) %></p>
-        <% else %>
-          <p><%= link_to 'See more details', preview_event_path(event) %></p>
-        <%end%>
-
+      <div class="col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+          <p class="title"><%= event.name %></p>
+          <% if current_user %>
+            <%= link_to "Show", event_path(event), class: "button" %>
+          <% else %>
+            <%= link_to "Preview", preview_event_path(event), class: "button" %>
+          <% end %>
+        </div>
       </div>
-      <%end%>
-    </div>
-  <%end%>
+    <% end %>
+  </div>
+<% end %>
+ 
 
   <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
   <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>

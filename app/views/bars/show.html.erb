@@ -54,6 +54,16 @@
 
   <%end%>
 
+  <% if current_user.profile.is_artist %>
+    <h3>RATINGS:</h3>
+    <% @reviews.each do |review| %>
+      <p><%= review[:content] %></p>
+      <p>Rating:<%= review[:rating] %></p>
+    <% end %>
+  <% end %>
+
 <br><div class="fullspace"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
 
 </div>
+
+

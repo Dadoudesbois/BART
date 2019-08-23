@@ -28,8 +28,9 @@
       </div>
       <% end %>
     </div>
+    <% end %>
 
-  <% elsif !@current_events.empty? %>
+  <% if !@current_events.empty? %>
 
   <br><h1>Current Events</h1>
 
@@ -52,8 +53,10 @@
     </div>
     <% end %>
   </div>
+  <% end %>
 
-  <% elsif !@past_events.empty? %>
+
+  <% if !@past_events.empty? %>
 
   <br><h1>Past Events</h1>
   <div class="cards-grid-4">
@@ -82,8 +85,9 @@
     </div>
     <% end %>
   </div>
+  <% end %>
 
-  <% elsif (@unconfirmed_events.empty? && @past_events.empty?) && @current_events.empty? %>
+  <% if (@unconfirmed_events.empty? && @past_events.empty?) && @current_events.empty? %>
 
     <h1> No events.. yet !</h1>
   <% end %>
