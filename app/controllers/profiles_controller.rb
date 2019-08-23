@@ -45,6 +45,8 @@ class ProfilesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { profile: @profile }),
         image_url: helpers.asset_url('star.png')
       }]
+
+    @reviews = Review.art_reviews(@profile)
   end
 
   def new

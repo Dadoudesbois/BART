@@ -24,6 +24,8 @@ class BarsController < ApplicationController
       }]
 
     @pictures = @bar.pictures
+
+    @reviews = Review.bar_reviews(@bar)
   end
 
   def new
