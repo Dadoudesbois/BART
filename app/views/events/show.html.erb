@@ -1,17 +1,18 @@
+<%=render 'event-banner'%>
 
- <%= cl_image_tag @event.photo, width: 200, height: 150, crop: :fill %>
- <h1>Event with <%= link_to @artist[:username].capitalize, profile_path(@artist) %> at bar <%= link_to @event.bar.name, bar_path(@event.bar) %></h1>
+<div class="container">
+  <div class="card-login">
+
  <h3>What</h3>
  <p><%= @event[:description] %></p>
   <h3>When</h3>
   <p><%= @event[:start_date].strftime("From: %d %B %Y at %Hh%M") %></p>
   <p><%= @event[:end_date].strftime("To: %d %B %Y at %Hh%M") %></p>
 
-  <p><%= link_to "Go to my dashboard", dashboard_profile_path(@artist) %></p>
+      <% if current_user.profile.is_bar_manager %>
+        <p><%= link_to 'Edit event', edit_event_path(@event), class: "b-border-tbg" %></p>
+        <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
+      <%end%>
 
-<p><%= link_to "See the artist #{@artist[:username]}'s profile", profile_path(@artist) %></p>
-<% if current_user.bars.any? { |bar| bar == @event.bar } %>
-  <p><%= link_to 'See my bar profile', bar_path(@event.bar) %></p>
-<% else %>
-  <p><%= link_to 'See the bar profile', bar_path(@event.bar) %></p>
-<% end %>
+  </div>
+</div>
