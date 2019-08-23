@@ -166,7 +166,7 @@ gaspard.save!
 
 4.times do |i|
   artist = artists[i + 1].profile
-  artist.username = Faker::Name.unique.last_name
+  artist.username = Faker::Artist.name
   artist.address = addresses[i+4]
   artist.is_artist = true
   artist.artist_description = Faker::Quote.most_interesting_man_in_the_world
@@ -282,7 +282,7 @@ bars.each do |bar|
     event = Event.new(
       user: artist_user,
       bar: bar,
-      name: Faker::Book.title,
+      name: Faker::Name.unique.last_name,
       start_date: random_start_date,
       end_date: random_end_date,
       description: Faker::Quote.matz
