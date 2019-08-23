@@ -1,4 +1,9 @@
-<% if current_user == @event.bar.user %>
-  <h1>EDIT EVENT</h1>
-  <%= render 'form' %>
-<% end %>
+<div class="container">
+  <% if current_user == @event.bar.user %>
+    <h1><%= "EDIT #{@event.name}" %></h1>
+    <div class="card-login">
+    <%= render 'form' %>
+  <% end %>
+    </div>
+</div>
+
