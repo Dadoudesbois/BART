@@ -275,6 +275,8 @@ puts "Creating events"
 
 now = Time.now
 
+events = []
+
 bars.each do |bar|
   artists.each_with_index do |artist_user, i|
     random_start_date = now + 60 * 60 * Random.rand(1..42)
@@ -288,11 +290,15 @@ bars.each do |bar|
       description: Faker::Quote.matz
     )
     event.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?performance"
-    if i % 2 == 0
-      event.confirmed = true
-    end
     event.save!
+    events.push(event)
   end
+end
+
+12.times do
+  event = events.sample
+  event.confirmed = true
+  event.save
 end
 
 
