@@ -1,5 +1,6 @@
 <div class="container">
 
+
   <h1>Unconfirmed Events</h1>
 
 
@@ -44,20 +45,33 @@
 
   <h1>Past Events</h1>
 
-  <% @past_events.each do |event| %>
+<% @past_events.each_with_index do |event, i| %>
+
 
   <div class="card-product">
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
       <p><%= event[:description] %></p>
+
       <% if current_user.profile.is_bar_manager %>
         <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
         <p><%= link_to 'Delete event', event_path(event), class: "b-border-tbg", method: :delete, data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
+      <% if @reviews[i] %>
+        <p><%= @reviews[i][:content] %></p>
+        <p><%= @reviews[i][:rating] %></p>
+        <p><%= link_to 'Edit this review', edit_event_review_path(event, @reviews[i]) %></p>
+        <p><%= link_to 'Delete this review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" } %></p>
+      <% else %>
+        <%= link_to 'Add a review', new_event_review_path(event) %>
+      <% end %>
+
     </div>
   </div>
-  <% end %>
+
+<% end %>
 
 </div>
+
