@@ -29,11 +29,11 @@
 
     </div>
 
-          <% if !current_user.bars.empty? && @profile.is_artist %>
-            <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %>
-
+          <p><% if !current_user.bars.empty? && @profile.is_artist %>
+            <p><%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %></p>
           <% end %>
 
+          <% if !@profile.user.events.empty? %>
             <h2>Events</h2>
             <% @profile.user.events.each do |event| %>
               <div class="card-hz-bg">
@@ -44,9 +44,10 @@
                 </div>
               </div>
             <% end %>
+          <% end %>
 
     <% if !current_user.bars.empty? && @profile.is_artist %>
-      <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile) %>
+      <p><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
     <% end %>
 
     <% if !@profile.is_artist %>
@@ -84,7 +85,7 @@
         <% if !@profile.user.bars.empty? %>
 
             <br><h2>Bars</h2>
-             <div class=".cards-grid-4">
+             <div class="cards-grid-4">
               <% @profile.user.bars.each do |bar| %>
 
                 <div class="card-img-v">
@@ -102,7 +103,7 @@
         <% end %>
 
         <% if current_user != @profile.user %>
-          <br><div class="fullspace"><%= link_to "Back to bar page", bar_path, class:"b-allwidth-lg" %></div>
+          <br><div class="fullspace"><%= link_to "Back to bar page", :back, class:"b-allwidth-lg" %></div>
         <%end%>
 
   <%end%>

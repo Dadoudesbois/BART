@@ -10,4 +10,8 @@
   <p><%= link_to "Go to my dashboard", dashboard_profile_path(@artist) %></p>
 
 <p><%= link_to "See the artist #{@artist[:username]}'s profile", profile_path(@artist) %></p>
-<p><%= link_to 'See the bar profile', bar_path(@event.bar) %></p>
+<% if current_user.bars.any? { |bar| bar == @event.bar } %>
+  <p><%= link_to 'See my bar profile', bar_path(@event.bar) %></p>
+<% else %>
+  <p><%= link_to 'See the bar profile', bar_path(@event.bar) %></p>
+<% end %>

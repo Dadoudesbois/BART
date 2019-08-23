@@ -6,3 +6,8 @@
 .blue-link {
   color: $bv-hangar;
 }
+
+.no:hover {
+  text-decoration: none;
+  opacity: 0.5;
+}

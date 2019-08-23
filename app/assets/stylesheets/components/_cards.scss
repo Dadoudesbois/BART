@@ -5,6 +5,17 @@
   margin: 10px auto;
 }
 
+.cards-grid-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1%;
+}
+.no {
+  position:relative;
+  top: -20px;
+  left: 5px;
+}
+
 .cards-grid-3quarter {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -18,7 +29,6 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: $gray;
-  width: 23%;
   img {
     width: 100%;
   }

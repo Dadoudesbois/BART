@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def index
     # I don't think index is used anywhere (Pages#home instead), but just to be safe:
     # @events = Event.all
-    @events = Event.where('confirmed = true AND end_date <= ?', DateTime.now.end_of_day).order('end_date ASC')
+    @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
   end
 
   def preview
