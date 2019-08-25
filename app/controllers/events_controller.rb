@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:preview, :show, :edit, :update, :confirm, :destroy]
+  before_action :set_event, only: [:index, :preview, :show, :edit, :update, :confirm, :destroy]
   before_action :bar_authorization, only: [:new, :create]
   before_action :owner_authorization, only: [:edit, :update, :delete]
 
@@ -11,8 +11,18 @@ class EventsController < ApplicationController
     @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
 
     @bars = Bar.geocoded
+    ### where bar = event. bar ...? ###
+    ###########
 
-    @markers = @bars.map do |bar|
+    @events_bar = []
+    ### @events_bar = Bar.geocoded where ... ?
+
+    @events.each do |event|
+      event.bar = bar
+      @events_bar << bar
+    end
+
+    @markers = @events_bar.map do |bar|
       {
         lat: bar.latitude,
         lng: bar.longitude,
@@ -20,6 +30,18 @@ class EventsController < ApplicationController
         image_url: helpers.asset_url('Sea-breeze.png')
       }
     end
+
+    ##########
+
+    # @markers = @bars.map do |bar|
+    #   {
+    #     lat: bar.latitude,
+    #     lng: bar.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }
+    # end
+
   end
 
   def preview

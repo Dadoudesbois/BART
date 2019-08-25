@@ -31,6 +31,18 @@
 
           <p><% if !current_user.bars.empty? && @profile.is_artist %>
             <p><%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %></p>
+            <br><p><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
+
+              <h2>Reviews</h2>
+              <% @reviews.each do |review| %>
+                <div class="card-hz-bg">
+                  <div class="left-description">
+                    <p><%= review[:content] %></p>
+                    <p><%= review[:rating] %></p>
+                  <% end %>
+                </div>
+              </div>
+
           <% end %>
 
           <% if !@profile.user.events.empty? %>
@@ -45,10 +57,6 @@
               </div>
             <% end %>
           <% end %>
-
-    <% if !current_user.bars.empty? && @profile.is_artist %>
-      <p><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
-    <% end %>
 
     <% if !@profile.is_artist %>
       <br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
@@ -108,12 +116,5 @@
 
   <%end%>
 
-  <% if current_user.profile.is_bar_manager && @profile.is_artist %>
-    <h3>RATINGS:</h3>
-    <% @reviews.each do |review| %>
-      <p><%= review[:content] %></p>
-      <p>Rating:<%= review[:rating] %></p>
-    <% end %>
-  <% end %>
 </div>
 
