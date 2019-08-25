@@ -96,7 +96,7 @@
              <div class="cards-grid-4">
               <% @profile.user.bars.each do |bar| %>
 
-                <div class="card-img-v">
+              <div class="card-img-v">
                 <% if !bar.pictures.empty? %>
                   <%= cl_image_tag bar.pictures[0].photo, width: 200, height: 200, crop: :fill %>
                 <%end%>
@@ -104,7 +104,7 @@
                     <h3><%= link_to bar.name, bar_path(bar), class:"blue-link" %></h3>
                     <p> <%= bar.description%></p>
                   </div>
-                </div>
+              </div>
 
               <% end %>
             </div>
