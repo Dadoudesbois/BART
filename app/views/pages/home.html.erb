@@ -14,22 +14,23 @@
     ></div><br>
 
   <% if !@events.empty? %>
-  <div class="row">
+  <div class="cards-grid-3">
     <% @events.each do |event| %>
-      <div class="col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+        <div class="card-event-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+          <p class="card-event-date">25 Augustus 2019</p>
+
           <p class="title"><%= event.name %></p>
           <% if current_user %>
             <%= link_to "Show", event_path(event), class: "button" %>
           <% else %>
             <%= link_to "Preview", preview_event_path(event), class: "button" %>
           <% end %>
+
         </div>
-      </div>
     <% end %>
   </div>
 <% end %>
- 
+
 
   <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
   <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
