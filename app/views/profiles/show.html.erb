@@ -33,6 +33,7 @@
             <p><%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %></p>
             <br><p><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
 
+            <% if !@reviews.empty?%>
               <h2>Reviews</h2>
               <% @reviews.each do |review| %>
                 <div class="card-hz-bg">
@@ -42,6 +43,7 @@
                   <% end %>
                 </div>
               </div>
+            <% end %>
 
           <% end %>
 
