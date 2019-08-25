@@ -13,14 +13,14 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div><br>
 
-  <%= form_tag events_path, method: :get do %>
+  <%= form_tag root_path, method: :get do %>
     <div class="search-form-control form-group">
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Find an event"
+      placeholder: "Find an event by Artist, Bar, ..."
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn" %>
     </div>
   <% end %>
 

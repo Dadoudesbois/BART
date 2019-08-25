@@ -1,10 +1,10 @@
 class Event < ApplicationRecord
-  include PgSearch
+  include PgSearch::Model
 
   belongs_to :user
   belongs_to :bar
   has_many :reviews, dependent: :destroy
-  has_many :profiles, through: :user
+  has_one :profile, through: :user
 
   validates :name, presence: true
 
@@ -13,11 +13,12 @@ class Event < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   pg_search_scope :search_event_scope,
-    against: :name,
-    # associated_against: {
-    #   bar: [:name, :address],
-    #   profile: [:username]
-    # },
+    against: [:name, :description, :start_date, :end_date],
+    associated_against: {
+      bar: [:name, :address],
+      profile: [:username]
+    },
+    order_within_rank: "events.end_date ASC",
     using: {
       tsearch: { prefix: true }
     }

@@ -7,6 +7,20 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  color: $white ;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: $indigo ;
+  border: 1px solid $bv-hangar;
+  box-shadow: 0 0 3px $bv-hangar;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: background 0.5s ease;
+}
+
+.search-form-control .btn:hover {
+  color: $indigo ;
+  background: $white ;
 }
 
 .search-form-control .form-control {

@@ -6,27 +6,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:preview]
 
   def index
-    # I don't think index is used anywhere (Pages#home instead), but just to be safe:
-    # @events = Event.all
-    # @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
-
-    # @bars = Bar.geocoded
-
-    # @markers = @bars.map do |bar|
-    #   {
-    #     lat: bar.latitude,
-    #     lng: bar.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
-    #     image_url: helpers.asset_url('Sea-breeze.png')
-    #   }
-    # end
-
-    if params[:query].present?
-      search = Event.search_event_scope(params[:query])
-      @events = search.select(&:confirmed)
-    else
-      @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
-    end
+    # I don't think index is used anywhere (Pages#home instead) ???
   end
 
   def preview
