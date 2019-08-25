@@ -46,6 +46,10 @@ class EventsController < ApplicationController
 
   def preview
     @artist = @event.user.profile
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
