@@ -11,27 +11,34 @@ class EventsController < ApplicationController
     @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
 
     @bars = Bar.geocoded
-    ### where bar = event. bar ...? ###
-    ###########
 
-    @events_bar = []
-    ### @events_bar = Bar.geocoded where ... ?
+    ######################## researches to fix the map - to discuss together
 
-    @events.each do |event|
-      event.bar = bar
-      @events_bar << bar
-    end
+    # @events_bar = []
+    # ### @events_bar = Bar.geocoded where ... ?
 
-    @markers = @events_bar.map do |bar|
-      {
-        lat: bar.latitude,
-        lng: bar.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
-        image_url: helpers.asset_url('Sea-breeze.png')
-      }
-    end
+    # @events.each do |event|
+    #   event.bar = bar
+    #   @events_bar << bar
+    # end
 
-    ##########
+    # @markers = @events_bar.map do |bar|
+    #   {
+    #     lat: bar.latitude,
+    #     lng: bar.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }
+    # end
+
+    # @markers = @events.map do |event|
+    #   [{
+    #     lat: event[:bar].address.latitude,
+    #     lng: event[:bar].address.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: event[:bar].address }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }]
+    # end
 
     # @markers = @bars.map do |bar|
     #   {
@@ -42,6 +49,7 @@ class EventsController < ApplicationController
     #   }
     # end
 
+    ######################## // researches
   end
 
   def preview
