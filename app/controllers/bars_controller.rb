@@ -26,6 +26,7 @@ class BarsController < ApplicationController
     @pictures = @bar.pictures
 
     @reviews = Review.bar_reviews(@bar)
+    @star = @bar.average_rating.to_i
   end
 
   def new

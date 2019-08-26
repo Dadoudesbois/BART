@@ -36,6 +36,7 @@ class ProfilesController < ApplicationController
       # Regular users don't have a (favourites) dashboard yet
     end
     @reviews = @past_events.map { |event| Review.where(event_id: event.id).where(user_id: current_user.id)[0] }
+    @star = @profile.user.artist_average_rating
   end
 
   def show

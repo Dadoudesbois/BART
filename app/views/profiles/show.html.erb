@@ -36,6 +36,7 @@
 
             <% if !@reviews.empty?%>
               <h2>Reviews</h2>
+              <p><%= @star * "*" %></p>
               <% @reviews.each do |review| %>
                 <div class="card-hz-bg">
                   <div class="left-description">

@@ -303,8 +303,24 @@ end
   event.save
 end
 
+puts "adding reviews"
 
+# from artist
+events.each do |event|
+  review = Review.new(content: Faker::Lorem.sentence, rating: rand(0..5))
+  review.event = event
+  review.user = event.user
+  review.save!
+end
 
+# from bars
+
+events.each do |event|
+  review = Review.new(content: Faker::Lorem.sentence, rating: rand(0..5))
+  review.event = event
+  review.user = event.bar.user
+  review.save!
+end
 
 
 

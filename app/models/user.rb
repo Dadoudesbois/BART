@@ -19,6 +19,10 @@ class User < ApplicationRecord
     self.events.map(&:reviews).flatten.select{ |rev|  rev.user_id != self.id  }
   end
 
+  def artist_average_rating
+    self.artist_reviews.average(:rating)
+  end
+
   private
 
   def create_profile
