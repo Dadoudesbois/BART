@@ -123,4 +123,9 @@ class ProfilesController < ApplicationController
     events.select { |e| e.confirmed && e.start_date < DateTime.now.beginning_of_day }
           .sort_by(&:end_date).reverse!
   end
+
+  def is_navbar_white?
+    return true if action_name == 'dashboard'
+    return false
+  end
 end

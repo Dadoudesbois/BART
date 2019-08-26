@@ -18,6 +18,7 @@
 
 .card-product-infos {
   padding: 10px;
+  margin: 10px;
   text-align: left;
   h2 {
     color:$bv-hangar;
@@ -100,7 +101,25 @@
     }
   }
 }
-
+.card-prev{
+  background-color:white;
+  height: 100px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
+  img {
+    height: 100%;
+    width: auto;
+  }
+  .left-description {
+    line-height: 90%;
+    overflow: hidden;
+    h2 , i {
+      color: $gray;
+    }
+  }
+}
 .card-profile-s{
   background-color:white;
   height: 200px;
