@@ -13,6 +13,17 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div><br>
 
+  <%= form_tag root_path, method: :get do %>
+    <div class="search-form-control form-group">
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find an event by Artist, Bar, ..."
+    %>
+    <%= submit_tag "Search", class: "btn" %>
+    </div>
+  <% end %>
+
   <% if !@events.empty? %>
   <div class="row">
     <% @events.each do |event| %>
@@ -44,11 +55,12 @@
        /////another try : not working yet     -->
 
           <% end %>
-        </div>
+          </div>
       </div>
     <% end %>
   </div>
 <% end %>
+
 
 
   <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>

@@ -279,7 +279,10 @@ events = []
 
 bars.each do |bar|
   artists.each_with_index do |artist_user, i|
-    random_start_date = now + 60 * 60 * Random.rand(1..42)
+    # Event starting date between 2 days ago and 144 hours (6 days) from then: to still have more events in present
+    random_start_date = now - 2.days + 60 * 60 * Random.rand(1..144)
+
+    # Event duration between 1 - 8 hours
     random_end_date = random_start_date + 60 * 60 * Random.rand(1..8)
     event = Event.new(
       user: artist_user,

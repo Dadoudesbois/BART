@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:preview]
 
   def index
+
     # I don't think index is used anywhere (Pages#home instead), but just to be safe:
     # @events = Event.all
     @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
@@ -50,6 +51,7 @@ class EventsController < ApplicationController
     # end
 
     ######################## // researches
+
   end
 
   def preview
@@ -66,11 +68,11 @@ class EventsController < ApplicationController
     @bar = @event.bar
 
     @markers = [{
-        lat: @bar.latitude,
-        lng: @bar.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { bar: @bar }),
-        image_url: helpers.asset_url('Sea-breeze.png')
-      }]
+      lat: @bar.latitude,
+      lng: @bar.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { bar: @bar }),
+      image_url: helpers.asset_url('Sea-breeze.png')
+    }]
 
     @pictures = @bar.pictures
   end
