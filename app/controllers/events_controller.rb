@@ -126,7 +126,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :description, :photo, :name)
+    params.require(:event).permit(:start_date, :end_date, :description, :photo, :name, :category)
   end
 
   def bar_authorization
