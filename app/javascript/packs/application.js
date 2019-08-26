@@ -8,8 +8,10 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
-//$("#modal-window").find(".modal-content").html("<%= j (render 'preview') %>");
-//$("#modal-window").modal();
+
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
 
 
 initUpdateNavbarOnScroll();
