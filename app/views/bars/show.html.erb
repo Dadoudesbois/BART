@@ -58,7 +58,7 @@
     <h3>RATINGS:</h3>
     <p>average rating: </p>
     <% @star.times do %>
-      <p><%= "*" %></p>
+      <i class="fas fa-star"></i>
     <% end %>
     <% @reviews.each do |review| %>
       <p><%= review[:content] %></p>
