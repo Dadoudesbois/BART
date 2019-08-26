@@ -30,9 +30,12 @@
       <div class="col-sm-4">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
           <p class="title"><%= event.name %></p>
+          <p class="white"><%= event.start_date %></p>
+          <p class="white"><%= event.end_date %></p>
           <% if current_user %>
             <%= link_to "Show", event_path(event), class: "button" %>
           <% else %>
+
           <%= link_to "Preview", preview_event_path(event), class: "button"%>
 
        <!--    to keep !! quick dirty pop up solution try1
@@ -42,17 +45,21 @@
       ///// quick dirty pop up solution  -->
 
 
-<!--        another try : not working yet
 
-            <#%= link_to 'Preview', preview_event_path(event),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'button'}  %>
 
-            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--         not yet working modal solution
+
+    <#%= link_to 'Preview', preview_event_path(event),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'button'}  %>
+
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
               <div class="modal-dialog" role="document">
                 <div class="modal-content"></div>
-              </div>
             </div>
 
-       /////another try : not working yet     -->
+            /// not yet working modal solution -->
+
+
 
           <% end %>
           </div>

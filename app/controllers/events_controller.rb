@@ -56,6 +56,18 @@ class EventsController < ApplicationController
 
   def preview
     @artist = @event.user.profile
+
+    @bar = @event.bar
+
+    @markers = [{
+      lat: @bar.latitude,
+      lng: @bar.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { bar: @bar }),
+      image_url: helpers.asset_url('Sea-breeze.png')
+    }]
+
+    @pictures = @bar.pictures
+
     respond_to do |format|
       format.html
       format.js

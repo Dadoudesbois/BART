@@ -16,7 +16,13 @@ class User < ApplicationRecord
   after_create :create_profile
 
   def artist_reviews
-    self.events.map(&:reviews).flatten.select{ |rev|  rev.user_id != self.id  }
+    # self.events.map(&:reviews).flatten.select { |rev| rev.user_id != self.id }
+    self.events.map(&:reviews).flatten.reject { |rev| rev.user_id == self.id }
+  end
+
+  def artist_average_rating
+    reviews = self.artist_reviews
+    reviews.map(&:rating).sum / reviews.count
   end
 
   private
