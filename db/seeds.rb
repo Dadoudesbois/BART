@@ -291,6 +291,7 @@ bars.each do |bar|
       start_date: random_start_date,
       end_date: random_end_date,
       description: Faker::Quote.matz
+      category: ["Concert", "Exhibition", "Performance"].sample
     )
     event.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?performance"
     event.save!
