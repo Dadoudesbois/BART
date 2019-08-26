@@ -36,14 +36,17 @@
 
             <% if !@reviews.empty?%>
               <h2>Reviews</h2>
+              <% @star.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
               <% @reviews.each do |review| %>
                 <div class="card-hz-bg">
                   <div class="left-description">
                     <p><%= review[:content] %></p>
                     <p><%= review[:rating] %></p>
-                  <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
 
           <% end %>

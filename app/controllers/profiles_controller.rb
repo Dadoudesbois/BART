@@ -47,6 +47,7 @@ class ProfilesController < ApplicationController
       }]
 
     @reviews = @profile.user.artist_reviews
+    @star = @profile.user.artist_average_rating
   end
 
   def new
