@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
+  has_many :artist_pictures, dependent: :destroy
 
   validates :username, presence: true, allow_blank: false
   # validates :photo, presence: true
