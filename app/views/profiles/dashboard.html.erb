@@ -67,6 +67,7 @@
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
       <p><%= event[:description] %></p>
+      <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
 
       <% if current_user.profile.is_bar_manager %>
         <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>

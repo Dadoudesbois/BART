@@ -9,6 +9,7 @@ class Event < ApplicationRecord
   validates :name, presence: true
 
   validate :end_date_after_start_date?
+  validates :category, presence: true, inclusion: { in: ["Concert", "Exhibition", "Performance"], message: "Select a valid category" }
 
   mount_uploader :photo, PhotoUploader
 
