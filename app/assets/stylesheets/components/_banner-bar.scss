@@ -1,7 +1,7 @@
 .banner-bar {
   background: no-repeat;
   background-size:cover;
-  height: 500px;
+  height: 700px;
   padding: 150px 0;
   display: flex;
   align-items: center;
@@ -11,8 +11,36 @@
   font-size: 13em;
   text-align: left;
   position: absolute;
-  top: 80px;
   left: 40px;
+  color: white;
+  }
+  h3, a {
+  color: white;
+  text-align: left;
+  position: absolute;
+  left: 40px;
+  }
+}
+
+#carousel-example-2 {
+  height: 700px;
+}
+
+.banner-index {
+  background: no-repeat;
+  background-size:cover;
+  height: 700px;
+  padding: 150px 0;
+  display: flex;
+  align-items: center;
+  margin-top: 0px !important;
+  h1  {
+  font-family: $bebas;
+  font-size: 13em;
+  text-align: left;
+  position: absolute;
+  left: 80px;
+  top: 250px;
   color: white;
   }
   h3, a {
@@ -28,7 +56,7 @@
   font-size: 13em;
   text-align: left;
   position: absolute;
-  top: -340px;
+  top: -600px;
   left: -150px;
   color: white;
 }
@@ -43,7 +71,7 @@
 .banner-event {
   background: no-repeat;
   background-size:cover;
-  height: 500px;
+  height: 700px;
   padding: 150px 0;
   display: flex;
   align-items: center;

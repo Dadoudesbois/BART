@@ -5,23 +5,36 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <%if current_user.profile.is_artist || current_user.profile.is_bar_manager %>
             <li class="nav-item active">
-          <%= link_to "Dashboard", dashboard_profile_path(current_user.profile), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", chatboxes_path, class: "nav-link" %>
-          </li>
-        <% end %>
+              <%= link_to "B A R S", bars_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "A R T I S T S", profiles_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "E V E N T S", root_path, class: "nav-link" %>
+            </li>
+<!--             <#%if current_user.profile.is_artist || current_user.profile.is_bar_manager %>
+              <li class="nav-item">
+                <#%= link_to "D A S H B O A R D", dashboard_profile_path(current_user.profile), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <#%= link_to "M E S S A G E S ", chatboxes_path, class: "nav-link" %>
+              </li>
+            <#% end %> -->
         <li class="nav-item dropdown">
           <%= image_tag "http://download.seaicons.com/icons/cedarseed/cocktails/128/Negroni-icon.png", class: "avatar-icon dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
             <%if current_user.profile.is_artist || current_user.profile.is_bar_manager %>
-              <%= link_to "My profile", profile_path(current_user.profile), class: "dropdown-item" %>
+              <%= link_to "D A S H B O A R D", dashboard_profile_path(current_user.profile), class: "dropdown-item" %>
+              <%= link_to "M E S S A G E S ", chatboxes_path, class: "dropdown-item" %>
+              <%= link_to "P R O F I L E", profile_path(current_user.profile), class: "dropdown-item" %>
             <%end%>
-
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <% if current_user.profile.is_bar_manager %>
+              <%= link_to '+ B A R', new_bar_path, class: "dropdown-item" %>
+              <% end %>
+            <%= link_to "LOG  O U T", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
