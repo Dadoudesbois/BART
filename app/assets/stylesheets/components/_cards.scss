@@ -255,6 +255,26 @@ height: 100%;
   }
  }
 
+ .card-rev {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  color: $gray;
+  margin: 10px auto;
+  padding: 20px;
+  overflow:scroll;
+  h2, .form-inputs {
+    color: $bv-hangar;
+  }
+}
+
+.review {
+  color: $bv-hangar;
+  padding: 10px;
+  border-bottom: 1px solid $bv-hangar;
+  border-top: 1px solid $bv-hangar;
+}
+
 
 
 
