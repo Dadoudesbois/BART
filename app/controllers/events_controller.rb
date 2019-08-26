@@ -1,16 +1,65 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:preview, :show, :edit, :update, :confirm, :destroy]
+  before_action :set_event, only: [:index, :preview, :show, :edit, :update, :confirm, :destroy]
   before_action :bar_authorization, only: [:new, :create]
   before_action :owner_authorization, only: [:edit, :update, :delete]
 
   skip_before_action :authenticate_user!, only: [:preview]
 
   def index
-    # I don't think index is used anywhere (Pages#home instead) ???
+
+    # I don't think index is used anywhere (Pages#home instead), but just to be safe:
+    # @events = Event.all
+    @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
+
+    @bars = Bar.geocoded
+
+    ######################## researches to fix the map - to discuss together
+
+    # @events_bar = []
+    # ### @events_bar = Bar.geocoded where ... ?
+
+    # @events.each do |event|
+    #   event.bar = bar
+    #   @events_bar << bar
+    # end
+
+    # @markers = @events_bar.map do |bar|
+    #   {
+    #     lat: bar.latitude,
+    #     lng: bar.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }
+    # end
+
+    # @markers = @events.map do |event|
+    #   [{
+    #     lat: event[:bar].address.latitude,
+    #     lng: event[:bar].address.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: event[:bar].address }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }]
+    # end
+
+    # @markers = @bars.map do |bar|
+    #   {
+    #     lat: bar.latitude,
+    #     lng: bar.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
+    #     image_url: helpers.asset_url('Sea-breeze.png')
+    #   }
+    # end
+
+    ######################## // researches
+
   end
 
   def preview
     @artist = @event.user.profile
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

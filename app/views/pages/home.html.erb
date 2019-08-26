@@ -33,7 +33,27 @@
           <% if current_user %>
             <%= link_to "Show", event_path(event), class: "button" %>
           <% else %>
-            <%= link_to "Preview", preview_event_path(event), class: "button" %>
+          <%= link_to "Preview", preview_event_path(event), class: "button"%>
+
+       <!--    to keep !! quick dirty pop up solution try1
+
+            <#%= link_to "Preview", preview_event_path(event), class: "button", :onclick=>"window.open(this.href,'create_company', 'height=600, width=600');return false;" %>
+
+      ///// quick dirty pop up solution  -->
+
+
+<!--        another try : not working yet
+
+            <#%= link_to 'Preview', preview_event_path(event),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'button'}  %>
+
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content"></div>
+              </div>
+            </div>
+
+       /////another try : not working yet     -->
+
           <% end %>
           </div>
       </div>
@@ -42,7 +62,8 @@
 <% end %>
 
 
-  <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+
+  <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
   <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
 
 </div>
