@@ -13,4 +13,8 @@ class Bar < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def average_rating
+    self.bar_reviews.average[:rating]
+  end
 end
