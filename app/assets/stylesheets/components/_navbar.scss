@@ -1,13 +1,35 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
   align-items: center;
-  color: $bv-hangar;
   h2 {
     font-family: $bebas;
     font-size: 40px;
     margin-bottom: 0px;
-    color: $bv-hangar;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+  .nav-link {
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+}
+
+.navbar-lewagon-white {
+  background-color: $bv-hangar;
+  .dropdown-item {
+  color: $bv-hangar !important;
+  opacity: 0.8;
+  }
+  .dropdown-item:hover {
+  opacity: 1;
+  font-weight: bold;
+  // color: white !important;
+  background-color: white !important;
+  }
+  .dropdown-menu {
+  background-color: rgba(250,250,250,0.5);
   }
 }
 
@@ -22,25 +44,50 @@
 .navbar {
   height: 70px;
   margin-bottom: 0px !important;
-  position: sticky;
+  position: fixed;
   top: 0;
   right: 0;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   z-index: 200;
 }
 
-.dropdown-item , li a.nav-link {
-  color: $bv-hangar !important ;
+ li a.nav-link {
+  // color: $bv-hangar !important ;
+    color: white !important;
+    text-shadow: 0 0 8px rgba(0,0,0,0.4);
+    opacity: 0.8;
 }
 
-li a.nav-link:hover , .dropdown-item:hover {
-  color: $yel-hangar !important ;
-  background-color: white !important;
+.dropdown-item {
+  color: white !important;
+  opacity: 0.8;
+}
+
+.dropdown-item:hover {
+  opacity: 1;
+  font-weight: bold;
+  // color: white !important;
+  background-color: transparent !important;
+  border: 2px solid white;
+}
+
+.dropdown-menu {
+  background-color: rgba(250,250,250,0.2);
+}
+
+li a.nav-link:hover {
+  color: $white !important ;
+  opacity: 1;
+  font-weight: bold;
+  border-bottom: 2px solid white;
 }
 
 .dropdown-item:active {
-  color: $yel-hangar !important ;
+  color: white !important ;
   background-color: $bv-hangar;
+}
+
+.navbar-nav {
+  width: 100%;
 }
 
