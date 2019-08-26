@@ -13,8 +13,18 @@ class Bar < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  def average_rating
-    bar = self
-    Review.bar_reviews(bar).average(:rating)
+  # def average_rating
+  #   bar = self
+  #   Review.bar_reviews(bar).average(:rating)
+  # end
+
+  def bar_reviews
+    # self.events.map(&:reviews).flatten.select { |rev| rev.user_id != self.id }
+    self.events.map(&:reviews).flatten.reject { |rev| rev.user_id == self.user.id }
+  end
+
+  def bar_average_rating
+    reviews = self.bar_reviews
+    reviews.map(&:rating).sum / reviews.count
   end
 end
