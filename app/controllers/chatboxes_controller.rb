@@ -61,4 +61,9 @@ class ChatboxesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
+  def is_navbar_white?
+    return true if action_name == 'index'
+    return false
+  end
 end
