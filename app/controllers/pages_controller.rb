@@ -11,6 +11,7 @@ class PagesController < ApplicationController
       @events = confirmed_current_events_filter(Event.all).order('end_date ASC')
     end
     bars_and_markers_for_map(@events)
+
   end
 
   private

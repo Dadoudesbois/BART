@@ -8,6 +8,10 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
+//$("#modal-window").find(".modal-content").html("<%= j (render 'preview') %>");
+//$("#modal-window").modal();
+
+
 initUpdateNavbarOnScroll();
 
 initMapbox();
