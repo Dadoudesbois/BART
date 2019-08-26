@@ -47,6 +47,7 @@ class ProfilesController < ApplicationController
       }]
 
     @reviews = @profile.user.artist_reviews
+    @bars = @profile.user.events.map(&:bar)
   end
 
   def new

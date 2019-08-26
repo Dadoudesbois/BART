@@ -30,9 +30,16 @@
     </div>
 
         <p><% if !current_user.bars.empty?%>
-            <div class="fullspace">
+          <div class="fullspace">
             <p><%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
-            </div>
+          </div>
+
+        <div class="card-hz-bg">
+          <h2><%= @profile[:username]%> has partnered with the following bars:</h2>
+          <% @bars.each do |bar| %>
+            <p><%= link_to bar[:name], bar_path(bar) %></p>
+          <% end %>
+        </div>
 
             <% if !@reviews.empty?%>
               <h2>Reviews</h2>
