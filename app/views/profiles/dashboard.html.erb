@@ -76,10 +76,10 @@
       <% if @reviews[i] %>
         <p><%= @reviews[i][:content] %></p>
         <p><%= @reviews[i][:rating] %></p>
-        <p><%= link_to 'Edit this review', edit_event_review_path(event, @reviews[i]) %></p>
-        <p><%= link_to 'Delete this review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to 'Edit review', edit_event_review_path(event, @reviews[i]), class: "b-border-tbg" %></p>
+        <p><%= link_to 'Delete review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" }, class: "b-border-tbg" %></p>
       <% else %>
-        <%= link_to 'Add a review', new_event_review_path(event) %>
+        <%= link_to 'Add a review', new_event_review_path(event), class: "b-border-tbg" %>
       <% end %>
 
     </div>

@@ -1,19 +1,28 @@
 <div class="container">
-  <h1>YOUR MESSAGES</h1>
-  <% @chatboxes.each do |hash| %>
-  <% if hash[:last_msgs_username] == current_user.profile.username %>
-      <div class="message-sent">
+  <% if !@chatboxes.empty? %>
+    <h1>YOUR MESSAGES</h1>
+    <% @chatboxes.each do |hash| %>
+    <% if hash[:last_msgs_username] == current_user.profile.username %>
+        <div class="message-sent">
+    <% else %>
+        <div class="message-received">
+    <% end %>
+        <div class="prevchat">
+        <%# if !@last_msgs_content[i].nil? %>
+            <h3><%= link_to "CHAT WITH #{hash[:partners_name ]}", chatbox_path(hash[:id]),class: "blue-link" %></h3>
+            <p><%= hash[:last_msgs_username] %> sent:</p>
+            <h4><%= hash[:last_msgs_content] %></h4><br>
+            <%= link_to "Read previous", chatbox_path(hash[:id]),class: "b-border-tbg" %>
+        <%# end %>
+          </div>
+    </div>
+    <% end %>
   <% else %>
-      <div class="message-received">
-  <% end %>
-      <div class="prevchat">
-      <%# if !@last_msgs_content[i].nil? %>
-          <h3><%= link_to "CHAT WITH #{hash[:partners_name ]}", chatbox_path(hash[:id]),class: "blue-link" %></h3>
-          <p><%= hash[:last_msgs_username] %> sent:</p>
-          <h4><%= hash[:last_msgs_content] %></h4><br>
-          <%= link_to "Read previous", chatbox_path(hash[:id]),class: "b-border-tbg" %>
-      <%# end %>
-        </div>
-  </div>
+    <h1>No messages... yet ! </h1>
+    <%if current_user.profile.is_bar_manager %>
+      <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+    <% else %>
+      <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
+    <% end %>
   <% end %>
 </div>
