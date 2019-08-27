@@ -12,10 +12,9 @@
     </div>
   <% end %>
 
-<div id="events-container">
-  <%= render :partial => 'events/events_list', :locals => { :events => @events } %>
-</div>
-
+  <div id="events-container">
+    <%= render 'events/events_list',  events: @events %>
+  </div>
 
   <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
   <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
