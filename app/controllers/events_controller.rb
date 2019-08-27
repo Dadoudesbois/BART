@@ -91,7 +91,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @profile = current_user.profile
+    @profile = Profile.find(params[:profile_id])
     @event.user = @profile.user
     # Should be a select if a user has multiple bars
 
