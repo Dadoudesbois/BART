@@ -1,0 +1,46 @@
+
+<% if events.blank? %>
+  <p>Sorry, no events found.</p>
+<% else %>
+
+    <div
+      id="map"
+      style="width: 100%;
+      height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div><br>
+
+  <div class="row">
+    <% events.each do |event| %>
+      <div class="col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+          <p class="title"><%= event.name %></p>
+          <p class="white"><%= event.start_date %></p>
+          <p class="white"><%= event.end_date %></p>
+          <% if current_user %>
+            <%= link_to "Show", event_path(event), class: "button" %>
+          <% else %>
+
+            <button type="button" class="button" data-toggle="modal" data-target="#exampleModalCenter">
+              Preview
+            </button>
+
+            <%= render 'pages/modal_prev', event: event %>
+
+<!--           <#%= link_to "Preview", preview_event_path(event), class: "button"%> -->
+
+       <!--    to keep !! quick dirty pop up solution try1
+
+            <#%= link_to "Preview", preview_event_path(event), class: "button", :onclick=>"window.open(this.href,'create_company', 'height=600, width=600');return false;" %>
+
+      ///// quick dirty pop up solution  -->
+
+
+          <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+

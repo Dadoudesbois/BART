@@ -5,59 +5,19 @@
 
   <br><h1>Search for an event nearby !</h1>
 
-        <div
-      id="map"
-      style="width: 100%;
-      height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div><br>
 
-  <%= form_tag root_path, method: :get do %>
+
+
+  <%= simple_form_for(:event_search, url: events_search_path, remote: true) do |form| %>
     <div class="search-form-control form-group">
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find an event by Artist, Bar, ..."
-    %>
-    <%= submit_tag "Search", class: "btn" %>
+      <%= form.input :content, placeholder: "Find an event...", label: false %>
+      <%= form.button :submit, 'Search' %>
     </div>
   <% end %>
 
-  <% if !@events.empty? %>
-  <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
-          <p class="title"><%= event.name %></p>
-          <p class="white"><%= event.start_date %></p>
-          <p class="white"><%= event.end_date %></p>
-          <% if current_user %>
-            <%= link_to "Show", event_path(event), class: "button" %>
-          <% else %>
-
-            <button type="button" class="button" data-toggle="modal" data-target="#exampleModalCenter">
-              Preview
-            </button>
-
-            <%= render 'modal_prev', event: event %>
-
-<!--           <#%= link_to "Preview", preview_event_path(event), class: "button"%> -->
-
-       <!--    to keep !! quick dirty pop up solution try1
-
-            <#%= link_to "Preview", preview_event_path(event), class: "button", :onclick=>"window.open(this.href,'create_company', 'height=600, width=600');return false;" %>
-
-      ///// quick dirty pop up solution  -->
-
-
-          <% end %>
-          </div>
-      </div>
-    <% end %>
-  </div>
-  <% end %>
-
+<div id="events-container">
+  <%= render :partial => 'events/events_list', :locals => { :events => @events } %>
+</div>
 
 
   <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
