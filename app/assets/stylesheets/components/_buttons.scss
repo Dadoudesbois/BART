@@ -46,7 +46,8 @@
   text-decoration: none;
   box-shadow: 4 4 10px white;
   background: white;
-  color: black;
+  color: $gray;
+  font-weight: bold;
 }
 
 
@@ -65,9 +66,30 @@
   text-decoration: none;
   background: $bv-hangar;
   color: $white;
+  font-weight: bold;
 }
 .fullspace {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.button {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 3px white;
+  text-align: center;
+  background: transparent;
+  letter-spacing: 2px;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+
+.button:hover {
+  color: $gray;
+  background: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 

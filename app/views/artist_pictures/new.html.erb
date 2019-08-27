@@ -1,8 +1,8 @@
 <div class="container">
   <h1>select pictures to upload</h1>
-  <%= simple_form_for [@bar, @picture] do |f| %>
+  <%= simple_form_for [@profile, @artist_picture] do |f| %>
     <%= f.error_notification %>
-    <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
+    <%= f.input :artist_pictures, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit, "Upload", class: "b-border-tbg" %>
   <% end %>
 </div>

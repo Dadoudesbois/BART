@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_133812) do
+ActiveRecord::Schema.define(version: 2019_08_26_152138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artist_pictures", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_artist_pictures_on_profile_id"
+  end
 
   create_table "bars", force: :cascade do |t|
     t.string "name"
@@ -109,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_133812) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "artist_pictures", "profiles"
   add_foreign_key "bars", "users"
   add_foreign_key "chatboxes", "users", column: "recipient_id"
   add_foreign_key "chatboxes", "users", column: "sender_id"
