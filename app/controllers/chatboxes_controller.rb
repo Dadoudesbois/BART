@@ -60,9 +60,20 @@ class ChatboxesController < ApplicationController
   private
 
   def is_navbar_white?
-    return true if action_name == 'index'
-    return true if action_name == 'show'
-    return false
+    if action_name == 'new'
+      return true
+    elsif
+      action_name == 'edit'
+      return true
+    elsif
+      action_name == 'index'
+      return true
+    elsif
+      action_name == 'show'
+      return true
+    else
+      return false
+    end
   end
 
   def message_params

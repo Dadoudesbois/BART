@@ -26,6 +26,11 @@ class PicturesController < ApplicationController
 
   private
 
+  def is_navbar_white?
+    return true if action_name == 'new'
+    return false
+  end
+
   def bar_authorization
     redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @bar.user != current_user
   end
