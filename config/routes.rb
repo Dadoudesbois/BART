@@ -2,11 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  # resources :chatboxes, only: [ :index, :show ] do
-  #   resources :messages, only: [:new, :create]
-  # end
-  resources :chatboxes, only: [:show]
-
   resources :profiles do
     resources :artist_pictures, only: [:new, :create]
     # resources :chatboxes, only: [:new, :create]
@@ -14,6 +9,13 @@ Rails.application.routes.draw do
       get 'dashboard'
     end
     resources :events, only: [:new, :create]
+  end
+
+  # resources :chatboxes, only: [ :index, :show ] do
+  #   resources :messages, only: [:new, :create]
+  # end
+  resources :chatboxes, only: [ :show ] do
+    rersources :messages, only: [ :create ]
   end
 
   # resources :messages, only: [:edit, :update, :destroy]
