@@ -9,27 +9,13 @@ class ArtistPicturesController < ApplicationController
   end
 
   def create
-    # @artist_picture = ArtistPicture.new(artist_picture_params)
-    # @artist_picture.profile = @profile
     images = params.dig(:artist_picture, :artist_pictures) || []
     images.each do |image|
       @profile.artist_pictures.create(photo: image)
     end
 
     redirect_to profile_path(@profile)
-    # if @artist_picture.save
-    #   redirect_to profile_path(@profile)
-    # else
-    #   render :new
-    # end
   end
-
-# def create_pictures
-#   images = params.dig(:product, :pictures) || []
-#   images.each do |image|
-#     @profile.pictures.create(image: image)
-#   end
-# end
 
   def destroy
     @profile = @artist_picture.profile

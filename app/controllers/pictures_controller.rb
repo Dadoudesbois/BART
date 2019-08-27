@@ -9,14 +9,6 @@ class PicturesController < ApplicationController
   end
 
   def create
-    # @picture = Picture.new(picture_params)
-    # @picture.bar = @bar
-
-    # if @picture.save
-    #   redirect_to bar_path(@bar)
-    # else
-    #   render :new
-    # end
     images = params.dig(:picture, :pictures) || []
     images.each do |image|
       @bar.pictures.create(photo: image)
