@@ -2,130 +2,171 @@
 
   <% if @profile.is_artist %>
 
-    <div class="cards-grid-3quarter">
 
-      <div class="card-profile">
-      <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
-        <div class="left-description">
-          <h2>
-            <%= @profile.username %>
-          </h2>
-          <h3>
-            <%= @profile.artist_description %>
-          </h3>
-          <%if current_user == @profile.user %>
-            <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
-        <%end%>
+    <div class="row">
+
+      <div class="col-xs-10 col-sm-12 col-md-8">
+        <div class="card-profile">
+          <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+          <div class="left-description">
+            <h2>
+              <%= @profile.username %>
+            </h2>
+            <h4>
+              <% @star.times do %>
+                  <i class="fas fa-star"></i>
+              <% end %>
+            </h4>
+            <h3>
+              <%= @profile.artist_description %>
+            </h3>
+            <%if current_user == @profile.user %>
+              <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
+            <%end%>
+          </div>
         </div>
       </div>
 
-        <div
-          id="map"
-          style="width: 100%;
-          height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
+      <div class="col-xs-10 col-sm-8 col-md-4"
+            id="map"
+            style="width: 100%;
+            height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+
 
     </div>
 
-        <p><% if !current_user.bars.empty?%>
-          <div class="fullspace">
-            <p><%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-tbg" %><%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-tbg" %></p>
+    <% if !current_user.bars.empty?%>
+
+          <%= link_to 'Create an event with this artist!', new_profile_event_path(@profile), class: "b-border-whitebg fullspace" %>
+          <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class: "b-border-whitebg fullspace" %>
+
+
+      <h1>
+          Partners
+      </h1>
+      <div class="row">
+        <% @bars.each do |bar| %>
+          <div class="col-xs-10 col-sm-6 col-md-4">
+            <% if !bar.pictures.empty? %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= bar.pictures[0].photo %>');">
+
+              <%= link_to bar.name, bar_path(bar), class:"bw-border-tbg" %>
+              </div>
+            <%end%>
           </div>
+        <%end%>
+      </div><br>
 
-        <div class="card-hz-bg">
-          <h2><%= @profile[:username]%> has partnered with the following bars:</h2>
-          <% @bars.each do |bar| %>
-            <p><%= link_to bar[:name], bar_path(bar) %></p>
-          <% end %>
-        </div>
 
-            <% if !@reviews.empty?%>
-              <h2>Reviews</h2>
-              <% @star.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% @reviews.each do |review| %>
-                <div class="card-hz-bg">
-                  <div class="left-description">
-                    <p><%= review[:content] %></p>
-                    <p><%= review[:rating] %></p>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+      <% if !@reviews.empty?%>
+        <h1>Reviews</h1>
+          <div class="row">
+            <% @reviews.each do |review| %>
+              <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
+                <div class="review">
+                  <h4>
+                    <% review[:rating].times do %>
+                        <i class="fas fa-star"></i>
+                    <% end %>
+                  </h4>
 
-          <% end %>
+                    <%= review[:content] %>
 
-          <% if !@profile.user.events.empty? %>
-            <h1>Events</h1>
-            <% @profile.user.events.each do |event| %>
-              <div class="card-hz-bg">
-                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
-                <div class="left-description">
-                  <h2><%= link_to event.name, event_path(event), class:"blue-link" %></h2>
-                  <h4> <%= event.description%></h4>
+                   -<%= link_to review.user.profile.username, profile_path(review.user.profile), class:"blue-link" %>
                 </div>
               </div>
             <% end %>
-          <% end %>
+      <% end %>
+          </div>
+
+    <% end %>
+
+    <% if !@profile.user.events.empty? %>
+      <h1>Events</h1>
+      <% @profile.user.events.each do |event| %>
+        <div class="card-hz-bg">
+          <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+          <div class="left-description">
+            <h2>
+              <%= link_to event.name, event_path(event), class:"blue-link" %>
+            </h2>
+            <h4>
+              <%= event.description%>
+            </h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
     <% if current_user != @profile.user %>
-      <br><div class="fullspace"><%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %></div>
+      <br><div class="fullspace">
+        <%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %>
+      </div>
     <% end %>
+
 
   <% elsif @profile.is_bar_manager %>
 
-      <div class="card-profile-s">
+
+    <div class="card-profile-s">
       <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
-        <div class="left-description">
-          <h2>
-            <%= @profile.username %>
-          </h2>
-            <%if current_user == @profile.user %>
-                <br><p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
-                <br><p><%= link_to 'Add a new bar !', new_bar_path, class: "b-border-tbg" %></p>
-            <%end%>
-        </div>
-      </div>
-
-        <% if !@profile.user.events.empty? %>
-            <br><h2>Events</h2>
-            <% @profile.user.events.each do |event| %>
-              <div class="card-hz-s">
-                <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
-                <div class="left-description">
-                  <h3><%= link_to event.name, event_path(event), class:"blue-link" %></h3>
-                  <p> <%= event.description%></p>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
-
-        <% if !@profile.user.bars.empty? %>
-
-            <br><h2>Bars</h2>
-             <div class="cards-grid-4">
-              <% @profile.user.bars.each do |bar| %>
-
-              <div class="card-img-v">
-                <% if !bar.pictures.empty? %>
-                  <%= cl_image_tag bar.pictures[0].photo, width: 200, height: 200, crop: :fill %>
-                <%end%>
-                  <div class="left-description">
-                    <h3><%= link_to bar.name, bar_path(bar), class:"blue-link" %></h3>
-                    <p> <%= bar.description%></p>
-                  </div>
-                </div>
-
-              <% end %>
-            </div>
-        <% end %>
-
-        <% if current_user != @profile.user %>
-          <br><div class="fullspace"><%= link_to "Back to bar page", :back, class:"b-allwidth-lg" %></div>
+      <div class="left-description">
+        <h2>
+          <%= @profile.username %>
+        </h2>
+        <%if current_user == @profile.user %>
+          <br><p>
+            <%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %>
+          </p>
+          <br><p>
+            <%= link_to 'Add a new bar !', new_bar_path, class: "b-border-tbg" %>
+          </p>
         <%end%>
+      </div>
+    </div>
+
+    <% if !@profile.user.events.empty? %>
+      <br><h1>Events</h1>
+      <% @profile.user.events.each do |event| %>
+        <div class="card-hz-s">
+          <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
+          <div class="left-description">
+            <h3>
+              <%= link_to event.name, event_path(event), class:"blue-link" %>
+            </h3>
+            <p> <%= event.description%></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if !@profile.user.bars.empty? %>
+
+      <br><h1>Bars</h1>
+      <div class="row">
+        <% @profile.user.bars.each do |bar| %>
+          <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
+            <% if !bar.pictures.empty? %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= bar.pictures[0].photo %>');">
+
+              <%= link_to bar.name, bar_path(bar), class:"bw-border-tbg" %>
+              </div>
+            <%end%>
+          </div>
+        <%end%>
+      </div><br>
+
+
+    <% end %>
+
+    <% if current_user != @profile.user %>
+      <br><div class="fullspace">
+        <%= link_to "Back to bar page", :back, class:"b-allwidth-lg" %>
+      </div>
+    <%end%>
 
   <%end%>
 
