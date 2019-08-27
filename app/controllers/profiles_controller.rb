@@ -48,8 +48,10 @@ class ProfilesController < ApplicationController
 
     @reviews = @profile.user.artist_reviews
     @star = @profile.user.artist_average_rating
-    
+
     @bars = @profile.user.events.map(&:bar)
+
+    @pictures = @profile.artist_pictures
   end
 
   def new

@@ -11,10 +11,9 @@ class ArtistPicturesController < ApplicationController
   def create
     # @artist_picture = ArtistPicture.new(artist_picture_params)
     # @artist_picture.profile = @profile
-
-    images = params.dig(:product, :pictures) || []
+    images = params.dig(:artist_picture, :artist_pictures) || []
     images.each do |image|
-      @profile.pictures.create(image: image)
+      @profile.artist_pictures.create(photo: image)
     end
 
     redirect_to profile_path(@profile)
@@ -50,11 +49,11 @@ class ArtistPicturesController < ApplicationController
   end
 
   def set_picture
-    @picture = Picture.find(params[:id])
+    @artist_picture = ArtistPicture.find(params[:id])
   end
 
   def set_profile
-    @bar = Profile.find(params[:profile_id])
+    @profile = Profile.find(params[:profile_id])
   end
 
   def picture_params

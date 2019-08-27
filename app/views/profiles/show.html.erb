@@ -9,7 +9,7 @@
       <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
       <% if current_user == @profile.user %>
-        <%= link_to "✖️" , picture_path(picture), method: :delete, data: { confirm: "Are you sure?" }, class:"no" %>
+        <%= link_to "✖️" , artist_picture_path(picture), method: :delete, data: { confirm: "Are you sure?" }, class:"no" %>
       <% end %>
       </div>
     <% end %>
