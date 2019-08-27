@@ -4,18 +4,15 @@ Rails.application.routes.draw do
 
   resources :profiles do
     resources :artist_pictures, only: [:new, :create]
-    # resources :chatboxes, only: [:new, :create]
+    resources :chatboxes, only: [:new, :create]
     member do
       get 'dashboard'
     end
     resources :events, only: [:new, :create]
   end
 
-  # resources :chatboxes, only: [ :index, :show ] do
-  #   resources :messages, only: [:new, :create]
-  # end
-  resources :chatboxes, only: [ :show ] do
-    resources :messages, only: [ :create ]
+  resources :chatboxes, only: [:index, :show] do
+    resources :messages, only: [:create]
   end
 
   # resources :messages, only: [:edit, :update, :destroy]
