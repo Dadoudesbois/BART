@@ -1,0 +1,174 @@
+.messages {
+  font-size: 14px;
+  color: #868686;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ececec;
+  border-top: none;
+  border-bottom-width: 0;
+  max-height: calc(100vh - 70px - 45px - 61px - 30px);
+  overflow: scroll;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px;
+  &.right {
+    flex-direction: row-reverse;
+    .message-content {
+      background-color: #F2F9FC;
+    }
+  }
+}
+.message-content {
+  background-color: #F7F7F7;
+  border-radius: 3px;
+  margin: 0 10px;
+  padding: 11px 10px 8px 10px;
+}
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+#create-message {
+  padding: 10px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  border: 1px solid #ececec;
+}
+.message_content {
+  margin-bottom: 0;
+}
+input.form-control {
+  border: 1px solid #ECECEC;
+  box-shadow: none;
+  font-size: 14px;
+  color: #868686;
+  &:focus {
+    outline: none;
+    border: 1px solid blue;
+    box-shadow: none;
+  }
+}
+
+.chat-header {
+  background-color: #4F2F4C;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  h4 {
+    margin: 0;
+  }
+}
+
+// .message-sent {
+//   margin: 10px;
+//   width: 60%;
+//   flex-shrink: 1;
+//   margin-left: 40%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items:center;
+//   padding: 20px;
+//   border: 1px solid $bv-hangar;
+//   border-radius: 30px;
+//   overflow-wrap: break-word;
+//   h2 {
+//   color: $bv-hangar;
+// }
+// }
+
+// .message-received {
+//   margin: 10px;
+//   width: 300px;
+//   margin-right: 40%;
+//   display: flex;
+//   flex-shrink: 1;
+//   justify-content: space-between;
+//   align-items:center;
+//   padding: 20px;
+//   border: 1px solid $bv-hangar;
+//   border-radius: 30px;
+//   overflow-wrap: break-word;
+//   h2 {
+//   color: $bv-hangar;
+// }
+// }
+
+// .card-login h1 {
+//   text-align:center;
+// }
+
+
+// .input-des {
+//   label {
+//     display: none;
+//   }
+//   textarea {
+//   border: 1px solid $bv-hangar !important;
+//   border-radius: 10px !important;
+//   }
+//   margin-top: 20px;
+// }
+
+// .send {
+//   color: $indigo ;
+//   width: 40px;
+//   height: 40px;
+//   position: relative;
+//   top: -95px;
+//   left: 70%;
+//   padding: 5px;
+//   border-radius: 50%;
+//   background:$white ;
+//   border: 1px solid $bv-hangar;
+//   box-shadow: 0 0 3px $bv-hangar;
+//   text-align: center;
+//   letter-spacing: 2px;
+// }
+// .send:hover {
+//   opacity: 1;
+//   text-decoration: none;
+//   background: $indigo;
+//   color: white;
+// }
+
+
+// .m-content {
+//   p {
+//     color: $bv-hangar;
+//     font-size: 12px;
+//   }
+//   h2 {
+//     font-size: 20px;
+//   }
+//   h3 {
+//   font-size: 16px;
+//   }
+// }
+
+// .new_chatbox {
+//   text-align: center;
+//   margin: 10px auto;
+//   .first-input {
+//   border: 1px solid $bv-hangar !important;
+//   border-radius: 10px !important;
+//   height: 50px;
+//   width: 80%;
+//   padding: 10px;
+//   }
+// }
+
+// .prevchat {
+//   h3, p {
+//     color:$bv-hangar;
+//   }
+//   h3 {
+//     font-family: $bebas;
+//   }
+//   p {
+//     margin-bottom: 0px;
+//   }
+// }
