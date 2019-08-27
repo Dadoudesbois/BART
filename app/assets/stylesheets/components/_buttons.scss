@@ -93,3 +93,18 @@
   font-weight: bold;
 }
 
+.bdash {
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  letter-spacing: 2px;
+  opacity: 1;
+  transition: opacity .35s ease;
+  &:hover {
+    border-bottom: 2px solid white;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+}
+

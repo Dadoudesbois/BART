@@ -262,9 +262,21 @@ height: 100%;
   overflow: scroll;
 }
 
+.review-w {
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  margin-top: 20px;
+  border-top: 2px solid $white;
+  height: 100px;
+  overflow: scroll;
+}
+
 .card {
-  padding: 15px;
+  padding: 20px;
   overflow-wrap: break-word;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 
