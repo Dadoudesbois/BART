@@ -4,14 +4,11 @@
       <h3>#<%= "INSERT SOMETHING HERE" %></h3>
       <div class="messages">
         <% @chatbox.messages.each do |message| %>
-          <div class="message <%= message.from?(current_user) ? "right" : "" %>">
-            <%= image_tag message.user.profile.photo, class: "avatar" %>
-            <div class="message-content"><%= message.content %></div>
-          </div>
+          <%= render "messages/message", message: message %>
         <% end %>
       </div>
       <div id="create-message">
-        <%= simple_form_for [@chatbox, Message.new] do |f| %>
+        <%= simple_form_for [@chatbox, Message.new], remote: true do |f| %>
           <%= f.input :content, label: false %>
         <% end %>
       </div>
