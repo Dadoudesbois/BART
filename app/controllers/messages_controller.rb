@@ -5,9 +5,6 @@ class MessagesController < ApplicationController
     @message.chatbox = @chatbox
     @message.user = current_user
     if @message.save
-      ActionCable.server.broadcast("chatbox_#{@chatbox.id}", {
-        message: @message.to_json
-      })
       respond_to do |format|
         format.html { redirect_to chat_room_path(@chat_room) }
         format.js

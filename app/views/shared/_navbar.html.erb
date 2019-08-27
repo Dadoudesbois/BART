@@ -28,7 +28,7 @@
 
             <%if current_user.profile.is_artist || current_user.profile.is_bar_manager %>
               <%= link_to "D A S H B O A R D", dashboard_profile_path(current_user.profile), class: "dropdown-item" %>
-              <%= link_to "M E S S A G E S ", chatboxes_path, class: "dropdown-item" %>
+              <%#= link_to "M E S S A G E S ", chatboxes_path, class: "dropdown-item" %>
               <%= link_to "P R O F I L E", profile_path(current_user.profile), class: "dropdown-item" %>
             <%end%>
             <% if current_user.profile.is_bar_manager %>
