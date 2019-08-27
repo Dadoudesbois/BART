@@ -64,6 +64,7 @@ class ChatboxesController < ApplicationController
 
   def is_navbar_white?
     return true if action_name == 'index'
+    return true if action_name == 'show'
     return false
   end
 end

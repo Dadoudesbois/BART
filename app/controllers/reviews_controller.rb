@@ -48,4 +48,11 @@ class ReviewsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
+
+  def is_navbar_white?
+    return true if action_name == 'new'
+    return true if action_name == 'edit'
+    return false
+  end
+
 end

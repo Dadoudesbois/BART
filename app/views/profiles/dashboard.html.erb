@@ -14,7 +14,6 @@
         <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
         <div class="card-product-infos">
           <h2><%= event.name %></h2>
-          <p><%= event[:description] %></p>
           <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
           <% if current_user.profile.is_artist %>
              <%= link_to "Confirm event", confirm_event_path(event), class: "b-border-tbg" %>
@@ -42,7 +41,7 @@
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
-      <p><%= event[:description] %></p>
+<!--       <p><#%= event[:description] %></p> -->
       <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
       <% if current_user.profile.is_bar_manager %>
         <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
@@ -66,21 +65,32 @@
     <%= cl_image_tag event.photo, height: 160, width: 160, crop: :fill %>
     <div class="card-product-infos">
       <h2><%= event.name %></h2>
-      <p><%= event[:description] %></p>
+<!--       <p><#%= event[:description] %></p> -->
       <p><%= link_to 'See more details', event_path(event), class: "b-border-tbg" %></p>
 
       <% if current_user.profile.is_bar_manager %>
         <p><%= link_to 'Edit event', edit_event_path(event), class: "b-border-tbg" %></p>
         <p><%= link_to 'Delete event', event_path(event), class: "b-border-tbg", method: :delete, data: { confirm: "Are you sure?" } %></p>
       <%end%>
+    </div>
 
       <% if @reviews[i] %>
-        <p><%= @reviews[i][:content] %></p>
-        <p><%= @reviews[i][:rating] %></p>
-        <p><%= link_to 'Edit review', edit_event_review_path(event, @reviews[i]), class: "b-border-tbg" %></p>
-        <p><%= link_to 'Delete review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" }, class: "b-border-tbg" %></p>
+        <br><div class="review">
+          <p><%= @reviews[i][:content] %></p>
+          <% @reviews[i][:rating].times do %>
+            <i class="fas fa-star"></i>
+          <% end %><br>
+           <br><p><button type="button" class="b-border-tbg" data-toggle="modal" data-target="#addEvent<%= event.id %>ReviewModal">
+                Edit Review
+              </button></p>
+            <%= render 'reviews/new_modal', event: event, review: Review.new  %>
+          <p><%= link_to 'Delete review', event_review_path(event, @reviews[i]), method: :delete, data: { confirm: "Are you sure?" }, class: "b-border-tbg" %></p>
+        </div>
       <% else %>
-        <%= link_to 'Add a review', new_event_review_path(event), class: "b-border-tbg" %>
+         <p><button type="button" class="button b-border-tbg" data-toggle="modal" data-target="#addEvent<%= event.id %>ReviewModal">
+              Add Review
+            </button></p>
+          <%= render 'reviews/new_modal', event: event, review: Review.new  %>
       <% end %>
 
     </div>
@@ -95,4 +105,3 @@
   </div>
 
 
-</div>

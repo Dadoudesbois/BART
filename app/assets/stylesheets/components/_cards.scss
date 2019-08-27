@@ -38,6 +38,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: $gray;
+  height: 150px;
   img {
     width: 100%;
     height: auto;
@@ -222,23 +223,6 @@ height: 100%;
   opacity: 1;
 }
 
-.button {
-  color: white;
-  padding: 5px 15px;
-  border-radius: 5px;
-  border: 1px solid white;
-  box-shadow: 0 0 3px white;
-  text-align: center;
-  background: transparent;
-  letter-spacing: 2px;
-  opacity: 1;
-  transition: opacity .35s ease;
-}
-
-.button:hover {
-  color: black;
-  background: white;
-}
 
 .title {
   font-weight: 700;
@@ -255,6 +239,33 @@ height: 100%;
   }
  }
 
+ .card-rev {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  color: $gray;
+  margin: 10px auto;
+  padding: 20px;
+  overflow:scroll;
+  h2, .form-inputs {
+    color: $bv-hangar;
+  }
+}
+
+.review {
+  color: $bv-hangar;
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid $bv-hangar;
+  border-top: 1px solid $bv-hangar;
+  height: 100px;
+  overflow: scroll;
+}
+
+.card {
+  padding: 15px;
+  overflow-wrap: break-word;
+}
 
 
 
