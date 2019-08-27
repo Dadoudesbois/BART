@@ -16,15 +16,20 @@
         <div class="left">
           <h2><%= link_to event.user.profile.username.capitalize, profile_path(event.user),class:"blue-link" %>, </h2>
           <h2>at <%= link_to event.bar.name, bar_path(event.bar), class:"blue-link"%></h2>
-            <p> from
-                <%= event.start_date %></p>
-             <p>   to <%= event.end_date %>
-            </p>
-                <h4><%= link_to "See artist profile
-✨ ", profile_path(event.user.profile),class:"b-allwidth-lg fullspace" %></h4>
-                <h4><%= link_to "Discover the bar 🍹", bar_path(event.bar),class:"b-allwidth-lg fullspace" %></h4>
+          <p> from
+                <%= event.start_date %>
+          </p>
+          <p>   to <%= event.end_date %>
+          </p>
+          <h4>
+              <%= link_to "See artist profile
+✨ ", profile_path(event.user.profile),class:"b-allwidth-lg fullspace" %>
+          </h4>
+          <h4>
+              <%= link_to "Discover the bar 🍹", bar_path(event.bar),class:"b-allwidth-lg fullspace" %>
+          </h4>
 
-      </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
