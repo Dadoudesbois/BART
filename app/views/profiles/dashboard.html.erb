@@ -34,7 +34,7 @@
 
     <div class="row">
       <% @current_events.each do |event| %>
-        <div class="col-xs-10 col-sm-6 col-md-4">
+        <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
           <% if event.photo %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
             <h2 class="white"><%= event.name %></h2><br>
@@ -61,7 +61,7 @@
 
     <div class="row">
       <% @past_events.each_with_index do |event, i| %>
-        <div class="col-xs-10 col-sm-6 col-md-4">
+        <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
           <% if event.photo %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
             <h2 class="white"><%= event.name %></h2><br>
