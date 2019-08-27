@@ -91,10 +91,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @profile = Profile.find(params[:profile_id])
+    @profile = current_user.profile
     @event.user = @profile.user
     # Should be a select if a user has multiple bars
-    @event.bar = current_user.bars.first
 
     if @event.save
       redirect_to event_path(@event)
@@ -147,7 +146,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :description, :photo, :name, :category)
+    params.require(:event).permit(:start_date, :end_date, :description, :photo, :name, :category, :bar_id)
   end
 
   def bar_authorization
