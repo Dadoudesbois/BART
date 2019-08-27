@@ -1,5 +1,10 @@
-<%= simple_form_for [@message] do |b| %>
-  <%= b.error_notification %>
-  <%= b.input :content %>
-  <%= b.button :submit, "Send" %>
-<% end %>
+<br><br><br><br><br>
+<div class="container">
+  <div class="card-login">
+    <%= simple_form_for [@message] do |b| %>
+      <%= b.error_notification %>
+      <%= b.input :content %>
+      <%= b.button :submit, "Send" %>
+    <% end %>
+  </div>
+</div>
