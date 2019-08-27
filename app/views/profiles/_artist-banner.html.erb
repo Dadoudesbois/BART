@@ -9,7 +9,7 @@
         <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
       <%end%>
 
-      <h3><% if current_user.bars && current_user.profile.is_artist %>
+      <h3><% if !current_user.bars.empty? && current_user.profile.is_artist %>
         <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class:"b-border-tbg" %>
         <% end %></h3>
     </div>
@@ -29,7 +29,7 @@
         <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
       <%end%>
 
-      <h3><% if current_user.bars.empty? && current_user.profile.is_artist %>
+      <h3><% if !current_user.bars.empty? && current_user.profile.is_artist %>
         <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class:"b-border-tbg" %>
         <% end %></h3>
     </div>
@@ -130,7 +130,7 @@
         <br><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
       <%end%>
 
-    <h3><% if current_user.bars.empty? && current_user.profile.is_artist %>
+    <h3><% if !current_user.bars.empty? && current_user.profile.is_artist %>
           <%= link_to "Contact this artist !", new_profile_chatbox_path(@profile), class:"b-border-tbg" %>
         <% end %></h3>
   </div>
