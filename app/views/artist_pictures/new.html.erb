@@ -3,8 +3,6 @@
   <%= simple_form_for [@profile, @artist_picture] do |f| %>
     <%= f.error_notification %>
     <%= f.input :artist_pictures, as: :file, input_html: { multiple: true } %>
-    <%#= f.input :artist_pictures, as: :file, input_html: { multiple: true }, label: "Select multiple photos" %>
-    <%#= f.input :photo, as: :file, input_html: { multiple: true }, name: "profile[pictures_attributes][][photo]" %>
     <%= f.button :submit, "Upload", class: "b-border-tbg" %>
   <% end %>
 </div>
