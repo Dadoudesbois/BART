@@ -11,3 +11,18 @@
   text-decoration: none;
   opacity: 0.5;
 }
+
+.artist {
+  color: white;
+  font-family: $bebas;
+  font-size: 3.5em;
+  letter-spacing: 3px;
+  &:hover {
+    color:white;
+    font-weight: bold;
+  }
+}
+
+.bar {
+  font-size: 1.2em;
+}
