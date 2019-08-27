@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   resources :pictures, only: [:destroy]
   resources :artist_pictures, only: [:destroy]
 
+  namespace :events do
+    post 'search'
+  end
+
   resources :events, only: [:show, :index, :edit, :update, :destroy] do
     member do
       get 'preview'

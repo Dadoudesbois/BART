@@ -1,17 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:index, :preview, :show, :edit, :update, :confirm, :destroy]
+  before_action :set_event, only: [:preview, :show, :edit, :update, :confirm, :destroy]
   before_action :bar_authorization, only: [:new, :create]
   before_action :owner_authorization, only: [:edit, :update, :delete]
 
-  skip_before_action :authenticate_user!, only: [:preview]
+  skip_before_action :authenticate_user!, only: [:preview, :search]
 
   def index
-
-    # I don't think index is used anywhere (Pages#home instead), but just to be safe:
-    # @events = Event.all
-    @events = Event.where('confirmed = true AND end_date >= ?', DateTime.now).order('end_date ASC')
-
-    @bars = Bar.geocoded
+    @events = confirmed_current_events_filter(Event.all).order('end_date ASC')
+    bars_and_markers_for_map(@events)
 
     ######################## researches to fix the map - to discuss together
 
@@ -51,7 +47,6 @@ class EventsController < ApplicationController
     # end
 
     ######################## // researches
-
   end
 
   def preview
@@ -131,7 +126,21 @@ class EventsController < ApplicationController
     redirect_to dashboard_profile_path(current_user.profile)
   end
 
+  def search
+    perform_search
+    respond_to do |format|
+      format.js # <-- will render `app/views/events/search.js.erb`
+    end
+  end
+
   private
+
+  def perform_search
+    unaccented_query = ActiveSupport::Inflector.transliterate(params[:event_search][:content])
+    search = Event.search_event_scope(unaccented_query)
+    @events = confirmed_current_events_filter(search)
+    bars_and_markers_for_map(@events)
+  end
 
   def set_event
     @event = Event.find(params[:id])
@@ -147,5 +156,25 @@ class EventsController < ApplicationController
 
   def owner_authorization
     redirect_back(fallback_location: root_path, flash: 'You are not authorized to perform this action') if @event.bar.user != current_user
+  end
+
+  def confirmed_current_events_filter(events)
+    events.where('confirmed = true AND end_date >= ?', DateTime.now)
+  end
+
+  def markers_map(bars)
+    bars.map do |bar|
+      {
+        lat: bar.latitude,
+        lng: bar.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bar: bar }),
+        image_url: helpers.asset_url('Sea-breeze.png')
+      }
+    end
+  end
+
+  def bars_and_markers_for_map(events)
+    @bars = events.map(&:bar)
+    @markers = markers_map(@bars)
   end
 end

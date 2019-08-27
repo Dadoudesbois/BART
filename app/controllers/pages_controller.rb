@@ -2,16 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    if params[:query].present?
-      params_query = params[:query]
-      unaccented_query = ActiveSupport::Inflector.transliterate(params_query)
-      search = Event.search_event_scope(unaccented_query)
-      @events = confirmed_current_events_filter(search)
-    else
-      @events = confirmed_current_events_filter(Event.all).order('end_date ASC')
-    end
+    @events = confirmed_current_events_filter(Event.all).order('end_date ASC')
     bars_and_markers_for_map(@events)
-
   end
 
   private

@@ -16,6 +16,7 @@ initStarRating();
 
 initUpdateNavbarOnScroll();
 
+window.initMapbox = initMapbox
 initMapbox();
 initAutocomplete();
 

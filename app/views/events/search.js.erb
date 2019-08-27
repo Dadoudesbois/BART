@@ -1,0 +1,10 @@
+var event_logic = () => {
+  let event_container = document.getElementById("events-container");
+  // let map = document.getElementById("map");
+  // map.setAttribute("data-markers", "<%= escape_javascript (@markers.to_json) %>");
+
+  event_container.innerHTML = ("<%= escape_javascript (render :partial => 'events_list', locals: {events: @events, bars: @bars, markers: @markers}) %>");
+  initMapbox()
+};
+
+event_logic();
