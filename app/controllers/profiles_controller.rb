@@ -48,11 +48,10 @@ class ProfilesController < ApplicationController
 
     @reviews = @profile.user.artist_reviews
 
-    if !@reviews.empty?
-      @star = @profile.user.artist_average_rating
-    end
+    @star = @profile.user.artist_average_rating if !@reviews.empty?
 
     @bars = @profile.user.events.map(&:bar)
+    @pictures = @profile.artist_pictures
   end
 
   def new
