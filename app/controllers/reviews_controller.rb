@@ -50,9 +50,14 @@ class ReviewsController < ApplicationController
   end
 
   def is_navbar_white?
-    return true if action_name == 'new'
-    return true if action_name == 'edit'
-    return false
+    if action_name == 'new'
+      return true
+    elsif
+      action_name == 'edit'
+      return true
+    else
+      return false
+    end
   end
 
 end

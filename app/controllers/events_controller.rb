@@ -177,4 +177,15 @@ class EventsController < ApplicationController
     @bars = events.map(&:bar)
     @markers = markers_map(@bars)
   end
+
+  def is_navbar_white?
+    if action_name == 'new'
+      return true
+    elsif
+      action_name == 'edit'
+      return true
+    else
+      return false
+    end
+  end
 end

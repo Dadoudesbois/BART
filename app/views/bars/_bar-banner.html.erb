@@ -144,11 +144,11 @@
 
       <% else %>
 
-        <br><br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+        <br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"b-border-whitebg" %> </p>
       <%end%>
 
     <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-whitebg" %>
         <% end %></h3>
   </div>
 <%end%>

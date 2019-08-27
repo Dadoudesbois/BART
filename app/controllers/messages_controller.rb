@@ -22,6 +22,18 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
+
+  def is_navbar_white?
+    if action_name == 'new'
+      return true
+    elsif
+      action_name == 'edit'
+      return true
+    else
+      return false
+    end
+  end
   # before_action :set_chatbox, only: [:create]
   # before_action :set_message, only: [:edit, :update, :destroy]
 
