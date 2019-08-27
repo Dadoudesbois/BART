@@ -26,7 +26,8 @@ class BarsController < ApplicationController
     @pictures = @bar.pictures
 
     @reviews = @bar.bar_reviews
-    @star = @bar.bar_average_rating
+
+    @star = @bar.bar_average_rating if !@reviews.empty?
   end
 
   def new

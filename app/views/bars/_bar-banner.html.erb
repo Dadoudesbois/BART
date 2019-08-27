@@ -3,20 +3,22 @@
 
   <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1200x600);">
     <div class="container">
-      <h1><%= @bar[:name].capitalize %></h1>
-      <h3><%= @bar[:description] %></h3>
-      <% if current_user == @bar.user %>
+      <div class="content">
+        <h1><%= @bar[:name].capitalize %></h1>
+        <h3><%= @bar[:description] %></h3>
+        <% if current_user == @bar.user %>
 
-        <br><br><p><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"bw-border-tbg" if current_user == @bar.user %></p>
+          ><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"bw-border-tbg" if current_user == @bar.user %>
 
-      <% else %>
+        <% else %>
 
-        <br><br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
-      <%end%>
+          <%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %>
+        <%end%>
 
-      <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-        <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
-        <% end %></h3>
+        <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+          <% end %></h3>
+        </div>
     </div>
   </div>
 
@@ -27,20 +29,22 @@
 
   <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @pictures[0].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>');">
     <div class="container">
-      <h1><%= @bar[:name].capitalize %> </h1>
-      <h3><%= @bar[:description] %></h3>
-       <% if current_user == @bar.user %>
+      <div class="content">
+        <h1><%= @bar[:name].capitalize %> </h1>
+        <h3><%= @bar[:description] %></h3>
+         <% if current_user == @bar.user %>
 
-        <br><br><p><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"bw-border-tbg" if current_user == @bar.user %></p>
+          <br><br><p><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"bw-border-tbg" if current_user == @bar.user %></p>
 
-      <% else %>
+        <% else %>
 
-        <br><br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
-      <%end%>
+          <br><br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
+        <%end%>
 
-      <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-        <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
-        <% end %></h3>
+        <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+          <% end %></h3>
+        </div>
     </div>
   </div>
 

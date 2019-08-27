@@ -10,17 +10,19 @@
   font-family: $bebas;
   font-size: 13em;
   text-align: left;
-  position: absolute;
-  left: 40px;
   color: white;
   }
   h3, a {
   color: white;
   text-align: left;
-  position: absolute;
-  left: 40px;
+  }
+  .content {
+    position: absolute;
+    top: 200px;
+    left: 40px;
   }
 }
+
 
 #carousel-example-2 {
   height: 700px;

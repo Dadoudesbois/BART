@@ -1,16 +1,18 @@
-<%= simple_form_for(@bar) do |b| %>
-  <%= b.error_notification %>
-  <%= b.input :name,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: "name" }%>
-  <%= b.input :address,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: "address" }%>
-  <%= b.input :description,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: "description" }%>
-  <%= b.button :submit, "Submit", class: "b-border-tbg" %>
-<% end %>
+<div class="card-login">
+  <%= simple_form_for(@bar) do |b| %>
+    <%= b.error_notification %>
+    <%= b.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" }%>
+    <%= b.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
+    <%= b.input :description,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "description" }%>
+    <%= b.button :submit, "Submit", class: "b-border-tbg" %>
+  <% end %>
+</div>
