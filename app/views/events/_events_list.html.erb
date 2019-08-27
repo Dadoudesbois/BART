@@ -26,7 +26,8 @@
               Preview
             </button>
 
-            <%= render 'pages/modal_prev', event: event %>
+
+            <%= render :partial => 'pages/modal_prev', :locals => { event: event } %>
 
 <!--           <#%= link_to "Preview", preview_event_path(event), class: "button"%> -->
 
@@ -42,5 +43,5 @@
       </div>
     <% end %>
   </div>
-  <% end %>
+<% end %>
 
