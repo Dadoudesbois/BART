@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>select pictures to upload</h1>
+  <%= simple_form_for [@profile, @picture] do |f| %>
+    <%= f.error_notification %>
+    <%#= f.input :photo %>
+    <%#= f.input :photo_cache, as: :hidden %>
+    <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, "Upload", class: "b-border-tbg" %>
+  <% end %>
+</div>
