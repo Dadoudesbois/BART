@@ -1,7 +1,9 @@
+<% if @profile.is_artist %>
+<%= render 'artist-banner'%>
+<%end%>
 <div class="container">
 
   <% if @profile.is_artist %>
-  <%= render 'artist-banner'%>
 
   <br><div class="cards-grid-photos">
     <% @pictures.each do |picture| %>
@@ -22,9 +24,6 @@
         <div class="card-profile">
           <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
           <div class="left-description">
-            <h2>
-              <%= @profile.username %>
-            </h2>
             <h4>
               <% @star.times do %>
                   <i class="fas fa-star"></i>
