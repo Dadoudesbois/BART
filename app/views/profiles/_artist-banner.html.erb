@@ -1,9 +1,8 @@
 <% if !@pictures[0]%>
 
-  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1200x600);">
+  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/F35EmcotWPY/1200x600);">
     <div class="container">
       <h1><%= @profile[:username].capitalize %></h1>
-      <h3><%= @profile[:artist_description] %></h3>
       <% if current_user == @profile.user %>
 
         <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
@@ -23,7 +22,6 @@
   <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @pictures[0].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>');">
     <div class="container">
       <h1><%= @profile[:username].capitalize %> </h1>
-      <h3><%= @profile[:artist_description] %></h3>
        <% if current_user == @profile.user %>
 
         <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
