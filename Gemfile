@@ -20,7 +20,10 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'geocoder'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-gem 'pg_search'
+# gem 'pg_search'
+gem "algoliasearch-rails"
+gem 'jquery-rails'
+gem 'hogan_assets'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

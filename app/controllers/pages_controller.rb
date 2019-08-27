@@ -3,10 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-      params_query = params[:query]
-      unaccented_query = ActiveSupport::Inflector.transliterate(params_query)
-      search = Event.search_event_scope(unaccented_query)
-      @events = confirmed_current_events_filter(search)
+      search(params)
     else
       @events = confirmed_current_events_filter(Event.all).order('end_date ASC')
     end
@@ -14,6 +11,13 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def search(params)
+    params_query = params
+    unaccented_query = ActiveSupport::Inflector.transliterate(params_query)
+    search = Event.search_event_scope(unaccented_query)
+    @events = confirmed_current_events_filter(search)
+  end
 
   def confirmed_current_events_filter(events)
     events.where('confirmed = true AND end_date >= ?', DateTime.now)

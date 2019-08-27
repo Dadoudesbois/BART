@@ -1,3 +1,5 @@
+require 'hogan'
+
 <%= render 'home-banner'%>
 
 <div class="container">
@@ -5,7 +7,15 @@
 
   <br><h1>Search for an event nearby !</h1>
 
-        <div
+  <%= simple_form_for(:event_search, url: events_search_path, remote: true) do |form| %>
+    <%= form.input :content %>
+    <%= form.button :submit %>
+  <% end %>
+
+  <div id="event_elements">
+
+  <% if !@events.empty? %>
+         <div
       id="map"
       style="width: 100%;
       height: 300px; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
@@ -13,27 +23,23 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div><br>
 
-  <%= form_tag root_path, method: :get do %>
-    <div class="search-form-control form-group">
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find an event by Artist, Bar, ..."
-    %>
-    <%= submit_tag "Search", class: "btn" %>
+<div class="row">
+  <% @events.each do |event| %>
+  <div class="col-sm-4">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
+      <p class="title"><%= event.name %></p>
+      <% if current_user %>
+        <%= link_to "Show", event_path(event), class: "button" %>
+      <% else %>
+        <%= link_to "Preview", preview_event_path(event), class: "button"%>
+      <% end %>
     </div>
+  </div>
   <% end %>
+</div>
 
-  <% if !@events.empty? %>
-  <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
-          <p class="title"><%= event.name %></p>
-          <% if current_user %>
-            <%= link_to "Show", event_path(event), class: "button" %>
-          <% else %>
-          <%= link_to "Preview", preview_event_path(event), class: "button"%>
+ </div>
+
 
        <!--    to keep !! quick dirty pop up solution try1
 
@@ -54,12 +60,55 @@
 
        /////another try : not working yet     -->
 
-          <% end %>
-          </div>
-      </div>
-    <% end %>
-  </div>
+
 <% end %>
+
+<div class="well">
+  A modern auto-complete field based on <a href="https://github.com/algolia/autocomplete.js"><code>autocomplete.js</code></a> + <code>Hogan</code> and <code>AlgoliaSearch JS Client</code> example.
+</div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <input name="name" placeholder="Name or description" id="q" class="form-control" />
+
+      <div class="search-terms">
+        Try
+        <a href="javascript:void(0)">John</a>,
+        <a href="javascript:void(0)">Jonn</a>,
+        <a href="javascript:void(0)">roebekah</a>
+      </div>
+    </div>
+  </div>
+
+<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var template = Hogan.compile('<div class="hit-auto-complete">' +
+        '<div class="name">{{{_highlightResult.name.value}}}</div>' +
+        '<div class="description">{{{_highlightResult.description.value}}}</div>' +
+        'From: <div class="start_date">{{{_highlightResult.start_date.value}}}</div>' +
+        'To: <div class="end_date">{{{_highlightResult.end_date.value}}}</div>' +
+      '</div>');
+    var ac = autocomplete('#q', { hint: true }, {
+      source: autocomplete.sources.hits(client.initIndex('<%= Event.index_name %>'), { hitsPerPage: 5 }),
+      displayKey: 'name',
+      templates: {
+        suggestion: function(hit) {
+          return template.render(hit);
+        }
+      }
+    }).on('autocomplete:selected', function(event, suggestion) {
+      console.log('onselected', suggestion);
+    });
+    $('.search-terms a').click(function(e) {
+      ac.autocomplete.setVal($(this).text());
+      ac.autocomplete.open();
+      ac.focus();
+    })
+  });
+</script>
 
 
 
