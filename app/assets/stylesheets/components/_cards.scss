@@ -173,10 +173,18 @@ height: 100%;
   background-position: center;
   position: relative;
   margin-top: 20px;
+  display: flex;
+  flex-direction: vertical;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 20px;
+  overflow-wrap: break-word;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
+
+
 
 .layer {
   height: 100%;
@@ -271,12 +279,6 @@ height: 100%;
   border-top: 2px solid $white;
   height: 100px;
   overflow: scroll;
-}
-
-.card {
-  padding: 20px;
-  overflow-wrap: break-word;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 
