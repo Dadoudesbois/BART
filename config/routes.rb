@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #   resources :messages, only: [:new, :create]
   # end
   resources :chatboxes, only: [ :show ] do
-    rersources :messages, only: [ :create ]
+    resources :messages, only: [ :create ]
   end
 
   # resources :messages, only: [:edit, :update, :destroy]

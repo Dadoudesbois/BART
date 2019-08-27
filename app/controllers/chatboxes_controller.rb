@@ -1,6 +1,6 @@
 class ChatboxesController < ApplicationController
   def show
-    @chatbox = Chatbox.find(params[:id])
+    @chatbox = Chatbox.includes(messages: :user).find(params[:id])
   end
 
   # def index
