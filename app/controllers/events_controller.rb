@@ -70,7 +70,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    store_location
     @artist = @event.user.profile
 
     @bar = @event.bar
@@ -131,10 +130,6 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.js # <-- will render `app/views/events/search.js.erb`
     end
-  end
-
-  def store_location
-    session[:return_to] = request.fullpath if request.get? and controller_name != "user_sessions" and controller_name != "sessions"
   end
 
   private
