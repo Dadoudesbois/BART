@@ -4,3 +4,29 @@
     line-height: 70%
   }
 }
+
+
+.modal-header, .modal-title, input {
+  color: $bv-hangar !important;
+}
+
+.modal-title #exampleModalLongTitle h2{
+  color:$bv-hangar !important;
+}
+
+.subm {
+  font-size: 1.5em !important;
+  height: 20px;
+}
+
+.sml {
+  font-size: 0.5em;
+  color: white !important;
+  background: transparent;
+  border-radius: 5px;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.5;
+  }
+}

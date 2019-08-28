@@ -16,6 +16,11 @@
                   </button>
           <%= render 'chatboxes/new_modal', profile: @profile, chatbox: Chatbox.new  %>
 
+          <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @profile.id %>EventModal">
+                    Create an event with this artist !
+                  </button>
+          <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
+
           <% end %></h3>
         </div>
     </div>

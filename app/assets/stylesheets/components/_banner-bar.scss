@@ -15,6 +15,10 @@
   h3, a {
   color: white;
   text-align: left;
+  #modal > label ,  {
+    color:$bv-hangar !important;
+    font-size: 1.5em;
+  }
   }
   .content {
     position: absolute;
@@ -61,6 +65,10 @@
   top: -600px;
   left: -150px;
   color: white;
+}
+
+label {
+  color: black;
 }
 
 
