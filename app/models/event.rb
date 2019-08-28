@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   pg_search_scope :search_event_scope,
-    against: [:name, :description, :start_date, :end_date],
+    against: [:name, :description, :start_date, :end_date, :category],
     associated_against: {
       bar: [:name, :address],
       profile: [:username]
