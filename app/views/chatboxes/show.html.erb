@@ -2,25 +2,30 @@
       <div class="sidenav">
         <% @chatboxes.each do |hash| %>
           <div class="sidenav-container">
-            <div>
-              <h3><%= hash[:partners_name] %>:</h3>
+            <div class="partner-name">
+              <h3><%= link_to hash[:partners_name], profile_path(hash[:partners_profile]) %>:</h3>
             </div>
-            <div class="sidenav-message-container">
+            <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
               <div>
                 <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
               </div>
-              <div>
-                <h4><%= hash[:last_msgs_content] %></h4><br>
+              <div class="last-msg-content">
+                <p><%= hash[:last_msgs_content] %></p>
               </div>
-              <div>
-                <%= link_to "=>", chatbox_path(hash[:id]),class: "b-border-tbg" %>
-              </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
         <div class="message-cont">
-          <div class="chat-header"><h4>#<%= "#{@sender} and #{@recipient}" %></h4></div>
+          <div class="chat-header">
+            <h4>#<%= "#{@sender} and #{@recipient}" %></h4>
+            <% if !current_user.bars.empty? %>
+              <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
+                        Create an event !
+                      </button>
+              <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+            <% end %>
+          </div>
           <div class="messages">
             <% @chatbox.messages.each do |message| %>
               <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -28,7 +33,7 @@
           </div>
           <div id="create-message">
             <%= simple_form_for [ @chatbox, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-              <%= f.text_field :content, label: false %>
+              <%= f.input :content, label: false %>
             <% end %>
           </div>
         </div>

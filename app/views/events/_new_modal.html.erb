@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="addProfile<%= @profile.id %>EventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="addProfile<%= profile.id %>EventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/F35EmcotWPY/1200x600);">
       <div class="modal-header">
@@ -16,7 +16,7 @@
       <div class="modal-body">
 
 
-            <%= simple_form_for [@profile, event] do |f| %>
+            <%= simple_form_for [profile, event] do |f| %>
 
 
               <%= f.error_notification %>
