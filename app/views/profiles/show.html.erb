@@ -1,4 +1,9 @@
-<div class="container"><br><br><br><br>
+
+<% if @profile.is_artist %>
+<%= render 'artist-banner'%>
+<%end%>
+
+<div class="container">
 
   <% if @profile.is_artist %>
 
@@ -15,6 +20,7 @@
   </div>
 
 
+
     <div class="row">
 
       <div class="col-xs-10 col-sm-12 col-md-8">
@@ -26,12 +32,9 @@
                   <i class="fas fa-star"></i>
               <% end %>
             </h4>
-            <h3>
+            <h4>
               <%= @profile.artist_description %>
-            </h3>
-            <%if current_user == @profile.user %>
-              <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
-            <%end%>
+            </h4>
           </div>
         </div>
       </div>
@@ -114,9 +117,7 @@
 
   <% elsif @profile.is_bar_manager %>
 
-    <div class="row">
-      <div class="col-xs-10 col-sm-12 col-md-8">
-      <div class="card-profile">
+      <div class="card-profile-s">
       <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
       <div class="left-description">
         <h2>
@@ -133,16 +134,6 @@
       </div>
     </div>
 
-  </div>
-
-      <div class="col-xs-10 col-sm-8 col-md-4"
-            id="map"
-            style="width: 100%;
-            height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-</div>
 
     <% if !@profile.user.events.empty? %>
       <br><h1>Events</h1>

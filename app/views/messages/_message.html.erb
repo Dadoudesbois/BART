@@ -1,4 +1,5 @@
 <div class="message <%= user_is_messages_author ? "right" : "" %>">
-  <%= cl_image_tag message.user.profile[:photo], class: "avatar" %>
+  <%#= raise %>
+  <%= cl_image_tag message.user.profile.photo, class: "avatar" %>
   <div class="message-content"><%= message.content %></div>
 </div>
