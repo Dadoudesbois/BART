@@ -30,9 +30,9 @@
 
     </div>
 
-      <% if current_user.profile.is_bar_manager %>
+      <% if current_user == @event.bar.user %>
         <p><%= link_to 'Edit event', edit_event_path(@event), class: "b-border-tbg" %></p>
-        <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure you want to delete this event?" } %></p>
       <%end%>
 
 </div>
