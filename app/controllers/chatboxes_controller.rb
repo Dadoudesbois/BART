@@ -1,11 +1,11 @@
 class ChatboxesController < ApplicationController
-
   def index
     @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).eager_load(recipient: [:profile], sender: [:profile], messages: :user)
 
     @chatboxes = @chatboxes.map do |chatbox|
       hash = { id: chatbox.id }
       hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
+      hash[:partners_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
       hash[:last_msgs_content] = chatbox&.messages&.last&.content
       hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
       hash[:user_photo] = chatbox&.messages&.last&.user&.profile&.photo
@@ -17,15 +17,16 @@ class ChatboxesController < ApplicationController
     @chatbox = Chatbox.includes(messages: :user).find(params[:id])
     @sender = @chatbox.sender.profile.username
     @recipient = @chatbox.recipient.profile.username
+    @artist_profile = @chatbox.sender.profile.is_artist ? @chatbox.sender.profile : @chatbox.recipient.profile
     @messages = @chatbox.messages
     @usernames = @messages.map { |message| message.user.profile.username }
     @message = Message.new
 
     @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).eager_load(recipient: [:profile], sender: [:profile], messages: :user)
-
     @chatboxes = @chatboxes.map do |chatbox|
       hash = { id: chatbox.id }
       hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
+      hash[:partners_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
       hash[:last_msgs_content] = chatbox&.messages&.last&.content
       hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
       hash[:user_photo] = chatbox&.messages&.last&.user&.profile&.photo

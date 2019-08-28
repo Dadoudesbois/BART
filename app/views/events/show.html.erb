@@ -36,10 +36,12 @@
         ></div>
 
 
+
       <% if current_user.profile.is_bar_manager %>
         <p><%= link_to 'Edit event', edit_event_path(@event), class: "b-border-tbg" %></p>
         <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg", data: { confirm: "Are you sure?" } %></p>
       <%end%>
+
 
 </div>
 
