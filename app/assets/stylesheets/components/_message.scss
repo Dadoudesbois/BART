@@ -101,17 +101,20 @@ input.form-control {
 //   text-align:center;
 // }
 
+.input-des {
+  label {
+     display: none;
+   }
+  textarea {
+    border: 1px solid $bv-hangar !important;
+    border-radius: 10px !important;
+  }
+  margin-top: 20px;
+ }
 
-// .input-des {
-//   label {
-//     display: none;
-//   }
-//   textarea {
-//   border: 1px solid $bv-hangar !important;
-//   border-radius: 10px !important;
-//   }
-//   margin-top: 20px;
-// }
+input > #message_content {
+  width: 500px !important;
+}
 
 // .send {
 //   color: $indigo ;
