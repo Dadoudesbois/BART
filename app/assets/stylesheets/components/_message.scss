@@ -64,6 +64,8 @@ input.form-control {
 }
 
 .chat-header {
+  display: flex;
+  justify-content: space-between;
   background-color: #807FAC;
   color: white;
   padding: 10px 20px;

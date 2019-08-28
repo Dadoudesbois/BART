@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #d8d8e6;
+  background-color: #333244;
   width: 300px;
   height: 100%;
   margin-top: 70px;
@@ -12,6 +12,9 @@
 
 .sidenav-container {
   border-bottom: 1px solid;
+  a:hover, a:visited, a:link, a:active{
+    color: #fff;
+  }
 }
 
 // .sidenav-container a:hover, a:visited, a:link, a:active {
@@ -24,7 +27,7 @@
   align-items: center;
   padding-right: 5px;
   word-break: break-word;
-  background-color: #d8d8e6;
+  background-color: #333244;
 }
 
 .sidenav-message-container:hover {
@@ -38,4 +41,5 @@
 
 .partner-name {
   text-align: center;
+
 }
