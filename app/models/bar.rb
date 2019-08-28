@@ -25,6 +25,10 @@ class Bar < ApplicationRecord
 
   def bar_average_rating
     reviews = self.bar_reviews
-    reviews.map(&:rating).sum / reviews.count
+    if reviews.any?
+      reviews.map(&:rating).sum / reviews.count
+    else
+      0
+    end
   end
 end
