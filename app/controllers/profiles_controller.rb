@@ -95,7 +95,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:username, :address, :photo, :is_artist, :is_bar_manager, :artist_description)
+    params.require(:profile).permit(:username, :address, :photo, :is_artist, :is_bar_manager, :artist_description, :instagram_username)
   end
 
   def profile_authorization
