@@ -4,7 +4,11 @@
   <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1300x780);">
     <div class="container">
       <div class="content">
-        <h1><%= @bar[:name].capitalize %></h1>
+        <h1><%= @bar[:name].capitalize %>
+              <% @star.times do %>
+                  <i class="fas fa-star"></i>
+              <% end %>
+        </h1>
         <h3><%= @bar[:description] %></h3>
         <% if current_user == @bar.user %>
 
@@ -136,19 +140,19 @@
 <!--/.Carousel Wrapper-->
 
   <div class="container">
-    <br><h3><%= @bar[:description] %></h3>
+    <br><br><br><br><h3><%= @bar[:description] %></h3>
 
       <% if current_user == @bar.user %>
 
-        <br><p><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"b-border-tbg" if current_user == @bar.user %></p>
+        <br><h3><%= link_to 'Add pictures', new_bar_picture_path(@bar), class:"b-border-tbg" if current_user == @bar.user %></h3>
 
       <% else %>
 
-        <br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"b-border-whitebg" %> </p>
+        <br><h3><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"b-border-tbg" %></h3>
       <%end%>
 
-    <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-whitebg" %>
+   <% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
+          <h3><%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-allwidth-lg fullspace" %>
         <% end %></h3>
   </div>
 <%end%>

@@ -69,7 +69,7 @@
       </div><br>
 
 
-      <% if !@reviews.empty?%>
+      <% if !@reviews.empty? && current_user.profile.is_bar_manager%>
         <h1>Reviews</h1>
           <div class="row">
             <% @reviews.each do |review| %>
@@ -87,8 +87,9 @@
                 </div>
               </div>
             <% end %>
-      <% end %>
           </div>
+      <% end %>
+
 
     <% end %>
 
