@@ -7,6 +7,7 @@
         <% if current_user == @profile.user %>
 
           <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
+          <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "bw-border-tbg" %></p>
         <%end%>
 
         <h3><% if !current_user.bars.empty? %>
