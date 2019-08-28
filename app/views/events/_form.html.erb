@@ -5,7 +5,7 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :start_date, as: :date_time_picker %>
+  <%= f.input :start_date, html5: true, html: {type: "datetime-local" } %>
   <%= f.input :end_date, order: [:day, :month, :year] %>
   <%= f.input :description %>
   <%= f.input :category, collection: ["Concert", "Exhibition", "Performance"] %>
