@@ -1,65 +1,49 @@
-<br><br><br><br><br>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4>#<%= "#{@sender} and #{@recipient}" %></h4></div>
-      <div class="messages">
-        <% @chatbox.messages.each do |message| %>
-          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+      <div class="sidenav">
+        <% @chatboxes.each do |hash| %>
+          <div class="sidenav-container">
+            <div>
+              <h3><%= hash[:partners_name] %>:</h3>
+            </div>
+            <div class="sidenav-message-container">
+              <div>
+                <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
+              </div>
+              <div>
+                <h4><%= hash[:last_msgs_content] %></h4><br>
+              </div>
+              <div>
+                <%= link_to "=>", chatbox_path(hash[:id]),class: "b-border-tbg" %>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
-      <div id="create-message">
-        <%= simple_form_for [ @chatbox, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-          <%#= f.input :content, label: false %>
-          <%= f.text_field :content, label: false %>
-          <%#= f.button :submit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+        <div class="message-cont">
+          <div class="chat-header"><h4>#<%= "#{@sender} and #{@recipient}" %></h4></div>
+          <div class="messages">
+            <% @chatbox.messages.each do |message| %>
+              <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+            <% end %>
+          </div>
+          <div id="create-message">
+            <%= simple_form_for [ @chatbox, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+              <%= f.text_field :content, label: false %>
+            <% end %>
+          </div>
+        </div>
+    <% content_for :after_js do %>
+      <script>
+        scrollLastMessageIntoView();
+        App['chatbox_<%= @chatbox.id %>'] = App.cable.subscriptions.create({ channel: 'ChatboxesChannel', chatbox_id: <%= @chatbox.id %> }, {
+          received: (data) => {
+            if (data.current_user_id !== <%= current_user.id %>) {
+              const messagesContainer = document.querySelector('.messages');
+              messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+              scrollLastMessageIntoView();
+            }
+          }
+        })
+      </script>
+    <% end %>
 </div>
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['chatbox_<%= @chatbox.id %>'] = App.cable.subscriptions.create({ channel: 'ChatboxesChannel', chatbox_id: <%= @chatbox.id %> }, {
-      received: (data) => {
-        if (data.current_user_id !== <%= current_user.id %>) {
-          const messagesContainer = document.querySelector('.messages');
-          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-          scrollLastMessageIntoView();
-        }
-      }
-    })
-  </script>
-<% end %>
-
-
-<!-- <div class="container"> -->
-  <!-- <div class="card-login"> -->
-  <!-- <h1> <%= @sender %> AND <%= @recipient %></h1> -->
-  <%# @messages.each_with_index do |message, i| %>
-  <%# if message.user == current_user %>
-    <!-- <div class="message-sent"> -->
-  <%# else %>
-    <!-- <div class="message-received"> -->
-  <%# end %>
-      <!-- <div class="m-content"> -->
-        <!-- <h2><%#= @usernames[i].upcase %></h2> -->
-          <!-- <h3><%#= message[:content] %> </h3> -->
-        <!-- <p><%#= message[:date] %></p> -->
-      <!-- </div> -->
-      <!-- <div class="m-del"> -->
-        <%# if message[:user_id] == current_user[:id] %>
-          <%#= link_to '🗑️', message_path(message), method: :delete, data: { confirm: "Are you sure?" }%>
-        <%# end %>
-      <!-- </div> -->
-    <!-- </div> -->
-  <%# end %>
-
-  <%#= simple_form_for [@chatbox, @message] do |b| %>
-    <%#= b.error_notification %>
-    <%#= b.input :content, wrapper_html: { class: "input-des" }%>
-    <!-- </div> -->
-    <%#= b.button :submit, "", class: "send" %>
-  <%# end %>
-<!-- </div> -->
