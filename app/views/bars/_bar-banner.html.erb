@@ -1,7 +1,7 @@
   <!--Default banners when 0 or 1 pic only -->
 <% if !@pictures[0]%>
 
-  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1200x600);">
+  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1300x780);">
     <div class="container">
       <div class="content">
         <h1><%= @bar[:name].capitalize %></h1>
@@ -27,7 +27,7 @@
 
 <% if @pictures[0] && !@pictures[1]%>
 
-  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @pictures[0].photo, :width => 1200, :height => 400, crop: :fill, class:"d-block w-100"%>');">
+  <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @pictures[0].photo, :width => 1300, :height => 780, crop: :fill, class:"d-block w-100"%>');">
     <div class="container">
       <div class="content">
         <h1><%= @bar[:name].capitalize %> </h1>
@@ -57,20 +57,20 @@
 
   <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
       <!--Indicators-->
-      <ol class="carousel-indicators">
+<!--       <ol class="carousel-indicators">
           <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-2" data-slide-to="1"></li>
           <li data-target="#carousel-example-2" data-slide-to="2"></li>
           <li data-target="#carousel-example-2" data-slide-to="3"></li>
           <li data-target="#carousel-example-2" data-slide-to="4"></li>
 
-      </ol>
+      </ol> -->
       <!--/.Indicators-->
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
               <div class="view">
-              <%= cl_image_tag @pictures[0].photo, width: 1200, height: 700, crop: :fill, class:"d-block w-100"%>
+              <%= cl_image_tag @pictures[0].photo, width: 1300, height: 780, crop: :fill, class:"d-block w-100"%>
                   <div class="mask rgba-black-light"></div>
               </div>
               <div class="carousel-caption">
@@ -80,7 +80,7 @@
           <div class="carousel-item">
               <!--Mask color-->
               <div class="view">
-                <%= cl_image_tag @pictures[1].photo, width: 1200, height: 700,crop: :fill, class:"d-block w-100"%>
+                <%= cl_image_tag @pictures[1].photo, width: 1300, height: 780,crop: :fill, class:"d-block w-100"%>
                   <div class="mask rgba-black-strong"></div>
               </div>
               <div class="carousel-caption">
@@ -91,7 +91,7 @@
             <div class="carousel-item">
                 <!--Mask color-->
                 <div class="view">
-                  <%= cl_image_tag @pictures[2].photo, width: 1200, height: 700, crop: :fill, class:"d-block w-100"%>
+                  <%= cl_image_tag @pictures[2].photo, width: 1300, height: 780, crop: :fill, class:"d-block w-100"%>
                     <div class="mask rgba-black-slight"></div>
                 </div>
                 <div class="carousel-caption">
@@ -103,7 +103,7 @@
             <div class="carousel-item">
                 <!--Mask color-->
                 <div class="view">
-                  <%= cl_image_tag @pictures[3].photo, width: 1200, height: 700, crop: :fill, class:"d-block w-100"%>
+                  <%= cl_image_tag @pictures[3].photo, width: 1300, height: 780, crop: :fill, class:"d-block w-100"%>
                     <div class="mask rgba-black-slight"></div>
                 </div>
                 <div class="carousel-caption">
@@ -115,7 +115,7 @@
             <div class="carousel-item">
                 <!--Mask color-->
                 <div class="view">
-                  <%= cl_image_tag @pictures[4].photo, width: 1200, height: 700, crop: :fill, class:"d-block w-100"%>
+                  <%= cl_image_tag @pictures[4].photo, width: 1300, height: 780, crop: :fill, class:"d-block w-100"%>
                     <div class="mask rgba-black-slight"></div>
                 </div>
                 <div class="carousel-caption">
