@@ -21,7 +21,10 @@
 
 
 
-        <div class="card-profile-s">
+    <div class="row">
+
+      <div class="col-xs-10 col-sm-12 col-md-8">
+        <div class="card-profile">
           <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
           <div class="left-description">
             <h4>
@@ -117,9 +120,7 @@
 
   <% elsif @profile.is_bar_manager %>
 
-    <br><br><br><div class="row">
-      <div class="col-xs-10 col-sm-12 col-md-8">
-      <div class="card-profile">
+      <div class="card-profile-s">
       <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
       <div class="left-description">
         <h2>
@@ -136,8 +137,6 @@
       </div>
     </div>
 
-  </div>
-</div>
 
     <% if !@profile.user.events.empty? %>
       <br><h1>Events</h1>
