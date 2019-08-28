@@ -14,10 +14,17 @@
       </div>
 
       <div class="modal-body">
-        <%= render 'reviews/form', event: event, review: review %>
+            <%= simple_form_for [event, review] do |f| %>
+              <%= f.error_notification %>
+
+              <%= f.input :content,  wrapper_html: { class: "input-des" } %>
+              <%= f.input :rating, collection: 1..5,  wrapper_html: { class: "input-des" } %>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="b-border-whitebg" data-dismiss="modal">back</button>
+        <button type="button" class="b-border-whitebg" data-dismiss="modal">x</button>
+        <%= f.button :submit, "Submit", class:"b-border-whitebg" %>
+    <% end %>
       </div>
     </div>
   </div>

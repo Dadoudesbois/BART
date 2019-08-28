@@ -32,12 +32,9 @@
                   <i class="fas fa-star"></i>
               <% end %>
             </h4>
-            <h3>
+            <h4>
               <%= @profile.artist_description %>
-            </h3>
-            <%if current_user == @profile.user %>
-              <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "b-border-tbg" %></p>
-            <%end%>
+            </h4>
           </div>
         </div>
       </div>

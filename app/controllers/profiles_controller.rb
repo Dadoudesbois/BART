@@ -95,7 +95,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:username, :address, :photo, :is_artist, :is_bar_manager, :artist_description)
+    params.require(:profile).permit(:username, :address, :photo, :is_artist, :is_bar_manager, :artist_description, :instagram_username)
   end
 
   def profile_authorization
@@ -127,11 +127,18 @@ class ProfilesController < ApplicationController
   end
 
   def is_navbar_white?
-    if action_name == 'dashboard'
+    if action_name == 'new'
+      return true
+    elsif
+      action_name == 'edit'
       return true
     elsif action_name == 'show' && @profile.is_bar_manager
       return true
+    elsif
+      action_name == 'dashboard'
+      return true
     else
       return false
+    end
   end
 end

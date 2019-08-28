@@ -5,6 +5,7 @@
   margin: 10px auto;
 }
 
+
 .cards-grid-photos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -56,14 +57,39 @@
   img {
     height: 100%;
     width: auto;
+    object-fit: cover;
   }
   .left-description {
     line-height: 90%;
+    opacity: .7;
     h2 , i {
       color: $gray;
     }
   }
 }
+
+// .card-product {
+//   height: 300px;
+//   background: white;
+//   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+//   display: flex;
+//   align-items: start;
+//   margin: 10px auto;
+//   img {
+//     height: 100%;
+//     width: auto;
+//     object-fit: cover;
+//   }
+//   .card-product-infos {
+//     line-height: 90%;
+//     padding: 16px;
+//     opacity: .7;
+//     h2 , i {
+//       color: $gray;
+//     }
+//   }
+// }
+
 
 .card-hz-s{
   background-color:white;
@@ -77,7 +103,7 @@
     width: auto;
   }
   .left-description {
-    line-height: 90%;
+    line-height: 100%;
     h2 , i {
       color: $gray;
     }
@@ -96,7 +122,7 @@
     width: auto;
   }
   .left-description {
-    line-height: 90%;
+    line-height: 100%;
     h2 , i {
       color: $gray;
     }
@@ -133,7 +159,7 @@
     width: auto;
   }
   .left-description {
-    line-height: 90%;
+    line-height: 100%;
     h2 , i {
       color: $bv-hangar;
     }
@@ -173,10 +199,18 @@ height: 100%;
   background-position: center;
   position: relative;
   margin-top: 20px;
+  display: flex;
+  flex-direction: vertical;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 20px;
+  overflow-wrap: break-word;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
+
+
 
 .layer {
   height: 100%;
@@ -195,19 +229,23 @@ height: 100%;
   opacity: 1;
 }
 
+.photocard {
+  position: relative;
+}
+
 .card-remove-link {
   color: #ffffff;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   position: absolute;
-  right: 10px;
-  top: 10px;
-  transform: rotate(45deg);
+  right: 30px;
+  top: 5px;
+  // transform: rotate(45deg);
   opacity: 0.8;
   &:hover {
     color: white;
@@ -271,12 +309,6 @@ height: 100%;
   border-top: 2px solid $white;
   height: 100px;
   overflow: scroll;
-}
-
-.card {
-  padding: 20px;
-  overflow-wrap: break-word;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 
