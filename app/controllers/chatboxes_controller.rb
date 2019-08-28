@@ -66,6 +66,9 @@ class ChatboxesController < ApplicationController
       action_name == 'edit'
       return true
     elsif
+      action_name == 'create'
+      return true
+    elsif
       action_name == 'index'
       return true
     elsif
