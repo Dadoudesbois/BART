@@ -1,4 +1,7 @@
+
 <%= simple_form_for [@profile, @event] do |f| %>
+
+
   <%= f.error_notification %>
 
   <%= f.input :name %>
@@ -6,6 +9,7 @@
   <%= f.input :end_date, order: [:day, :month, :year] %>
   <%= f.input :description %>
   <%= f.input :category, collection: ["Concert", "Exhibition", "Performance"] %>
+  <%= f.input :bar_id, collection: current_user.bars, value_method: :id %>
 
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
