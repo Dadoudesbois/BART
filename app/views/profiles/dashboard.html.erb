@@ -18,7 +18,7 @@
             <% end %>
             <% if current_user.profile.is_bar_manager %>
               <%= link_to 'Edit event', edit_event_path(event), class: "bdash" %>
-              <%= link_to 'Delete event', event_path(event), method: :delete, class: "bdash", data: { confirm: "Are you sure you want to delete this event?" } %>
+              <%= link_to 'Delete event', event_path(event), method: :delete, class: "bdash", data: { confirm: "Delete this event?" } %>
             <%end%>
             </div>
           <%end%>
