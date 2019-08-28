@@ -9,6 +9,7 @@ class ChatboxesController < ApplicationController
       hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
       hash[:last_msgs_content] = chatbox&.messages&.last&.content
       hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
+      hash[:user_photo] = chatbox&.messages&.last&.user&.profile&.photo
       hash
     end
   end
