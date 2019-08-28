@@ -17,7 +17,13 @@
         <% end %>
       </div>
         <div class="message-cont">
-          <div class="chat-header"><h4>#<%= "#{@sender} and #{@recipient}" %></h4></div>
+          <div class="chat-header">
+            <h4>#<%= "#{@sender} and #{@recipient}" %></h4>
+            <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
+                      Create an event !
+                    </button>
+            <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+          </div>
           <div class="messages">
             <% @chatbox.messages.each do |message| %>
               <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
