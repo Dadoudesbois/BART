@@ -19,10 +19,12 @@
         <div class="message-cont">
           <div class="chat-header">
             <h4>#<%= "#{@sender} and #{@recipient}" %></h4>
-            <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
-                      Create an event !
-                    </button>
-            <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+            <% if !current_user.bars.empty? %>
+              <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
+                        Create an event !
+                      </button>
+              <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+            <% end %>
           </div>
           <div class="messages">
             <% @chatbox.messages.each do |message| %>
