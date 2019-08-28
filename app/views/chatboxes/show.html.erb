@@ -3,16 +3,16 @@
         <% @chatboxes.each do |hash| %>
           <div class="sidenav-container">
             <div class="partner-name">
-              <h3><%= hash[:partners_name] %>:</h3>
+              <h3><%= link_to hash[:partners_name], profile_path(hash[:partners_profile]) %>:</h3>
             </div>
-              <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
-                <div>
-                  <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
-                </div>
-                <div class="last-msg-content">
-                  <p><%= hash[:last_msgs_content] %></p>
-                </div>
-              <% end %>
+            <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
+              <div>
+                <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
+              </div>
+              <div class="last-msg-content">
+                <p><%= hash[:last_msgs_content] %></p>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
