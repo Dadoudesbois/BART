@@ -1,0 +1,32 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="addProfile<%= @profile.id %>ChatboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLongTitle">
+          <%="say hi to #{Profile.find(params[:id]).username} !"%>
+        </h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+
+            <%= simple_form_for [@profile, chatbox] do |b| %>
+              <%= b.error_notification %>
+              <%= text_field_tag 'message[content]',nil , class: 'first-input input-des', placeholder: "  Type your message here ..." %>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="b-border-whitebg" data-dismiss="modal">close</button>
+        <%= b.button :submit, "Go ✨", class: "b-border-tbg" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
