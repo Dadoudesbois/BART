@@ -209,6 +209,22 @@ height: 100%;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
+.cardib {
+  height: 250px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  flex-direction: vertical;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  overflow-wrap: break-word;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 
 
 

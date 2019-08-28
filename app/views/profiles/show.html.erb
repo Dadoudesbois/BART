@@ -23,7 +23,8 @@
 
     <div class="row">
 
-      <div class="col-xs-10 col-sm-12 col-md-8">
+      <div class="col-xs-8">
+
         <div class="card-profile">
           <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
           <div class="left-description">
@@ -39,9 +40,9 @@
         </div>
       </div>
 
-      <div class="col-xs-10 col-sm-8 col-md-4"
+      <div class="col-xs-4"
             id="map"
-            style="width: 100%;
+            style="width: 400px;
             height: auto; margin: 10px auto; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
             data-markers="<%= @markers.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -68,7 +69,7 @@
       </div><br>
 
 
-      <% if !@reviews.empty?%>
+      <% if !@reviews.empty? && current_user.profile.is_bar_manager%>
         <h1>Reviews</h1>
           <div class="row">
             <% @reviews.each do |review| %>
@@ -86,8 +87,9 @@
                 </div>
               </div>
             <% end %>
-      <% end %>
           </div>
+      <% end %>
+
 
     <% end %>
 
@@ -116,8 +118,9 @@
 
 
   <% elsif @profile.is_bar_manager %>
-      <br><br><br><br>
-      <div class="card-profile-s">
+
+      <br><br><br><br><div class="card-profile-s">
+
       <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
       <div class="left-description">
         <h2>
