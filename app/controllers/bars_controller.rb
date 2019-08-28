@@ -39,6 +39,9 @@ class BarsController < ApplicationController
     @bar.user = current_user
 
     if @bar.save
+      pictures_bar = Picture.new(bar: @bar)
+      pictures_bar.remote_photo_url = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566939669/bar_sign_k4zexn.jpg"
+      pictures_bar.save!
       redirect_to bar_path(@bar)
     else
       render :new

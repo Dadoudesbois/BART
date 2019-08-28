@@ -136,8 +136,13 @@ class EventsController < ApplicationController
 
   def perform_search
     unaccented_query = ActiveSupport::Inflector.transliterate(params[:event_search][:content])
-    search = Event.search_event_scope(unaccented_query)
-    @events = confirmed_current_events_filter(search)
+    if unaccented_query.blank?
+      all_events = Event.all
+      @events = confirmed_current_events_filter(all_events)
+    else
+      search = Event.search_event_scope(unaccented_query)
+      @events = confirmed_current_events_filter(search)
+    end
     bars_and_markers_for_map(@events)
   end
 
