@@ -145,7 +145,7 @@
   margin: 10px;
   line-height: 0.7;
   padding: 10px;
-  overflow: scroll;
+  overflow: auto;
   line-height: 97%;
 overflow-wrap: break-word;
 height: 100%;
@@ -161,7 +161,7 @@ height: 100%;
   color: $gray;
   margin: 10px auto;
   padding: 20px;
-  overflow:scroll;
+  overflow: auto;
   h2, .form-inputs {
     color: $bv-hangar;
   }
@@ -246,7 +246,7 @@ height: 100%;
   color: $gray;
   margin: 10px auto;
   padding: 20px;
-  overflow:scroll;
+  overflow: auto;
   h2, .form-inputs {
     color: $bv-hangar;
   }
@@ -259,7 +259,7 @@ height: 100%;
   border-bottom: 1px solid $bv-hangar;
   border-top: 1px solid $bv-hangar;
   height: 100px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .review-w {
@@ -270,7 +270,7 @@ height: 100%;
   margin-top: 20px;
   border-top: 2px solid $white;
   height: 100px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .card {
