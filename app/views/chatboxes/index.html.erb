@@ -10,7 +10,7 @@
               <div class= "sidenav-message-container">
                 <%= cl_image_tag hash[:user_photo], class: "avatar" %>
                 <div class="last-msg-content">
-                <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id] %></strong>
+                <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]), class: "white nodec"%></strong>
                   <p><%= hash[:last_msgs_content] %></p>
                 </div>
               <% end %>
@@ -28,6 +28,7 @@
         <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
       <% end %>
     <% end %>
+
   </div>
 </div>
 

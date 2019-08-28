@@ -9,7 +9,7 @@
   margin-top: 70px;
   input {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     border-radius: 5px;
   }
 }
@@ -90,6 +90,9 @@ input.form-control {
   margin-top: 10px;
   h4 {
     margin: 0px !important;
+  }
+  &:hover{
+    background-color: #807FAC;
   }
 }
 

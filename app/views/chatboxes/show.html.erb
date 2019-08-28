@@ -10,7 +10,7 @@
                 <div class= "sidenav-message-container">
                   <%= cl_image_tag hash[:user_photo], class: "avatar" %>
                 <div class="last-msg-content">
-                  <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]) %></strong>
+                  <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]), class: "white nodec" %></strong>
                   <p><%= hash[:last_msgs_content] %></p>
                 </div>
               <% end %>
@@ -24,10 +24,9 @@
 
             <div class="chat-header">
               <% if current_user.profile.username == @sender %>
-
-                <h4> <strong><%= link_to @sender, profile_path(@chatbox.sender.profile), class: "white nodec" %></strong> </h4>
+                <h4> <strong><%= link_to @recipient, profile_path(@chatbox.recipient.profile), class: "white nodec" %></strong> </h4>
               <% else %>
-                <h4><strong><%= link_to @recipient, profile_path(@chatbox.recipient.profile), class: "white nodec"%></strong> </h4>
+                <h4><strong><%= link_to @sender, profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
               <%end%>
               <% if !current_user.bars.empty? %>
                 <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
