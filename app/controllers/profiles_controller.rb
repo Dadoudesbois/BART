@@ -132,6 +132,8 @@ class ProfilesController < ApplicationController
     elsif
       action_name == 'edit'
       return true
+    elsif action_name == 'show' && @profile.is_bar_manager
+      return true
     elsif
       action_name == 'dashboard'
       return true

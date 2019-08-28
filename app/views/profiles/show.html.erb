@@ -1,6 +1,8 @@
+
 <% if @profile.is_artist %>
 <%= render 'artist-banner'%>
 <%end%>
+
 <div class="container">
 
   <% if @profile.is_artist %>
@@ -16,6 +18,7 @@
       </div>
     <% end %>
   </div>
+
 
 
     <div class="row">
@@ -114,8 +117,7 @@
 
   <% elsif @profile.is_bar_manager %>
 
-
-    <div class="card-profile-s">
+      <div class="card-profile-s">
       <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
       <div class="left-description">
         <h2>
@@ -131,6 +133,7 @@
         <%end%>
       </div>
     </div>
+
 
     <% if !@profile.user.events.empty? %>
       <br><h1>Events</h1>
