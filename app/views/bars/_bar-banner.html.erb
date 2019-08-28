@@ -5,9 +5,6 @@
     <div class="container">
       <div class="content">
         <h1><%= @bar[:name].capitalize %>
-              <% @star.times do %>
-                  <i class="fas fa-star"></i>
-              <% end %>
         </h1>
         <h3><%= @bar[:description] %></h3>
         <% if current_user == @bar.user %>
@@ -19,8 +16,11 @@
           <%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %>
         <%end%>
 
-        <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+        <h3><% if current_user.profile && current_user.profile.is_artist %>
+          <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @bar.user.profile.id %>ChatboxModal">
+                    Contact this bar !
+                  </button>
+          <%= render 'bar/new_chat_modal', profile: @bar.user.profile, chatbox: Chatbox.new  %>
           <% end %></h3>
         </div>
     </div>
@@ -45,8 +45,11 @@
           <br><br><p><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"blue-link" %> </p>
         <%end%>
 
-        <h3><% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-          <%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-border-tbg" %>
+        <h3><% if current_user.profile && current_user.profile.is_artist %>
+          <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @bar.user.profile.id %>ChatboxModal">
+                    Contact this bar !
+                  </button>
+          <%= render 'bars/new_chat_modal', profile: @bar.user.profile, chatbox: Chatbox.new  %>
           <% end %></h3>
         </div>
     </div>
@@ -151,8 +154,11 @@
         <br><h3><%= link_to "See #{@bar.user.profile.username.capitalize}'s profile", profile_path(@bar.user.profile), class:"b-border-tbg" %></h3>
       <%end%>
 
-   <% if current_user.profile && (current_user.bars.empty? && current_user.profile.is_artist) %>
-          <h3><%= link_to "Contact this bar !", new_profile_chatbox_path(@bar.user.profile), class:"b-allwidth-lg fullspace" %>
-        <% end %></h3>
+        <h3><% if current_user.profile && current_user.profile.is_artist %>
+          <button type="button" class="b-allwidth-lg fullspace" data-toggle="modal" data-target="#addProfile<%= @bar.user.profile.id %>ChatboxModal">
+                    Contact this bar !
+                  </button>
+          <%= render 'bars/new_chat_modal', profile: @bar.user.profile, chatbox: Chatbox.new  %>
+          <% end %></h3>
   </div>
 <%end%>
