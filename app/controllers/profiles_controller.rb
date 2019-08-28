@@ -127,7 +127,7 @@ class ProfilesController < ApplicationController
   end
 
   def is_navbar_white?
-    return true if action_name == 'dashboard'
+    return true if action_name == 'dashboard' || action_name == 'show'
     return false
   end
 end
