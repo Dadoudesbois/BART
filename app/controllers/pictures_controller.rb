@@ -27,8 +27,7 @@ class PicturesController < ApplicationController
   private
 
   def is_navbar_white?
-    return true if action_name == 'new'
-    return false
+    ["new"].include?(action_name)
   end
 
   def bar_authorization
