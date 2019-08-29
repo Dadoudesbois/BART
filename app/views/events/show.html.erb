@@ -2,9 +2,9 @@
 
 <div class="container">
 
-    <div class="cards-grid-3quarter">
+    <div class="row">
 
-      <div class="left">
+      <div class="col-xs-12 col-sm-12 col-md-8">
 
         <div class="card-profile">
         <%= cl_image_tag @artist.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
@@ -16,15 +16,17 @@
             <br><p><%= link_to "See more", profile_path(@artist),class:"b-border-tbg" %></p>
           <br></div>
         </div>
+
       </div>
 
-      <div class="right">
+      <div class="col-xs-12 col-sm-12 col-md-4">
         <% if !@event.bar.pictures.empty? %>
           <div class="cardib" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= @event.bar.pictures[0].photo %>');">
           <%= link_to @event.bar.name.upcase , bar_path(@event.bar), class:"bw-border-tbg bar" %>
           </div>
         <%end%>
       </div>
+
     </div>
 
              <div
