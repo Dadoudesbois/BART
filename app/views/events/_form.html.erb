@@ -5,8 +5,10 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :start_date, label: "Start date and time", order: [:day, :month, :year] %>
-  <%= f.input :end_date, label: "End date and time", order: [:day, :month, :year] %>
+
+  <%= f.input :start_date, as: :text,  input_html: { class: 'datetimepicker' } %>
+
+  <%= f.input :end_date, html5: true %>
   <%= f.input :description %>
   <%= f.input :category, collection: ["Concert", "Exhibition", "Performance"] %>
   <%= f.input :bar_id, collection: current_user.bars, value_method: :id %>
@@ -17,4 +19,18 @@
   <%= f.button :submit, "Submit", class: "b-border-tbg" %>
 <% end %>
 
-dzdzdzdzdzd
+<div>
+  <input class="datetimepicker" name="prova"/>
+</div>
+
+
+<%= form_for [@profile, @event] do |f| %>
+  First name: <%= f.text_field :name %><br />
+
+<div class="datetimepicker">
+
+  Start_date : <%= f.text_field :start_date %><br />
+  </div>
+<%= f.submit %>
+<% end %>
+

@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_122027) do
     t.bigint "bar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_date"
+    t.date "start_date"
     t.datetime "end_date"
     t.boolean "confirmed", default: false
     t.string "category"
