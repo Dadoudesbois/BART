@@ -1,11 +1,11 @@
 class ChatboxesController < ApplicationController
   def index
-    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).eager_load(recipient: [:profile], sender: [:profile], messages: :user)
+    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).includes(recipient: [:profile], sender: [:profile], messages: :user)
 
     @chatboxes = @chatboxes.map do |chatbox|
       hash = { id: chatbox.id }
-      hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
-      hash[:partners_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
+      hash[:partner_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
+      hash[:partner_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
       hash[:last_msgs_content] = chatbox&.messages&.last&.content
       hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
       hash[:user_photo] = chatbox&.messages&.last&.user&.profile&.photo
@@ -22,11 +22,11 @@ class ChatboxesController < ApplicationController
     @usernames = @messages.map { |message| message.user.profile.username }
     @message = Message.new
 
-    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).eager_load(recipient: [:profile], sender: [:profile], messages: :user)
+    @chatboxes = Chatbox.where(sender_id: current_user.id).or(Chatbox.where(recipient_id: current_user.id)).includes(recipient: [:profile], sender: [:profile], messages: :user)
     @chatboxes = @chatboxes.map do |chatbox|
       hash = { id: chatbox.id }
-      hash[:partners_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
-      hash[:partners_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
+      hash[:partner_name] =  chatbox.sender == current_user ? chatbox.recipient.profile.username : chatbox.sender.profile.username
+      hash[:partner_profile] = chatbox.sender == current_user ? chatbox.recipient.profile : chatbox.sender.profile
       hash[:last_msgs_content] = chatbox&.messages&.last&.content
       hash[:last_msgs_username] = chatbox&.messages&.last&.user&.profile&.username
       hash[:user_photo] = chatbox&.messages&.last&.user&.profile&.photo
@@ -72,23 +72,7 @@ class ChatboxesController < ApplicationController
   private
 
   def is_navbar_white?
-    if action_name == 'new'
-      return true
-    elsif
-      action_name == 'edit'
-      return true
-    elsif
-      action_name == 'create'
-      return true
-    elsif
-      action_name == 'index'
-      return true
-    elsif
-      action_name == 'show'
-      return true
-    else
-      return false
-    end
+    ["new", "edit", "create", "index,", "show"].include?(action_name)
   end
 
   def message_params
