@@ -3,14 +3,14 @@
 <div class="container">
 
   <!-- Displaying in small every other pics -->
-  <br><div class="cards-grid-photos">
+  <br><div class="row">
     <% @pictures.each do |picture| %>
-      <div class="photocard">
-      <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
+      <div class=" col-xs-4 col-sm-4 col-md-2 ">
+        <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, gravity: :face %>
 
-      <% if current_user == @bar.user %>
-        <%= link_to "✖️" , picture_path(picture), method: :delete, data: { confirm: "Are you sure you want to delete this picture?" }, class:"card-remove-link" %>
-      <% end %>
+        <% if current_user == @bar.user %>
+          <%= link_to "✖" , picture_path(picture), method: :delete, data: { confirm: "Are you sure you want to delete this picture?" }, class:"card-remove-link" %>
+        <% end %>
       </div>
     <% end %>
   </div>
