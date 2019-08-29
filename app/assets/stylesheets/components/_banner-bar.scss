@@ -9,7 +9,7 @@
   margin-top: 0px !important;
   h1  {
   font-family: $bebas;
-  font-size: 13em;
+  font-size: 13vw;
   text-align: left;
   color: white;
   }
@@ -64,9 +64,10 @@
   font-size: 13em;
   text-align: left;
   position: absolute;
-  top: -600px;
-  left: -150px;
+  top: -80vh;
+  left: -5vw;
   color: white;
+  line-height: 80%;
 }
 
 label {
