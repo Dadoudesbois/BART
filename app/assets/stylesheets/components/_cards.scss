@@ -116,6 +116,7 @@
   height: 250px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
+  padding: 0px;
   align-items: center;
   margin: 10px auto;
   img {
@@ -129,6 +130,7 @@
     }
   }
 }
+
 .card-prev{
   background-color:white;
   height: 100px;
