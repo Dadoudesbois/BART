@@ -5,8 +5,12 @@
         <h1><%= @event[:name]%></h1>
         <br><div class="e-date">
           <h3><%= @event[:start_date].strftime("%d %B %Y") %></h3>
-          <h3>  <%= @event[:end_date].strftime("- %d %B %Y") %>
-          </h3>
+          <h3>  <%= @event[:end_date].strftime("- %d %B %Y") %></h3>
+          <time datetime="<%= @event[:start_date] %>" class="icon">
+            <em><%= @event[:start_date].strftime("%A") %></em>
+            <strong><%= @event[:start_date].strftime("%B") %></strong>
+            <span><%= @event[:start_date].strftime("%d") %></span>
+          </time>
           <% if current_user.profile.is_bar_manager %>
             <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
             <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
