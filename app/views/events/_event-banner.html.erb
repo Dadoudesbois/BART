@@ -5,14 +5,22 @@
       <div class="container text-ban">
         <h1><%= @event[:name]%> </h1>
         <div class="e-date">
-          <h3><%= @event[:start_date].strftime("%d %B %Y") %></h3>
-          <h3>  <%= @event[:end_date].strftime("- %d %B %Y") %></h3>
 
+          <div class="date-icons">
           <time datetime="<%= @event[:start_date] %>" class="icon">
             <em><%= @event[:start_date].strftime("%A") %></em>
             <strong><%= @event[:start_date].strftime("%B") %></strong>
             <span><%= @event[:start_date].strftime("%d") %></span>
           </time>
+
+          <i class="fas fa-arrow-right" id="arrow"></i>
+
+          <time datetime="<%= @event[:end_date] %>" class="icon">
+            <em><%= @event[:end_date].strftime("%A") %></em>
+            <strong><%= @event[:end_date].strftime("%B") %></strong>
+            <span><%= @event[:end_date].strftime("%d") %></span>
+          </time>
+          </div>
 
           <% if current_user.profile.is_bar_manager %>
             <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
