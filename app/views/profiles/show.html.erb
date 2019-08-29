@@ -7,9 +7,9 @@
 
   <% if @profile.is_artist %>
 
-  <br><div class="cards-grid-photos">
+  <br><div class="row">
     <% @pictures.each do |picture| %>
-      <div class="photocard">
+      <div class="col-xs-4 col-sm-4 col-md-2">
       <%= cl_image_tag picture.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
 
       <% if current_user == @profile.user %>
