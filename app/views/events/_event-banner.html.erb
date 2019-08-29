@@ -2,7 +2,7 @@
 
     <div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photo, :width => 1300, :height => 780, crop: :fill, class:"d-block w-100"%>');">
       <div class="container">
-        <h1><%= @event[:name]%> </h1>
+        <h1><%= @event[:name]%></h1>
         <br><div class="e-date">
           <h3><%= @event[:start_date].strftime("%d %B %Y | %Hh%M") %></h3>
           <h3>  <%= @event[:end_date].strftime("- %d %B %Y | %Hh%M") %>
