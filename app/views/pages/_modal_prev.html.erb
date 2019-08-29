@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLongTitle">
+        <h1 class="modal-title-preview" id="exampleModalLongTitle">
           <%= event.name %> 💡
         </h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -17,9 +17,9 @@
           <h2><%= link_to event.user.profile.username.capitalize, profile_path(event.user),class:"blue-link" %>, </h2>
           <h2>at <%= link_to event.bar.name, bar_path(event.bar), class:"blue-link"%></h2>
           <p> from
-                <%= event.start_date %>
+                <%= event.start_date.strftime("%a %B %d") %>
           </p>
-          <p>   to <%= event.end_date %>
+          <p>   to <%= event.end_date.strftime("%a %B %d") %>
           </p>
           <h4>
               <%= link_to "See artist profile
