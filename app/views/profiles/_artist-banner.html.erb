@@ -23,7 +23,6 @@
                   </button>
           <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
 
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
 
 
           <% end %></h3>
@@ -45,7 +44,6 @@
 
           <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "bw-border-tbg" %></p>
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
         <%end%>
 
         <h3><% if !current_user.bars.empty? && @profile.is_artist %>
@@ -59,7 +57,6 @@
                   </button>
           <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
 
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
           <% end %></h3>
         </div>
     </div>
