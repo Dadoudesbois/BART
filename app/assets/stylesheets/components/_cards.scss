@@ -18,6 +18,10 @@
   left: 5px;
 }
 
+.nodec:hover {
+  text-decoration: none;
+}
+
 .card-product-infos {
   padding: 10px;
   margin: 10px;
@@ -293,6 +297,10 @@ height: 100%;
   line-height: 70%;
   h1 {
     font-size: 8em;
+  }
+  &:hover {
+    color:white;
+    font-style: bold;
   }
  }
 
