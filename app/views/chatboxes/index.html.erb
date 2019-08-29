@@ -1,32 +1,32 @@
-<div class="container"><br><br><br><br>
-  <% if !@chatboxes.empty? %>
-    <div class="sidenav">
-      <% @chatboxes.each do |hash| %>
-          <div class="sidenav-container">
-            <div class="partner-name">
-              <h3><%= link_to hash[:partners_name], profile_path(hash[:partners_profile]) %>:</h3>
-            </div>
-            <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
-              <div>
-                <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
-              </div>
-              <div class="last-msg-content">
-                <p><%= hash[:last_msgs_content] %></p>
-              </div>
-            <% end %>
-          </div>
-      <% end %>
-    </div>
+<div class="fuckfooter">
+  <div class="container"><br><br><br><br>
+    <% if !@chatboxes.empty? %>
+        <div class="sidenav">
+          <% @chatboxes.each do |hash| %>
+              <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
+                  <div>
+                    <%= cl_image_tag hash[:user_photo], class: "avatar" %>
+                  </div>
+                  <div class="last-msg-content">
+                    <div class="white nodec">
+                      <strong><%= hash[:partners_name] %></strong>
+                    </div>
+                    <p><%= hash[:last_msgs_content] %></p>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
 
-  <% else %>
-
-    <h1>No messages... yet ! </h1>
-    <%if current_user.profile.is_bar_manager %>
-      <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
     <% else %>
-      <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
+
+      <h1>No messages... yet ! </h1>
+      <%if current_user.profile.is_bar_manager %>
+        <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+      <% else %>
+        <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 
