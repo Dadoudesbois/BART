@@ -1,54 +1,77 @@
-<div class="container">
-      <div class="sidenav">
-        <% @chatboxes.each do |hash| %>
-          <div class="sidenav-container">
-            <div class="partner-name">
-              <h3><%= link_to hash[:partners_name], profile_path(hash[:partners_profile]) %>:</h3>
+<div class="fuckfooter">
+
+  <div class="container">
+
+        <div class="sidenav">
+
+          <% @chatboxes.each do |hash| %>
+            <div class="sidenav-container">
+
+
+            <%= link_to chatbox_path(hash[:id]) do %>
+
+              <div class= "sidenav-message-container">
+
+                  <%= cl_image_tag hash[:user_photo], class: "avatar" %>
+
+                <div class="last-msg-content">
+                  <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]), class: "white nodec" %></strong>
+                  <p><%= hash[:last_msgs_content] %></p>
+                </div>
+
+              </div>
+
+            <% end %>
+
+
             </div>
-            <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
-              <div>
-                <p><%= cl_image_tag hash[:user_photo], class: "avatar" %></p>
-              </div>
-              <div class="last-msg-content">
-                <p><%= hash[:last_msgs_content] %></p>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-        <div class="message-cont">
-          <div class="chat-header">
-            <h4>#<%= "#{@sender} and #{@recipient}" %></h4>
-            <% if !current_user.bars.empty? %>
-              <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
-                        Create an event !
-                      </button>
-              <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
-            <% end %>
-          </div>
-          <div class="messages">
-            <% @chatbox.messages.each do |message| %>
-              <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-            <% end %>
-          </div>
-          <div id="create-message">
-            <%= simple_form_for [ @chatbox, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-              <%= f.input :content, label: false %>
-            <% end %>
-          </div>
+          <% end %>
+
         </div>
-    <% content_for :after_js do %>
-      <script>
-        scrollLastMessageIntoView();
-        App['chatbox_<%= @chatbox.id %>'] = App.cable.subscriptions.create({ channel: 'ChatboxesChannel', chatbox_id: <%= @chatbox.id %> }, {
-          received: (data) => {
-            if (data.current_user_id !== <%= current_user.id %>) {
-              const messagesContainer = document.querySelector('.messages');
-              messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-              scrollLastMessageIntoView();
+
+          <div class="message-cont">
+
+            <div class="chat-header">
+              <% if current_user.profile.username == @sender %>
+                <h4> <strong><%= link_to "#{@recipient}'s profile", profile_path(@chatbox.recipient.profile), class: "white nodec" %></strong> </h4>
+              <% else %>
+                <h4><strong><%= link_to @sender, profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
+              <%end%>
+              <% if !current_user.bars.empty? %>
+                <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
+                          Create an event !
+                        </button>
+                <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+              <% end %>
+            </div>
+            <div class="messages">
+              <% @chatbox.messages.each do |message| %>
+                <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+              <% end %>
+            </div>
+            <div id="create-message">
+              <%= simple_form_for [ @chatbox, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+                <%= f.input :content, label: false %>
+              <% end %>
+            </div>
+
+          </div>
+
+      <% content_for :after_js do %>
+        <script>
+          scrollLastMessageIntoView();
+          App['chatbox_<%= @chatbox.id %>'] = App.cable.subscriptions.create({ channel: 'ChatboxesChannel', chatbox_id: <%= @chatbox.id %> }, {
+            received: (data) => {
+              if (data.current_user_id !== <%= current_user.id %>) {
+                const messagesContainer = document.querySelector('.messages');
+                messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+                scrollLastMessageIntoView();
+              }
             }
-          }
-        })
-      </script>
-    <% end %>
+          })
+        </script>
+      <% end %>
+
+  </div>
+
 </div>
