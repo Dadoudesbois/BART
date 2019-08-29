@@ -19,4 +19,6 @@
   color: $bv-hangar !important;
 }
 
-
+.modal-content {
+  z-index: 1000000;
+}
