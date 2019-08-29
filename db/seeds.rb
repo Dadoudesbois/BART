@@ -99,7 +99,8 @@ photo_james = "https://source.unsplash.com/tHiGKAJxaA8/1300x780/"
 photo_richard = "https://source.unsplash.com/_M6gy9oHgII/1300x780/"
 photo_ila = "https://source.unsplash.com/7DD6tfTKqS4/1300x780/"
 photo_sam = "https://source.unsplash.com/Ss3wTFJPAVY/1300x780/"
-
+photo_andre = "https://source.unsplash.com/lkMJcGDZLVs/1300x780/"
+photo_eric = "https://source.unsplash.com/7omHUGhhmZ0/1300x780/"
 puts "Creating profiles bar managers"
 
 
@@ -192,20 +193,20 @@ bar_gege.user = bar_managers[0]
 bar_gege.save!
 bars.push(bar_gege)
 
-1gpic = Picture.new
-1gpic.bar = bar_gege
-1gpic.remote_photo_url =  "https://source.unsplash.com/_-E17t8_Rrw/1300x780/"
-1gpic.save!
+fgpic = Picture.new
+fgpic.bar = bar_gege
+fgpic.remote_photo_url =  "https://source.unsplash.com/_-E17t8_Rrw/1300x780/"
+fgpic.save!
 
-2gpic = Picture.new
-2gpic.bar = bar_gege
-2gpic.remote_photo_url =  "https://source.unsplash.com/pYXNCk8wpgw/1300x780/"
-2gpic.save!
+sgpic = Picture.new
+sgpic.bar = bar_gege
+sgpic.remote_photo_url =  "https://source.unsplash.com/pYXNCk8wpgw/1300x780/"
+sgpic.save!
 
-3gpic = Picture.new
-3gpic.bar = bar_gege
-3gpic.remote_photo_url =  "https://source.unsplash.com/6rgwUHMokWU/1300x780/"
-3gpic.save!
+tgpic = Picture.new
+tgpic.bar = bar_gege
+tgpic.remote_photo_url =  "https://source.unsplash.com/6rgwUHMokWU/1300x780/"
+tgpic.save!
 
 
 
@@ -218,20 +219,20 @@ bar_andre.user = bar_managers[0]
 bar_andre.save!
 bars.push(bar_andre)
 
-1agpic = Picture.new
-1apic.bar = bar_andre
-1apic.remote_photo_url =  "https://source.unsplash.com/GXXYkSwndP4/1300x780/"
-1apic.save!
+fapic = Picture.new
+fapic.bar = bar_andre
+fapic.remote_photo_url =  "https://source.unsplash.com/GXXYkSwndP4/1300x780/"
+fapic.save!
 
-2apic = Picture.new
-2apic.bar = bar_andre
-2apic.remote_photo_url =  "https://source.unsplash.com/8x_fFNrmeDk/1300x780/"
-2apic.save!
+sapic = Picture.new
+sapic.bar = bar_andre
+sapic.remote_photo_url =  "https://source.unsplash.com/8x_fFNrmeDk/1300x780/"
+sapic.save!
 
-3apic = Picture.new
-3apic.bar = bar_andre
-3apic.remote_photo_url =  "https://source.unsplash.com/gj7BLlSzIFs/1300x780/"
-3apic.save!
+tapic = Picture.new
+tapic.bar = bar_andre
+tapic.remote_photo_url =  "https://source.unsplash.com/gj7BLlSzIFs/1300x780/"
+tapic.save!
 
 bar_eric = Bar.new(
   name: "Lockwood",
@@ -242,20 +243,20 @@ bar_eric.user = bar_managers[0]
 bar_eric.save!
 bars.push(bar_eric)
 
-1agpic = Picture.new
-1apic.bar = bar_eric
-1apic.remote_photo_url =  "https://source.unsplash.com/uqd-Eq1_TtE/1300x780/"
-1apic.save!
+fagpic = Picture.new
+fapic.bar = bar_eric
+fapic.remote_photo_url =  "https://source.unsplash.com/uqd-Eq1_TtE/1300x780/"
+fapic.save!
 
-2apic = Picture.new
-2apic.bar = bar_eric
-2apic.remote_photo_url =  "https://source.unsplash.com/OOfu_pkOkAo/1300x780/"
-2apic.save!
+sapic = Picture.new
+sapic.bar = bar_eric
+sapic.remote_photo_url =  "https://source.unsplash.com/OOfu_pkOkAo/1300x780/"
+sapic.save!
 
-3apic = Picture.new
-3apic.bar = bar_eric
-3apic.remote_photo_url =  "https://source.unsplash.com/H7xTpvBjJS4/1300x780/"
-3apic.save!
+tapic = Picture.new
+tapic.bar = bar_eric
+tapic.remote_photo_url =  "https://source.unsplash.com/H7xTpvBjJS4/1300x780/"
+tapic.save!
 
 
 
