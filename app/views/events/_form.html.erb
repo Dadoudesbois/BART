@@ -5,7 +5,12 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :start_date, as: :date, html5: true %>
+     <div class="form-group">
+    <div class='input-group date' id='datetimepicker'>
+    <%= f.input :start_date, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
+     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+     </div>
+    </div>
   <%= f.input :end_date, as: :date, html5: true %>
   <%= f.input :description %>
   <%= f.input :category, collection: ["Concert", "Exhibition", "Performance"] %>
@@ -18,3 +23,15 @@
 <% end %>
 
 dzdzdzdzdzd
+
+<!-- <br><br><br><br><br><br><br><br>
+    <%= form_for [@profile, @event] do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :start_date %>
+      <%= f.text_field :start_date, data:{ provide:'datetimepicker' } %>
+
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date, data:{ provide:'datetimepicker' } %>
+    <% end %> -->
