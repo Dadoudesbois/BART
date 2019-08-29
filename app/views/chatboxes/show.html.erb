@@ -6,15 +6,24 @@
 
           <% @chatboxes.each do |hash| %>
             <div class="sidenav-container">
-              <%= link_to(chatbox_path(hash[:id]), class: "white") do %>
-                <div class= "sidenav-message-container">
+
+
+            <%= link_to chatbox_path(hash[:id]) do %>
+
+              <div class= "sidenav-message-container">
+
                   <%= cl_image_tag hash[:user_photo], class: "avatar" %>
+
                 <div class="last-msg-content">
                   <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]), class: "white nodec" %></strong>
                   <p><%= hash[:last_msgs_content] %></p>
                 </div>
-              <% end %>
+
               </div>
+
+            <% end %>
+
+
             </div>
           <% end %>
 
@@ -24,7 +33,7 @@
 
             <div class="chat-header">
               <% if current_user.profile.username == @sender %>
-                <h4> <strong><%= link_to @recipient, profile_path(@chatbox.recipient.profile), class: "white nodec" %></strong> </h4>
+                <h4> <strong><%= link_to "#{@recipient}'s profile", profile_path(@chatbox.recipient.profile), class: "white nodec" %></strong> </h4>
               <% else %>
                 <h4><strong><%= link_to @sender, profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
               <%end%>

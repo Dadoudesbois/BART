@@ -7,11 +7,6 @@
   // width: 100%;
   padding-left: 10px;
   margin-top: 70px;
-  input {
-    position: fixed;
-    bottom: 20px;
-    border-radius: 5px;
-  }
 }
 
 .messages {
@@ -32,6 +27,7 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
+        border-radius: 10px;
         background-color: $bv-hangar;
         color: white;
         opacity: 0.6;
@@ -40,7 +36,7 @@
     background-color: white;
     color: $bv-hangar;
     border: 1px solid $bv-hangar;
-    border-radius: 3px;
+    border-radius: 10px;
     opacity: 0.8;
   }
   }
@@ -67,14 +63,17 @@
   margin-bottom: 0;
 }
 input.form-control {
-  border: 1px solid #ECECEC;
+  border: 1px solid $bv-hangar;
   box-shadow: none;
   font-size: 14px;
-  color: #868686;
+  color: $bv-hangar;
+  position: fixed;
+  bottom: 20px;
+  border-radius: 5px;
   &:focus {
     outline: none;
-    border: 1px solid blue;
-    box-shadow: none;
+    border: 1px solid $bv-hangar;
+    box-shadow: 0 0 2px $bv-hangar;
   }
 }
 
