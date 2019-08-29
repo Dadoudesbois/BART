@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1%;
+  overflow: auto;
 }
 .no {
   position:relative;
@@ -119,6 +120,7 @@
   height: 250px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
+  padding: 0px;
   align-items: center;
   margin: 10px auto;
   img {
@@ -132,6 +134,7 @@
     }
   }
 }
+
 .card-prev{
   background-color:white;
   height: 100px;
@@ -327,7 +330,6 @@ height: 100%;
 .review-w {
   color: white;
   padding: 10px;
-  margin: 10px;
   text-align: center;
   margin-top: 20px;
   border-top: 2px solid $white;
