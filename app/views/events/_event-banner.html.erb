@@ -1,35 +1,68 @@
 <% if @event[:photo] %>
 
-    <div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photo, :width => 1300, :height => 780, crop: :fill, class:"d-block w-100"%>');">
-      <div class="text-ban">
-        <div class="e-date">
-          <h3><%= @event[:start_date].strftime("%d %B %Y | %Hh%M") %></h3>
-          <h3>  <%= @event[:end_date].strftime("- %d %B %Y | %Hh%M") %>
-          </h3>
-          <% if current_user.profile.is_bar_manager %>
-            <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
-            <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
-          <%end%>
-        </div>
-        <h1><%= @event[:name]%> </h1>
+<div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photo, :width => 1300, :height => 780, crop: :fill, class:"d-block w-100"%>');">
+  <div class="text-ban">
+    <div class="e-date">
+      <div class="date-icons">
+        <time datetime="<%= @event[:start_date] %>" class="icon">
+          <em><%= @event[:start_date].strftime("%H:%M") %></em>
+          <strong><%= @event[:start_date].strftime("%B") %></strong>
+          <span><%= @event[:start_date].strftime("%e") %></span>
+        </time>
+
+        <i class="fas fa-arrow-right" id="arrow"></i>
+
+        <time datetime="<%= @event[:end_date] %>" class="icon">
+          <em><%= @event[:end_date].strftime("%H:%M") %></em>
+          <strong><%= @event[:end_date].strftime("%B") %></strong>
+          <span><%= @event[:end_date].strftime("%e") %></span>
+        </time>
+        <% if current_user.profile.is_bar_manager %>
+        <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
+        <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
+        <%end%>
       </div>
+      <h1><%= @event[:name]%> </h1>
+
     </div>
+
+    <% if current_user.profile.is_bar_manager %>
+    <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
+    <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
+    <%end%>
+  </div>
+</div>
+</div>
 
 <%else%>
 
-    <div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1300x780);">
-      <div class="container">
-        <h1><%= @event[:name]%> </h1>
-        <br><div class="e-date">
-          <h3><%= @event[:start_date].strftime("%d %B %Y") %></h3>
-            <h3>  <%= @event[:end_date].strftime("- %d %B %Y") %>
-            </h3>
-              <% if current_user.profile.is_bar_manager %>
-                <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
-                <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
-              <%end%>
+<div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/oXOIH4UAixo/1300x780);">
+  <div class="container">
+    <h1><%= @event[:name]%> </h1>
+    <div class="e-date">
+
+      <div class="date-icons">
+        <time datetime="<%= @event[:start_date] %>" class="icon">
+          <em><%= @event[:start_date].strftime("%H:%M") %></em>
+          <strong><%= @event[:start_date].strftime("%B") %></strong>
+          <span><%= @event[:start_date].strftime("%e") %></span>
+        </time>
+
+        <i class="fas fa-arrow-right" id="arrow"></i>
+
+        <time datetime="<%= @event[:end_date] %>" class="icon">
+          <em><%= @event[:end_date].strftime("%H:%M") %></em>
+          <strong><%= @event[:end_date].strftime("%B") %></strong>
+          <span><%= @event[:end_date].strftime("%e") %></span>
+        </time>
       </div>
-      </div>
+
+      <% if current_user.profile.is_bar_manager %>
+      <p><%= link_to 'Edit event', edit_event_path(@event), class: "bw-border-tbg" %></p>
+      <p><%= link_to 'Delete event', event_path(@event), method: :delete, class: "bw-border-tbg", data: { confirm: "Are you sure?" } %></p>
+      <%end%>
     </div>
+  </div>
+</div>
 
 <%end%>

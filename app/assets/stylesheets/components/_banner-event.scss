@@ -1,0 +1,57 @@
+time.icon
+{
+  font-size: 1em; /* change icon size */
+  position: relative;
+  width: 7em;
+  height: 7em;
+  background-color: transparent;
+  border-radius: 0.6em;
+  border: 1px solid;
+  overflow: hidden;
+  box-shadow: 0 0 3px white;
+}
+
+time.icon *
+{
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+time.icon strong
+{
+  position: absolute;
+  top: 0;
+  padding: 0.4em 0;
+  color: #fff;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  // box-shadow: 0 2px 0 #fd9f1b;
+}
+
+time.icon em
+{
+  position: absolute;
+  bottom: 0.3em;
+  color: white;
+}
+
+time.icon span
+{
+  width: 100%;
+  font-size: 2.8em;
+  letter-spacing: -0.05em;
+  color: white;
+  line-height:50px;
+  padding-top: 0.8em;
+}
+
+.date-icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
