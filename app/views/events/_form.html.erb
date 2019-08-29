@@ -5,8 +5,8 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.input :start_date, label: "Start date and time", order: [:day, :month, :year] %>
+  <%= f.input :end_date, label: "End date and time", order: [:day, :month, :year] %>
   <%= f.input :description %>
   <%= f.input :category, collection: ["Concert", "Exhibition", "Performance"] %>
   <%= f.input :bar_id, collection: current_user.bars, value_method: :id %>
