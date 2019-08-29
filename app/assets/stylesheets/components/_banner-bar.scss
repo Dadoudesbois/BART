@@ -1,10 +1,10 @@
 .banner-bar {
   background: no-repeat;
   background-size:cover;
-  height: 780px;
+  position:relative;
+  height: 100vh;
   padding: 150px 0;
   display: flex;
-  z-index: 2000;
   align-items: center;
   margin-top: 0px !important;
   h1  {
@@ -23,8 +23,11 @@
   }
   .content {
     position: absolute;
-    top: 200px;
-    left: 40px;
+    bottom: 0px;
+    left: 5vw;
+    h1 {
+      line-height: 85%;
+    }
   }
 }
 
@@ -36,19 +39,19 @@
 .banner-index {
   background: no-repeat;
   background-size:cover;
-  z-index: 2000;
-  height: 780px;
+  position:relative;
+  height: 100vh;
   padding: 150px 0;
   display: flex;
   align-items: center;
   margin-top: 0px !important;
   h1  {
   font-family: $bebas;
-  font-size: 25vw;
+  font-size: 23.5vw;
   text-align: left;
   position: absolute;
-  left: 80px;
-  top: 250px;
+  left: 5vw;
+  bottom: 0px;
   color: white;
   }
   h3, a {
@@ -61,11 +64,11 @@
 
 .h3-responsive {
   font-family: $bebas;
-  font-size: 20vw;
+  font-size: 19vw;
   text-align: left;
   position: absolute;
-  top: -75vh;
   left: -10vw;
+  bottom: 0px;
   color: white;
   line-height: 70%;
 }
@@ -84,9 +87,9 @@ label {
 .banner-event {
   background: no-repeat;
   background-size:cover;
-  z-index: 2000;
-  height: 780px;
-  padding: 150px 0;
+  position:relative;
+  height: 100vh;
+
   display: flex;
   align-items: center;
   margin-top: 0px !important;
@@ -94,21 +97,24 @@ label {
   font-family: $bebas;
   font-size: 20vw;
   color: white;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  line-height: 90%;
   }
   .text-ban {
     text-align: left;
     position: absolute;
-    top: 10vh;
     left: 5vw;
+    bottom: 0px;
   }
   h3{
-    font-size: 5vw;
+    font-size: 2vw;
   }
   .e-date {
   color: white;
   text-align: left;
   position: relative;
-  left: 10vh;
+  left: 20vh;
   }
 }
 

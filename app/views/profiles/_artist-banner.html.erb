@@ -3,13 +3,14 @@
   <div class="banner-bar" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/F35EmcotWPY/1200x600);">
     <div class="container">
       <div class="content">
-        <h1><%= @profile[:username].capitalize %></h1>
 
         <% if current_user == @profile.user %>
-
-          <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
+          <p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "bw-border-tbg" %></p>
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
+        <%end%>
+        <h1><%= @profile[:username].capitalize %>
+        <% if @profile.instagram_username %>
+          <%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon opacity" %></h1>
         <%end%>
 
         <h3><% if !current_user.bars.empty? && @profile.is_artist %>
@@ -24,11 +25,9 @@
                   </button>
           <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
 
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
 
 
           <% end %></h3>
-
         </div>
     </div>
   </div>
@@ -46,7 +45,6 @@
 
           <br><br><p><%= link_to 'Add pictures', new_profile_artist_picture_path(@profile), class:"bw-border-tbg" if current_user == @profile.user %></p>
           <p><%= link_to 'Edit my profile', edit_profile_path(@profile), class: "bw-border-tbg" %></p>
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
         <%end%>
 
         <h3><% if !current_user.bars.empty? && @profile.is_artist %>
@@ -60,7 +58,6 @@
                   </button>
           <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
 
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
           <% end %></h3>
         </div>
     </div>
@@ -173,8 +170,9 @@
                     Create an event with this artist !
                   </button>
           <%= render 'events/new_modal', profile: @profile, event: Event.new  %>
-
-         <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
+        <% if @profile.instagram_username %>
+          <h3><%= link_to "" , "https://www.instagram.com/#{@profile.instagram_username}", class: "fab fa-instagram largeicon" %></h3>
+        <% end%>
 
         <% end %></h3>
   </div>

@@ -128,15 +128,9 @@ class ProfilesController < ApplicationController
   end
 
   def is_navbar_white?
-    if action_name == 'new'
-      return true
-    elsif
-      action_name == 'edit'
+    if ["new", "edit", "dashboard"].include?(action_name)
       return true
     elsif action_name == 'show' && @profile.is_bar_manager
-      return true
-    elsif
-      action_name == 'dashboard'
       return true
     else
       return false

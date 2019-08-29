@@ -183,13 +183,6 @@ class EventsController < ApplicationController
   end
 
   def is_navbar_white?
-    if action_name == 'new'
-      return true
-    elsif
-      action_name == 'edit'
-      return true
-    else
-      return false
-    end
+    ["new", "edit"].include?(action_name)
   end
 end
