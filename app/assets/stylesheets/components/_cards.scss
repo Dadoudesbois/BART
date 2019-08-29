@@ -190,7 +190,7 @@ height: 100%;
   background-color: white;
   width: 60%;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 6px $bv-hangar;
   color: $gray;
   margin: 10px auto;
   padding: 20px;
@@ -198,6 +198,18 @@ height: 100%;
   h2, .form-inputs {
     color: $bv-hangar;
   }
+  input.form-control , textarea.form-control {
+  border: 0.1px solid $bv-hangar;
+  box-shadow: none;
+  font-size: 14px;
+  color: $bv-hangar;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+    border: 1px solid $bv-hangar;
+    box-shadow: 0 0 3px $bv-hangar;
+  }
+}
 }
 
 .card {

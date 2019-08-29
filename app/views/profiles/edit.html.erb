@@ -1,22 +1,24 @@
-<div class="container">
-  <br><br><br><div class="card-login">
-    <h1>Edit <%= @profile.username %></h1>
+<div class="fuckfooter">
+  <div class="container">
+    <br><br><br><div class="card-login">
+      <h1>Edit <%= @profile.username %></h1>
 
-    <% if current_user == @profile.user %>
-        <%= simple_form_for(@profile) do |f| %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.input :username %>
-        <% if @profile.is_artist %>
-          <%= f.input :artist_description %>
+      <% if current_user == @profile.user %>
+          <%= simple_form_for(@profile) do |f| %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.input :username %>
+          <% if @profile.is_artist %>
+            <%= f.input :artist_description %>
+          <% end %>
+          <%= f.input :address %>
+          <%= f.input :instagram_username,
+                    autofocus: true,
+                    input_html: { autocomplete: "instagram_username" }%>
+          <%= f.input :photo %>
+          <%= f.button :submit, "Update profile", class:"b-border-tbg" %>
         <% end %>
-        <%= f.input :address %>
-        <%= f.input :instagram_username,
-                  autofocus: true,
-                  input_html: { autocomplete: "instagram_username" }%>
-        <%= f.input :photo %>
-        <%= f.button :submit, "Update profile", class:"b-border-tbg" %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
 
