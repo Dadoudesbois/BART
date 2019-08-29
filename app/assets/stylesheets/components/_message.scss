@@ -49,28 +49,24 @@
       color: white;
       opacity: 0.6;
     }
-  &.left {
-    background-color: white;
-    color: $bv-hangar;
-    border: 1px solid $bv-hangar;
-    border-radius: 10px;
-    opacity: 0.8;
-  }
   }
   &.left {
-    background-color: white;
-    color: $bv-hangar;
-    border: 1px solid $bv-hangar;
-    border-radius: 10px;
-    opacity: 0.8;
+    .message-content {
+      background-color: white;
+      color: $bv-hangar;
+      border: 1px solid $bv-hangar;
+      border-radius: 10px;
+      opacity: 0.8;
+    }
   }
 }
+
 .message-content {
-  background-color: #F7F7F7;
   border-radius: 5px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
 }
+
 .avatar {
   width: 42px;
   height: 42px;

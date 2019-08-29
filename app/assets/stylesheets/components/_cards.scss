@@ -225,6 +225,7 @@ height: 100%;
   position: relative;
   padding: 20px;
   overflow-wrap: break-word;
+  overflow:scroll;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
@@ -346,7 +347,7 @@ height: 100%;
   margin-top: 20px;
   border-top: 2px solid $white;
   height: 100px;
-  overflow: auto;
+  overflow: show;
 }
 
 
