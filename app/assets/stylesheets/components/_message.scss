@@ -3,8 +3,6 @@
   right: 0;
   width: calc(100vw - 300px);
   height: calc(100vh - 70px);
-  // height: 100%;
-  // width: 100%;
   padding-left: 10px;
   margin-top: 70px;
 }
@@ -27,10 +25,10 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-        border-radius: 10px;
-        background-color: $bv-hangar;
-        color: white;
-        opacity: 0.6;
+      border-radius: 10px;
+      background-color: $bv-hangar;
+      color: white;
+      opacity: 0.6;
     }
   &.left {
     background-color: white;
@@ -39,6 +37,13 @@
     border-radius: 10px;
     opacity: 0.8;
   }
+  }
+  &.left {
+    background-color: white;
+    color: $bv-hangar;
+    border: 1px solid $bv-hangar;
+    border-radius: 10px;
+    opacity: 0.8;
   }
 }
 .message-content {

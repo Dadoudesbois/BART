@@ -10,17 +10,6 @@
   overflow-y: auto;
 }
 
-.sidenav-container {
-  // border-bottom: 1px solid;
-  a:hover, a:visited, a:link, a:active{
-    color: #fff;
-  }
-}
-
-// .sidenav-container a:hover, a:visited, a:link, a:active {
-//   text-decoration: none !important;
-// }
-
 .sidenav-message-container {
   display: flex;
   border-radius: 5px;
@@ -30,6 +19,10 @@
   margin: 10px;
   margin-top: 0px;
   padding: 5px;
+  color: white;
+  &:hover {
+    color:white;
+    font-style: bold;
 }
 
 .sidenav-message-container:hover {

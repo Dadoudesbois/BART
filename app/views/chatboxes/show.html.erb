@@ -1,41 +1,26 @@
 <div class="fuckfooter">
-
   <div class="container">
-
         <div class="sidenav">
-
           <% @chatboxes.each do |hash| %>
-            <div class="sidenav-container">
-
-
-            <%= link_to chatbox_path(hash[:id]) do %>
-
-              <div class= "sidenav-message-container">
-
-                  <%= cl_image_tag hash[:user_photo], class: "avatar" %>
-
-                <div class="last-msg-content">
-                  <strong><%= link_to hash[:partners_name], chatbox_path(hash[:id]), class: "white nodec" %></strong>
-                  <p><%= hash[:last_msgs_content] %></p>
-                </div>
-
-              </div>
-
-            <% end %>
-
-
-            </div>
+              <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
+                  <div>
+                    <%= cl_image_tag hash[:user_photo], class: "avatar" %>
+                  </div>
+                  <div class="last-msg-content">
+                    <div class="white nodec">
+                      <strong><%= hash[:partners_name] %></strong>
+                    </div>
+                    <p><%= hash[:last_msgs_content] %></p>
+                  </div>
+              <% end %>
           <% end %>
-
         </div>
-
           <div class="message-cont">
-
             <div class="chat-header">
               <% if current_user.profile.username == @sender %>
                 <h4> <strong><%= link_to "#{@recipient}'s profile", profile_path(@chatbox.recipient.profile), class: "white nodec" %></strong> </h4>
               <% else %>
-                <h4><strong><%= link_to @sender, profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
+                <h4><strong><%= link_to "#{@sender}'s profile", profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
               <%end%>
               <% if !current_user.bars.empty? %>
                 <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
@@ -71,6 +56,7 @@
           })
         </script>
       <% end %>
+
 
   </div>
 
