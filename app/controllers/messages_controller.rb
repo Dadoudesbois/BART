@@ -6,12 +6,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
     if @message.save
       respond_to do |format|
-        format.html { redirect_to chat_room_path(@chat_room) }
+        format.html { redirect_to chatbox_path(@chatbox) }
         format.js
       end
     else
       respond_to do |format|
-        format.html { render "chat_rooms/show" }
+        format.html { render "chatboxes/show" }
         format.js
       end
     end
