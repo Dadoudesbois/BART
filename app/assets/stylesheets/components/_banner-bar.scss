@@ -12,9 +12,6 @@
   font-size: 20vw;
   text-align: left;
   color: white;
-  position: absolute;
-  left: -10vw;
-  bottom: 0px;
   }
   h3, a {
   color: white;
@@ -26,8 +23,11 @@
   }
   .content {
     position: absolute;
-    top: 200px;
-    left: 40px;
+    bottom: 0px;
+    left: 5vw;
+    h1 {
+      line-height: 85%;
+    }
   }
 }
 
