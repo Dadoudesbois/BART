@@ -3,13 +3,8 @@
   right: 0;
   width: calc(100vw - 300px);
   height: calc(100vh - 70px);
-  padding-left: 15px;
+  padding-left: 10px;
   margin-top: 70px;
-  // input {
-  //   position: fixed;
-  //   bottom: 20px;
-  //   border-radius: 5px;
-  // }
 }
 
 .messages {
@@ -35,6 +30,13 @@
       color: white;
       opacity: 0.6;
     }
+  &.left {
+    background-color: white;
+    color: $bv-hangar;
+    border: 1px solid $bv-hangar;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
   }
   &.left {
     background-color: white;
