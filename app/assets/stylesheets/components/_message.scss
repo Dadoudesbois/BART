@@ -1,10 +1,29 @@
 .message-cont {
   position: fixed;
   right: 0;
-  width: calc(100vw - 300px);
+  width: 79vw;
+  max-width: calc(100vw - 200px);
   height: calc(100vh - 70px);
   padding-left: 10px;
   margin-top: 70px;
+  input.form-control {
+  border: 1px solid $bv-hangar;
+  box-shadow: none;
+  font-size: 14px;
+  color: $bv-hangar;
+  border-radius: 5px;
+  position: relative;
+  right: 20px;
+  width: calc(100vw - 23vw);
+  max-width: calc(100vw - 240px);
+  position: absolute;
+  bottom: 20px;
+  &:focus {
+    outline: none;
+    border: 1px solid $bv-hangar;
+    box-shadow: 0 0 2px $bv-hangar;
+  }
+}
 }
 
 .messages {
@@ -67,23 +86,11 @@
 .message_content {
   margin-bottom: 0;
 }
-input.form-control {
-  border: 1px solid $bv-hangar;
-  box-shadow: none;
-  font-size: 14px;
-  color: $bv-hangar;
-  position: fixed;
-  bottom: 20px;
-  border-radius: 5px;
-  &:focus {
-    outline: none;
-    border: 1px solid $bv-hangar;
-    box-shadow: 0 0 2px $bv-hangar;
-  }
-}
 
 .chat-header {
-  position: sticky; top: 70px;
+  position: sticky;
+  top: 70px;
+  right: 0px;
   display: flex;
   border-radius: 5px;
   justify-content: space-between;

@@ -2,15 +2,15 @@
   <div class="container">
         <div class="sidenav">
           <% @chatboxes.each do |hash| %>
-              <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container") do %>
+              <%= link_to(chatbox_path(hash[:id]), class: "sidenav-message-container nodec") do %>
                   <div>
                     <%= cl_image_tag hash[:user_photo], class: "avatar" %>
                   </div>
                   <div class="last-msg-content">
                     <div class="white nodec">
-                      <strong><%= hash[:partner_name] %></strong>
+                      <strong class="nodec"><%= hash[:partners_name] %></strong>
                     </div>
-                    <p><%= hash[:last_msgs_content] %></p>
+                    <p class="nodec"><%= hash[:last_msgs_content] %></p>
                   </div>
               <% end %>
           <% end %>

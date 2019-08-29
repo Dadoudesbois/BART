@@ -9,7 +9,7 @@
   margin-top: 0px !important;
   h1  {
   font-family: $bebas;
-  font-size: 13em;
+  font-size: 20vw;
   text-align: left;
   color: white;
   }
@@ -44,7 +44,7 @@
   margin-top: 0px !important;
   h1  {
   font-family: $bebas;
-  font-size: 13em;
+  font-size: 25vw;
   text-align: left;
   position: absolute;
   left: 80px;
@@ -61,12 +61,13 @@
 
 .h3-responsive {
   font-family: $bebas;
-  font-size: 13em;
+  font-size: 20vw;
   text-align: left;
   position: absolute;
-  top: -600px;
-  left: -150px;
+  top: -75vh;
+  left: -10vw;
   color: white;
+  line-height: 70%;
 }
 
 label {
@@ -91,19 +92,23 @@ label {
   margin-top: 0px !important;
   h1  {
   font-family: $bebas;
-  font-size: 10em;
-  text-align: left;
-  position: absolute;
-  top: 220px;
-  left: 40px;
+  font-size: 20vw;
   color: white;
+  }
+  .text-ban {
+    text-align: left;
+    position: absolute;
+    top: 10vh;
+    left: 5vw;
+  }
+  h3{
+    font-size: 5vw;
   }
   .e-date {
   color: white;
   text-align: left;
-  position: absolute;
-  left: 100px;
-  top: 380px;
+  position: relative;
+  left: 10vh;
   }
 }
 

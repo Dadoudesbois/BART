@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1%;
+  overflow: auto;
 }
 .no {
   position:relative;
@@ -119,6 +120,7 @@
   height: 250px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
+  padding: 0px;
   align-items: center;
   margin: 10px auto;
   img {
@@ -132,6 +134,7 @@
     }
   }
 }
+
 .card-prev{
   background-color:white;
   height: 100px;
@@ -187,7 +190,7 @@ height: 100%;
   background-color: white;
   width: 60%;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 6px $bv-hangar;
   color: $gray;
   margin: 10px auto;
   padding: 20px;
@@ -195,6 +198,18 @@ height: 100%;
   h2, .form-inputs {
     color: $bv-hangar;
   }
+  input.form-control , textarea.form-control {
+  border: 0.1px solid $bv-hangar;
+  box-shadow: none;
+  font-size: 14px;
+  color: $bv-hangar;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+    border: 1px solid $bv-hangar;
+    box-shadow: 0 0 3px $bv-hangar;
+  }
+}
 }
 
 .card {
@@ -327,7 +342,6 @@ height: 100%;
 .review-w {
   color: white;
   padding: 10px;
-  margin: 10px;
   text-align: center;
   margin-top: 20px;
   border-top: 2px solid $white;
