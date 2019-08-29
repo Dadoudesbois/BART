@@ -273,17 +273,17 @@ end
 
 puts "Creating events"
 
-now = Time.now
+now = Date.today
 
 events = []
 
 bars.each do |bar|
   artists.each_with_index do |artist_user, i|
     # Event starting date between 2 days ago and 144 hours (6 days) from then: to still have more events in present
-    random_start_date = now - 2.days + 60 * 60 * Random.rand(1..144)
+    random_start_date = now - 3.days + Random.rand(1..6).days
 
     # Event duration between 1 - 8 hours
-    random_end_date = random_start_date + 60 * 60 * Random.rand(1..8)
+    random_end_date = random_start_date + Random.rand(1..7).days
     event = Event.new(
       user: artist_user,
       bar: bar,
