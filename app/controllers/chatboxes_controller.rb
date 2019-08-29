@@ -72,7 +72,7 @@ class ChatboxesController < ApplicationController
   private
 
   def is_navbar_white?
-    ["new", "edit", "create", "index,", "show"].include?(action_name)
+    ["new", "edit", "create", "index", "show"].include?(action_name)
   end
 
   def message_params
