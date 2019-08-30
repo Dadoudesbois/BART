@@ -1,2 +1,3 @@
-<h2><%= bar.name %></h2>
-<p><%= bar.address %></p
+<div class="cardinfo" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= bar.pictures[0].photo %>');">
+  <%= link_to bar.name, bar_path(bar), class:"bw-border-tbg bar" %>
+ </div>
