@@ -23,10 +23,10 @@
                 <h4><strong><%= link_to "#{@sender}'s profile", profile_path(@chatbox.sender.profile), class: "white nodec"%></strong> </h4>
               <%end%>
               <% if !current_user.bars.empty? %>
-                <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addProfile<%= @artist_profile.id %>EventModal">
+                <button type="button" class="bw-border-tbg fullspace" data-toggle="modal" data-target="#addEventProfile<%= @artist_profile.id %>EventModal">
                           Create an event !
                         </button>
-                <%= render 'events/new_modal', profile: @artist_profile, event: Event.new  %>
+                <%= render 'events/new_event_in_chat_modal', profile: @artist_profile, event: Event.new  %>
               <% end %>
             </div>
             <div class="messages">
