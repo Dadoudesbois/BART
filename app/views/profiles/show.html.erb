@@ -27,8 +27,10 @@
             <%= cl_image_tag @profile.photo, :width => 150, :height => 150, crop: :fill, id: "profile", gravity: :face %>
             <div class="left-description">
               <h4>
-                <% @star.times do %>
+                <% if @star %>
+                  <% @star.times do %>
                     <i class="fas fa-star"></i>
+                  <% end %>
                 <% end %>
               </h4>
               <h4>
