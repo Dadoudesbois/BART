@@ -1,6 +1,10 @@
 <%=render 'event-banner'%>
 
 <div class="container">
+  <%if !@event.description.blank? %>
+    <h1>Description</h1>
+    <h2><%= @event.description %></h2>
+  <% end %>
 
     <div class="row">
 
@@ -39,9 +43,9 @@
 
 
 
-      <% if current_user.profile.is_bar_manager %>
-        <p><%= link_to 'Edit event', edit_event_path(@event), class: "b-border-tbg fullspace" %>
-        <%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg fullspace", data: { confirm: "Are you sure?" } %></p>
+      <% if current_user.profile.is_bar_manager && current_user == @event.bar.user %>
+          <p><%= link_to 'Edit event', edit_event_path(@event), class: "b-border-tbg fullspace" %>
+          <%= link_to 'Delete event', event_path(@event), method: :delete, class: "b-border-tbg fullspace", data: { confirm: "Are you sure?" } %></p>
       <%end%>
 
 
