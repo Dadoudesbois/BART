@@ -1,8 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-is-navbar-white="<%= is_navbar_white? %>">
+<div class="navbar navbar-expand navbar-light navbar-lewagon" data-is-navbar-white="<%= is_navbar_white? %>">
   <%= link_to root_path, class: "navbar-brand" do %>
     <h2>bart</h2>
     <% end %>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div  id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
             <li class="nav-item active">

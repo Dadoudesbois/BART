@@ -6,7 +6,7 @@
 
 
 <div class="container">
-  <h1>Search for an artist in your neighbourhood</h1>
+  <h1 class="t">Search for an artist in your neighbourhood</h1>
         <div
       id="map"
       style="width: 100%;
@@ -15,7 +15,7 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
 
-  <br><h1>All artists</h1>
+  <br><h1 class="t">All artists</h1>
 
       <div class="row">
         <% @artists.each do |artist| %>

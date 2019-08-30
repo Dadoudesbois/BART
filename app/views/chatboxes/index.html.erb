@@ -19,11 +19,11 @@
 
     <% else %>
 
-      <h1>No messages... yet ! </h1>
+      <h1 class="t" >No messages... yet ! </h1>
       <%if current_user.profile.is_bar_manager %>
-        <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
+        <h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace res" %></h3>
       <% else %>
-        <h3><%= link_to "Discover our bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
+        <h3><%= link_to "Discover our Bars 🍸", bars_path, class: "b-border-tbg fullspace res" %></h3>
       <% end %>
     <% end %>
 
