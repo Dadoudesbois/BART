@@ -86,9 +86,9 @@ addresses = [
 ]
 
 photo_gege = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566220564/g%C3%A9g%C3%A9_zazxnf.png"
-photo_gaspard = "https://i.pravatar.cc/"
+photo_gaspard = "https://source.unsplash.com/1200x810/?face"
 photo_balta = "https://res.cloudinary.com/dx8gouewf/image/upload/v1566252247/baltha_sgifjq.png"
-photo_random = "https://i.pravatar.cc/"
+photo_random = "https://source.unsplash.com/1200x810/?face"
 
 puts "Creating profiles bar managers"
 
@@ -126,7 +126,7 @@ gege.save!
   bar_manager.username = Faker::Name.unique.last_name
   bar_manager.address = addresses[i]
   bar_manager.is_bar_manager = true
-  bar_manager.remote_photo_url = photo_random
+  bar_manager.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?face"
   bar_manager.save!
 end
 
@@ -148,7 +148,7 @@ gaspard.username = 'Gaspard'
 gaspard.address = "Rue de Savoie 42, 1060 Saint-Gilles"
 gaspard.is_artist = true
 gaspard.artist_description = "I want to meet people, get a real human exchange, get comments on my work. I love to engage neighbourhood life."
-gaspard.remote_photo_url = photo_gaspard
+gaspard.remote_photo_url = "https://source.unsplash.com/1200x810/?face"
 gaspard.save!
 
 # 4.times do |i|
@@ -170,7 +170,7 @@ gaspard.save!
   artist.address = addresses[i+4]
   artist.is_artist = true
   artist.artist_description = Faker::Quote.most_interesting_man_in_the_world
-  artist.remote_photo_url = photo_random
+  artist.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?face"
   artist.save!
 end
 
@@ -206,7 +206,7 @@ balta.save!
   persona = personas[i + 1].profile
   persona.username = Faker::Name.unique.last_name
   persona.address = addresses[i+8]
-  persona.remote_photo_url = photo_random
+  persona.remote_photo_url = "https://source.unsplash.com/120#{i}x810/?face"
   persona.save!
 end
 

@@ -139,10 +139,17 @@ class EventsController < ApplicationController
     if unaccented_query.blank?
       all_events = Event.all
       @events = confirmed_current_events_filter(all_events)
-    else
-      search = Event.search_event_scope(unaccented_query)
-      @events = confirmed_current_events_filter(search)
-    end
+    elsif (unaccented_query.to_date)
+      date = unaccented_query.to_date
+      events_on_date = Event.all.select { |e|
+        date.between?(e.start_date..e.end_date)
+      }
+    @events = confirmed_current_events_filter(events_on_date)
+      else
+        search = Event.search_event_scope(unaccented_query)
+        @events = confirmed_current_events_filter(search)
+      end
+
     bars_and_markers_for_map(@events)
   end
 
