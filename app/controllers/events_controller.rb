@@ -143,7 +143,7 @@ class EventsController < ApplicationController
       begin
         date_formatted = unaccented_query.to_date
         all_events_local = Event.all
-        events_on_date = all_events_local.where('end_date >= ?', date_formatted)
+        events_on_date = all_events_local.where('end_date >= ? AND start_date <= ?', date_formatted.beginning_of_day, date_formatted.end_of_day)
         @events = confirmed_current_events_filter(events_on_date)
       rescue
         search = Event.search_event_scope(unaccented_query)
