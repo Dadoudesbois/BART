@@ -13,13 +13,13 @@
 
       <div class="modal-body">
 
-        <div class="left">
+        <div class="center">
           <h2><%= link_to event.user.profile.username.capitalize, profile_path(event.user),class:"blue-link" %>, </h2>
           <h2>at <%= link_to event.bar.name, bar_path(event.bar), class:"blue-link"%></h2>
-          <p> from
+          <p>
                 <%= event.start_date.strftime("%a %B %d | %H:%M") %>
           </p>
-          <p>   to <%= event.end_date.strftime("%a %B %d | %H:%M") %>
+          <p>   <%= event.end_date.strftime("%a %B %d | %H:%M") %>
           </p>
           <h4>
               <%= link_to "See artist profile
