@@ -118,12 +118,12 @@ class ProfilesController < ApplicationController
   end
 
   def get_current_confirmed_events(events)
-    events.select { |e| e.confirmed && e.start_date >= DateTime.now }
+    events.select { |e| e.confirmed && e.end_date >= DateTime.now }
           .sort_by(&:end_date)
   end
 
   def get_past_confirmed_events(events)
-    events.select { |e| e.confirmed && e.start_date < DateTime.now }
+    events.select { |e| e.confirmed && e.end_date < DateTime.now }
           .sort_by(&:end_date).reverse!
   end
 
