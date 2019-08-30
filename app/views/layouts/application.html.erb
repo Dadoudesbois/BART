@@ -23,6 +23,7 @@
 
     <br><br><br><br>
     <%= render 'shared/footer' %>
+    <%= yield :modals %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield :after_js %>

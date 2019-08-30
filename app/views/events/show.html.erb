@@ -1,6 +1,10 @@
 <%=render 'event-banner'%>
 
 <div class="container">
+  <%if !@event.description.blank? %>
+    <h1>Description</h1>
+    <h2><%= @event.description %></h2>
+  <% end %>
 
     <div class="row">
 
