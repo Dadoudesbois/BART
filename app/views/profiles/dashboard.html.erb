@@ -13,9 +13,9 @@
           <% if event.photo %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= event.photo %>');">
             <h2 class="white"><%= event.name %></h2><br>
-            <%= link_to 'See more details', event_path(event), class: "bdash" %>
+            <p><%= link_to 'See more details', event_path(event), class: "bdash" %><p>
             <% if current_user.profile.is_artist %>
-               <%= link_to "Confirm event", confirm_event_path(event), class: "bdash" %>
+               <p><%= link_to "Confirm event", confirm_event_path(event), class: "button" %></p>
             <% end %>
             <% if current_user.profile.is_bar_manager %>
               <%= link_to 'Edit event', edit_event_path(event), class: "bdash" %>

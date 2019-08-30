@@ -25,8 +25,8 @@
               <div class="card-hz-bg">
                 <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
                 <div class="left-description">
-                  <h3><%= event.name %></h3>
-                  <p> <%= event.description%></p>
+                  <h3><%= link_to event.name, event_path(event), class:"blue-link" %></h3>
+                  <h4> <%= event.description%></h4>
                 </div>
               </div>
             <% end %>
