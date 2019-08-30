@@ -7,7 +7,7 @@
 
   <%= simple_form_for(:event_search, url: events_search_path, remote: true) do |form| %>
     <div class="search-form-control form-group">
-      <%= form.input :content, placeholder: "Find an event...", label: false %>
+      <%= form.input :content, placeholder: "Find events by Artist, Bar, ...", label: false %>
       <%= form.button :submit, 'Search' %>
     </div>
   <% end %>

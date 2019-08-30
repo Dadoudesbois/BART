@@ -92,6 +92,7 @@
       <% if !@profile.user.events.empty? %>
         <h1 class="t">Events</h1>
         <% @profile.user.events.each do |event| %>
+        <% if event.confirmed %>
           <div class="card-hz-bg">
             <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
             <div class="left-description">
@@ -103,6 +104,7 @@
               </h4>
             </div>
           </div>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -137,6 +139,7 @@
       <% if !@profile.user.events.empty? %>
         <br><h1 class="t">Events</h1>
         <% @profile.user.events.each do |event| %>
+        <% if event.confirmed %>
           <div class="card-hz-s">
             <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
             <div class="left-description">
@@ -146,6 +149,7 @@
               <p> <%= event.description%></p>
             </div>
           </div>
+          <% end %>
         <% end %>
       <% end %>
 

@@ -177,8 +177,6 @@ sam.artist_description = "Painter"
 sam.remote_photo_url = photo_sam
 sam.save!
 
-
-
 puts "Creating bars"
 
 

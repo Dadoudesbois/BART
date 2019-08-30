@@ -22,6 +22,7 @@
 
         <div class="events col-xs-12 col-sm-12 col-md-8">
             <% @bar.events.each do |event| %>
+              <% if event.confirmed %>
               <div class="card-hz-bg">
                 <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
                 <div class="left-description">
@@ -29,6 +30,7 @@
                   <h4> <%= event.description%></h4>
                 </div>
               </div>
+              <% end %>
             <% end %>
         </div>
 

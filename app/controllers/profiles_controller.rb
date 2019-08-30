@@ -20,17 +20,17 @@ class ProfilesController < ApplicationController
   def dashboard
     if current_user.profile.is_artist && current_user.profile.is_bar_manager
       @events = (get_events_artist_current_user + get_events_bar_owner_current_user).uniq
-      @unconfirmed_events = get_unconfirmed_events(@events)
+      @unconfirmed_events = get_unconfirmed_events(@events).sort_by(&:created_at)
       @current_events = get_current_confirmed_events(@events)
       @past_events = get_past_confirmed_events(@events)
     elsif current_user.profile.is_artist
       @events = get_events_artist_current_user
-      @unconfirmed_events = get_unconfirmed_events(@events)
+      @unconfirmed_events = get_unconfirmed_events(@events).sort_by(&:created_at)
       @current_events = get_current_confirmed_events(@events)
       @past_events = get_past_confirmed_events(@events)
     elsif current_user.profile.is_bar_manager
       @events = get_events_bar_owner_current_user
-      @unconfirmed_events = get_unconfirmed_events(@events)
+      @unconfirmed_events = get_unconfirmed_events(@events).sort_by(&:created_at)
       @current_events = get_current_confirmed_events(@events)
       @past_events = get_past_confirmed_events(@events)
     else
@@ -118,12 +118,12 @@ class ProfilesController < ApplicationController
   end
 
   def get_current_confirmed_events(events)
-    events.select { |e| e.confirmed && e.start_date >= DateTime.now }
-          .sort_by(&:start_date).reverse!
+    events.select { |e| e.confirmed && e.end_date >= DateTime.now }
+          .sort_by(&:end_date)
   end
 
   def get_past_confirmed_events(events)
-    events.select { |e| e.confirmed && e.start_date < DateTime.now }
+    events.select { |e| e.confirmed && e.end_date < DateTime.now }
           .sort_by(&:end_date).reverse!
   end
 
