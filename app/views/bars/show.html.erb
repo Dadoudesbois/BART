@@ -17,11 +17,12 @@
 
   <% if !@bar.events.empty? %>
 
-        <br><h1>Events</h1>
+        <br><h1 class="t">Events</h1>
         <div class="row">
 
         <div class="events col-xs-12 col-sm-12 col-md-8">
             <% @bar.events.each do |event| %>
+              <% if event.confirmed %>
               <div class="card-hz-bg">
                 <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
                 <div class="left-description">
@@ -29,6 +30,7 @@
                   <h4> <%= event.description%></h4>
                 </div>
               </div>
+              <% end %>
             <% end %>
         </div>
 
@@ -81,7 +83,7 @@
 
 
 
-<br><div class="fullspace"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
+<br><div class="fullspace res"><%= link_to "Back to list of bars", bars_path, class:"b-allwidth-lg" %></div>
 
 </div>
 

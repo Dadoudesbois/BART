@@ -197,6 +197,7 @@ height: 100%;
   position: relative;
   margin-top: 20px;
   display: flex;
+  text-align: center;
   flex-direction: vertical;
   justify-content: center;
   align-items: center;
@@ -363,5 +364,7 @@ height: 100%;
   overflow: show;
 }
 
-
+.center {
+  text-align: center;
+}
 

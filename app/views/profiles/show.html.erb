@@ -49,7 +49,7 @@
 
       <% if !current_user.bars.empty?%>
 
-        <h1>
+        <h1 class="t">
             Partners
         </h1>
         <div class="row">
@@ -66,7 +66,7 @@
 
 
         <% if !@reviews.empty? && current_user.profile.is_bar_manager%>
-          <h1>Reviews</h1>
+          <h1 class="t">Reviews</h1>
             <div class="row">
               <% @reviews.each do |review| %>
                 <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
@@ -90,8 +90,9 @@
       <% end %>
 
       <% if !@profile.user.events.empty? %>
-        <h1>Events</h1>
+        <h1 class="t">Events</h1>
         <% @profile.user.events.each do |event| %>
+        <% if event.confirmed %>
           <div class="card-hz-bg">
             <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
             <div class="left-description">
@@ -103,11 +104,12 @@
               </h4>
             </div>
           </div>
+          <% end %>
         <% end %>
       <% end %>
 
       <% if current_user != @profile.user %>
-        <br><div class="fullspace">
+        <br><div class="fullspace res">
           <%= link_to "Back to list of artists", profiles_path, class:"b-allwidth-lg" %>
         </div>
       <% end %>
@@ -135,8 +137,9 @@
 
 
       <% if !@profile.user.events.empty? %>
-        <br><h1>Events</h1>
+        <br><h1 class="t">Events</h1>
         <% @profile.user.events.each do |event| %>
+        <% if event.confirmed %>
           <div class="card-hz-s">
             <%= cl_image_tag event.photo, width: 200, height: 200, crop: :fill %>
             <div class="left-description">
@@ -146,12 +149,13 @@
               <p> <%= event.description%></p>
             </div>
           </div>
+          <% end %>
         <% end %>
       <% end %>
 
       <% if !@profile.user.bars.empty? %>
 
-        <br><h1>Bars</h1>
+        <br><h1 class="t">Bars</h1>
         <div class="row">
           <% @profile.user.bars.each do |bar| %>
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3">
@@ -169,7 +173,7 @@
       <% end %>
 
       <% if current_user != @profile.user %>
-        <br><div class="fullspace">
+        <br><div class="fullspace res">
           <%= link_to "Back to bar page", :back, class:"b-allwidth-lg" %>
         </div>
       <%end%>

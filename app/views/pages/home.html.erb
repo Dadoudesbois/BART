@@ -3,11 +3,11 @@
 <div class="container">
 
 
-  <br><h1>Search for an event nearby !</h1>
+  <br><h1 class="t">Search for an event nearby !</h1>
 
   <%= simple_form_for(:event_search, url: events_search_path, remote: true) do |form| %>
     <div class="search-form-control form-group">
-      <%= form.input :content, placeholder: "Find an event...", label: false %>
+      <%= form.input :content, placeholder: "Find events by Artist, Bar, ...", label: false %>
       <%= form.button :submit, 'Search' %>
     </div>
   <% end %>
@@ -16,7 +16,7 @@
     <%= render 'events/events_list',  events: @events %>
   </div>
 
-  <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace" %></h3>
-  <h3><%= link_to "Discover our Bars 🍸", bars_path, class: "b-border-tbg fullspace" %></h3>
+  <br><h3><%= link_to "Discover our Artists ✨", profiles_path, class: "b-border-tbg fullspace res" %></h3>
+  <h3><%= link_to "Discover our Bars 🍸", bars_path, class: "b-border-tbg fullspace res" %></h3>
 
 </div>
