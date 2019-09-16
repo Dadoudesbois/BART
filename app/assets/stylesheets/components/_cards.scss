@@ -204,7 +204,7 @@ height: 100%;
   position: relative;
   padding: 20px;
   overflow-wrap: break-word;
-  overflow:scroll;
+  overflow: auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   h2 {
     text-align:center;
@@ -223,7 +223,7 @@ height: 100%;
   position: relative;
   padding: 20px;
   overflow-wrap: break-word;
-  overflow:scroll;
+  overflow: auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
